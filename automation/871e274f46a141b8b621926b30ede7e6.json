@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [Critical - Domain Separation Bypass] Can an attacker cause domain separation collisions by crafting msg/dst combinations where the concatenation of [msg]+[dst] produces identical input to ExpandMsgXmd, allowing cross-protocol attacks between DKG and signing operations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_14f9bcca-6999-4f42-9b8f-93367ed8e135?mode=deep",
+    "timestamp": "2026-02-06 21:38:59.635172",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [Critical - Zero Scalar Generation] Does expand_to_scalar() check if the resulting Scalar::from(buf) produces a zero scalar, which if used as a private key or nonce in DKG/signing would compromise the entire protocol?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_03808075-7517-478b-8096-218f03ba24c2?mode=deep",
+    "timestamp": "2026-02-06 21:39:12.113947",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [High - DST Length Validation] Can an attacker bypass the 255-byte DST length limit by exploiting the error handling in line 32, potentially causing the function to accept oversized DST values that violate hash-to-curve specifications?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_52d8265a-6af3-4127-a75e-8223ba12bb9a?mode=deep",
+    "timestamp": "2026-02-06 21:39:25.091485",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [Critical - Modular Reduction Bypass] Does Scalar::from(buf) at line 33 correctly perform modular reduction of the 32-byte buffer modulo the curve order, or could certain 256-bit values produce invalid scalars outside the field?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_773373d0-2b6f-41d4-8a33-51dc8548ed92?mode=deep",
+    "timestamp": "2026-02-06 21:39:38.523588",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [High - Empty Message Handling] What happens if msg is empty (&[])? Does this produce a deterministic scalar that could be predicted and exploited in nonce generation or DKG share derivation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f1e49e24-06af-44c6-9774-43521d6f1d1d?mode=deep",
+    "timestamp": "2026-02-06 21:39:52.595582",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [Medium - DST Reuse Across Contexts] Are there checks preventing the same DST from being reused across different protocol contexts (DKG vs signing vs key tweaking), which could enable replay attacks or cross-context forgeries?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_84e3aaea-eaf0-4729-8199-428059863540?mode=deep",
+    "timestamp": "2026-02-06 21:40:07.609595",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [High - Buffer Size Assumption] The 32-byte buffer size in line 30 assumes this is sufficient for Scalar::from() - what if the underlying curve requires different field element sizes, could this truncate or pad incorrectly?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ef881c93-5836-4a7c-9d80-791417ddde5d?mode=deep",
+    "timestamp": "2026-02-06 21:40:23.824475",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [Critical - Nonce Derivation] If this function is used for nonce generation in signing, does it ensure that msg contains sufficient entropy and context binding to prevent nonce reuse across different signing rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0123e3e8-3f85-4b23-b2cd-6a76ad7c082d?mode=deep",
+    "timestamp": "2026-02-06 21:40:41.401712",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [Medium - Error Propagation] Does the Result type properly propagate EllipticCurveError, or could callers silently unwrap() this and cause panics on attacker-controlled DST lengths?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2796f74b-b3ee-4fbc-967a-0d320f6720d8?mode=deep",
+    "timestamp": "2026-02-06 21:41:01.200134",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: expand_to_scalar()] [High - Deterministic Expansion] Since ExpandMsgXmd is deterministic, if an attacker learns the msg/dst pair used for private share encryption keys, can they derive the same key and decrypt DKG shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0eeb55cb-dde5-44ac-a088-56c940c90750?mode=deep",
+    "timestamp": "2026-02-06 21:41:20.799770",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [Critical - Zero Hash Collision] Does hash_to_scalar() check if the SHA256 digest produces all zeros (though astronomically unlikely), which when converted to a scalar could compromise cryptographic operations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ec21c54-5ff6-4a77-89e5-4b0ac31408eb?mode=deep",
+    "timestamp": "2026-02-06 21:41:41.610863",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [High - Hasher Clone Side Effects] Line 39 clones the hasher before finalization - does this preserve all internal state correctly, or could incremental hashing with update() calls before hash_to_scalar() lead to inconsistent results?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d6274cad-d4be-4c41-af9a-1e9806edfab9?mode=deep",
+    "timestamp": "2026-02-06 21:42:02.826487",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [Medium - Modular Reduction] Does Scalar::from(hash_bytes) at line 44 perform correct modular reduction mod curve order, and what happens if the 256-bit hash value equals or exceeds the curve order?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_42c8f129-1c78-4144-a887-74d4caa8d9e6?mode=deep",
+    "timestamp": "2026-02-06 21:42:24.950450",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [High - Binding Value Computation] If this function is used to compute binding values in FROST signing, does it ensure the hasher contains all required nonces and the message before being called?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1a5b9a2a-ce81-4c5c-9359-3f5d6f893587?mode=deep",
+    "timestamp": "2026-02-06 21:42:47.850216",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [Low - Dead Code] The function is marked #[allow(dead_code)] at line 36 - if it's unused, why does it exist, and could its presence indicate incomplete protocol implementations that might be exploitable?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d6d66244-92a4-4c30-a5d3-c51d5fe6ccbf?mode=deep",
+    "timestamp": "2026-02-06 21:43:12.253655",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [Medium - Incremental Hashing State] Can an attacker manipulate the order of hasher.update() calls before hash_to_scalar() to produce predictable scalars that enable signature forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6fef7666-daf9-4299-89e4-e6d8ac1ea811?mode=deep",
+    "timestamp": "2026-02-06 21:43:37.470636",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [High - No Domain Separation] Unlike expand_to_scalar(), this function has no explicit domain separation tag - can this cause hash collisions between different protocol operations using the same input data?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0cf2564a-9991-413d-81c6-baa52e50ee40?mode=deep",
+    "timestamp": "2026-02-06 21:44:02.183580",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: hash_to_scalar()] [Medium - Clone Performance] Does cloning the hasher at line 39 have timing implications that could leak information about the hash state in a side-channel attack?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0a20cfac-f726-4634-ae7d-58edc53261be?mode=deep",
+    "timestamp": "2026-02-06 21:44:29.786845",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Critical - Point at Infinity] Does make_shared_secret() check if public_key is the point at infinity (identity element)? If not, the resulting shared_key would also be infinity, producing a predictable shared secret that breaks encryption security.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2e37f154-ab1a-4581-9a9d-8ceb2d5559ec?mode=deep",
+    "timestamp": "2026-02-06 21:44:57.984496",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Critical - Low Order Points] Can an attacker supply a low-order public_key that generates a small subgroup element, allowing them to brute-force the shared secret from a limited set of possibilities (small subgroup attack)?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_61a7e2dc-de8d-4eb6-9bda-45e32a1dbee3?mode=deep",
+    "timestamp": "2026-02-06 21:45:28.065698",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Critical - Invalid Point Validation] Before the scalar multiplication at line 49, is there validation that public_key is a valid curve point? Invalid points could cause undefined behavior or leak the private_key through fault attacks.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_111490fa-1942-463e-be90-bbf4cb5abb54?mode=deep",
+    "timestamp": "2026-02-06 21:45:58.417749",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [High - Private Key Zero] What happens if private_key is the zero scalar? The multiplication would produce the point at infinity regardless of public_key, creating a predictable shared secret of all zeros after KDF.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b98500ce-26cd-4d9f-90cb-81caf387e9ee?mode=deep",
+    "timestamp": "2026-02-06 21:46:28.617478",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Critical - Key Compromise via DH Oracle] If an attacker can repeatedly call make_shared_secret() with chosen public keys and observe shared secret outcomes, can they gradually leak bits of private_key through timing or error analysis?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f11a4acc-19cb-47ef-b707-027bb0a6acaa?mode=deep",
+    "timestamp": "2026-02-06 21:46:59.774294",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [High - DH Key Reuse] Does the protocol ensure private_key is ephemeral and never reused across multiple DH operations? Key reuse could enable correlation attacks linking multiple encrypted DKG shares.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1c38cb65-25ed-410c-8701-fcf0112ddd51?mode=deep",
+    "timestamp": "2026-02-06 21:47:33.537035",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Medium - Timing Side Channel] Does the scalar multiplication at line 49 use constant-time operations, or could the execution time vary based on private_key bit patterns, leaking the key through timing attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_85324c2c-dd1a-4db8-952c-4ddca96cbe8d?mode=deep",
+    "timestamp": "2026-02-06 21:48:07.754751",
+    "report_generated": false
+  }
+]
