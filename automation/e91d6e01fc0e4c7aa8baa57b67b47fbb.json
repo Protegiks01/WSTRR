@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [High] Can the Scalar::try_from() at line 1077 be exploited with malformed byte sequences that produce predictable scalars after reduction?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6a37ff34-b359-421f-aeb5-31839495455e?mode=deep",
+    "timestamp": "2026-02-06 22:12:59.618267",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Medium] Does the error handling at lines 1081-1095 properly distinguish between decryption failures and scalar parsing failures, or could this leak information?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4d89f065-ab36-402e-aab4-967e64f9cf3b?mode=deep",
+    "timestamp": "2026-02-06 22:13:12.240894",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [High] Can make_bad_private_share() at lines 1085 and 1093 be called with incorrect src_signer_id, producing proofs that blame the wrong party?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f270383b-7af4-4d7b-9a81-241b9f44371f?mode=deep",
+    "timestamp": "2026-02-06 22:13:25.376986",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Critical] Does the insertion at line 1099 overwrite previous decrypted_shares for src_id, or could multiple encrypted values for the same share cause inconsistency?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8f70bb94-9aed-477d-b9c2-bb1bafbc6e52?mode=deep",
+    "timestamp": "2026-02-06 22:13:39.779933",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [High] Can the decryption_keys storage at lines 1100-1101 be exploited if an attacker sends shares with a manipulated shared_key value?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b51b32dd-4aa2-4f26-8c48-4672ba4b6602?mode=deep",
+    "timestamp": "2026-02-06 22:13:53.873075",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Low] Does the key_ids.contains() check at line 1075 prevent decryption of shares intended for other signers' key_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e49561d6-1ac7-4d84-9050-61e06ad0be80?mode=deep",
+    "timestamp": "2026-02-06 22:14:09.498102",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: get_kex_public_key()] [High] Can get_kex_public_key() at line 1112 return a kex_public_key that doesn't match the signer_id's actual public key, allowing man-in-the-middle attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8b4a1f69-bdc8-4bf9-ae89-0451ec61a64c?mode=deep",
+    "timestamp": "2026-02-06 22:14:26.362961",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: get_kex_public_key()] [Medium] Does the lookup at line 1113 validate that signer_key_ids is non-empty before calling .next() at line 1118, or could this panic?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b08bd8f4-4b0c-4aa7-a75d-761e9f5b9986?mode=deep",
+    "timestamp": "2026-02-06 22:14:45.023038",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: get_kex_public_key()] [High] Can an attacker exploit the fact that only the first key_id is used at line 1118, ignoring other key_ids that might have different KEX public keys?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bb752770-3570-421c-80ec-d17e6e3bd31d?mode=deep",
+    "timestamp": "2026-02-06 22:15:04.381207",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: get_kex_public_key()] [Low] Does the error at line 1125 properly prevent continuation if kex_public_key is missing, or could default values be used?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b14ea861-219d-4342-affe-38a9c61b9912?mode=deep",
+    "timestamp": "2026-02-06 22:15:25.167962",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: make_bad_private_share()] [Critical] Does make_bad_private_share() at line 1132 generate a valid DLEQ proof that binds A, B, and K correctly, or could the proof be forged?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2c45f79c-b84f-4adc-8307-81e80dfe303a?mode=deep",
+    "timestamp": "2026-02-06 22:15:47.148367",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: make_bad_private_share()] [High] Can the TupleProof::new() at line 1141 be exploited if the RNG is weak, producing predictable challenge values?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7ed017b8-a663-4bc9-9ac7-005023e64f57?mode=deep",
+    "timestamp": "2026-02-06 22:16:10.321163",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: make_bad_private_share()] [Medium] Does the computation of K = a * B at line 1140 validate that B is not the identity element before multiplication?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_32a46516-7e09-4a96-9be5-b105517f13dc?mode=deep",
+    "timestamp": "2026-02-06 22:16:34.747176",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: make_bad_private_share()] [High] Can get_kex_public_key() at line 1139 fail, and does the ? operator properly propagate the error without partial state updates?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5241c26c-8c23-4a7f-b12f-c1a7b09290aa?mode=deep",
+    "timestamp": "2026-02-06 22:16:59.922743",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: move_to()] [High] Can move_to() at line 1151 be called concurrently, causing race conditions in state updates?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_15d67ee7-3500-44b5-bdfa-56adabbdf363?mode=deep",
+    "timestamp": "2026-02-06 22:17:26.848692",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: can_move_to()] [Critical] Does can_move_to() at line 1157 allow transition from DkgPublicGather to DkgPublicDistribute at line 1163, enabling replay of DKG public phase?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_86e60614-ea2e-483d-8eda-b76f412e7e0f?mode=deep",
+    "timestamp": "2026-02-06 22:17:52.995178",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: can_move_to()] [High] Can the transition from DkgPrivateDistribute to DkgPublicDistribute at line 1164 bypass the private share distribution phase?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_06a08bb9-dfe5-46f3-ac3a-fc2d5ac1e654?mode=deep",
+    "timestamp": "2026-02-06 22:18:20.435066",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: can_move_to()] [Medium] Does the transition to State::Idle at line 1160 properly clear all sensitive state, or could residual data leak to the next DKG round?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c5ced608-05aa-45dd-92d3-ba231a63cb9d?mode=deep",
+    "timestamp": "2026-02-06 22:18:49.027698",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: can_move_to()] [High] Can an attacker force repeated transitions between DkgPublicDistribute and DkgPublicGather to cause resource exhaustion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_13a774b8-035a-4310-aee4-dd0f01c0c376?mode=deep",
+    "timestamp": "2026-02-06 22:19:17.104050",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: can_move_to()] [Low] Does the error message at lines 1175-1177 leak sensitive state information that could aid an attacker?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_24db4e61-48f2-4bdb-a6db-f570f8dce93c?mode=deep",
+    "timestamp": "2026-02-06 22:19:46.269146",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: SavedState] [High] Can SavedState at line 113 be deserialized from untrusted sources without validation, allowing injection of malicious state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b84692ea-7da1-4fb8-be0c-38ac105a9bb7?mode=deep",
+    "timestamp": "2026-02-06 22:20:16.599062",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: SavedState] [Critical] Does SavedState properly protect network_private_key at line 150 during serialization, or could it be leaked in logs/backups?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7c8623a9-4119-4f7b-99b6-bc5c702a6f82?mode=deep",
+    "timestamp": "2026-02-06 22:20:46.576576",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: SavedState] [Critical] Can kex_private_key at line 166 be recovered from SavedState if it's stored in plaintext, compromising all encrypted private shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c8eec2e8-4bdc-40dd-89d2-67fa11e33003?mode=deep",
+    "timestamp": "2026-02-06 22:21:17.625168",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: SavedState] [High] Does SavedState validate that decrypted_shares at line 140 don't contain shares for key_ids not owned by this signer?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_40a1d9f1-7ed0-429e-a514-7473361deb64?mode=deep",
+    "timestamp": "2026-02-06 22:21:49.519369",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: SavedState] [Medium] Can invalid_private_shares at line 146 grow unbounded if many signers are detected as malicious, causing memory exhaustion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_97bf4a4c-40e4-48bf-8f06-98fa8288c446?mode=deep",
+    "timestamp": "2026-02-06 22:22:23.164154",
+    "report_generated": false
+  }
+]
