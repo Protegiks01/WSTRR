@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [State Machine Bypass - Critical] Can an attacker exploit race conditions between timeout processing and message processing to cause state machine desynchronization, allowing invalid state transitions or bypassing DKG/signing validation checks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a3525f4c-981b-4fdc-ab17-d61b4f7fedfb?mode=deep",
+    "timestamp": "2026-02-06 22:08:15.536103",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [Threshold Bypass - Critical] In DkgPublicGather timeout handling (lines 78-102), when dkg_threshold is met but not all signers responded, could an attacker manipulate the timeout to exclude honest signers and include only compromised ones, effectively controlling which subset participates in DKG?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bd73e943-708f-48f0-b442-25420f4094c1?mode=deep",
+    "timestamp": "2026-02-06 22:08:28.182229",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [DoS - Medium] Can an attacker cause repeated timeout cycles by carefully timing message delivery to trigger the timeout path at lines 80-99, forcing continuous DKG restarts and preventing protocol progress?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bfa79a07-dd3b-46b5-ba11-2bc5d800d113?mode=deep",
+    "timestamp": "2026-02-06 22:08:41.113920",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [Integer Overflow - Medium] In compute_dkg_public_size() call at line 82, could a malicious signer provide key_ids that cause integer overflow when summing key counts, bypassing the dkg_threshold check?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5ef1ef1f-fde7-43f9-adee-9fcbf7ed5b99?mode=deep",
+    "timestamp": "2026-02-06 22:08:54.606531",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [State Confusion - High] When timeout occurs in DkgPrivateGather (lines 106-130) and threshold is met, the coordinator continues without all expected signers - can this cause inconsistent party_polynomials state between coordinator and signers?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_93fa1555-a97b-4031-a1a4-026d1c14c605?mode=deep",
+    "timestamp": "2026-02-06 22:09:09.501096",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [Malicious Signer Tracking - High] In SigShareGather timeout (lines 174-207), all waiting signers are marked malicious (lines 178-186) - can an attacker DoS honest signers to get them marked malicious, then control the remaining signer set below threshold?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5e28fa39-4eea-4597-8635-64af53d17651?mode=deep",
+    "timestamp": "2026-02-06 22:09:24.615927",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [Threshold Calculation - Critical] At lines 188-200, num_malicious_keys is computed and checked against threshold - could precision loss in key ID counting allow a malicious coordinator to incorrectly calculate remaining capacity?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fbec25d8-3cc6-46c2-b156-cf76cb666786?mode=deep",
+    "timestamp": "2026-02-06 22:09:41.079430",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [State Transition - High] When sign timeout occurs (line 202), the state moves back to NonceRequest - can this create an infinite loop where malicious signers repeatedly timeout to prevent signature completion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6abc1514-c2e5-443d-8925-225869f2372d?mode=deep",
+    "timestamp": "2026-02-06 22:09:58.850071",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [DKG End Timeout - High] DkgEndGather timeout (lines 134-145) has no threshold check - can an attacker exploit this to force DKG abortion even when threshold participants are available?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_83ac11e0-9a24-4cf8-a865-6ba8dfaf3237?mode=deep",
+    "timestamp": "2026-02-06 22:10:17.555845",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_timeout()] [Nonce Timeout - High] NonceGather timeout (lines 149-171) collects malicious_signer_ids but doesn't verify if remaining signers meet threshold before reporting timeout - can this cause false negatives?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_33c37bfc-5f63-4421-b208-d5fc6670457a?mode=deep",
+    "timestamp": "2026-02-06 22:10:36.618369",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Signature Verification Bypass - Critical] Packet signature verification (lines 218-225) only occurs if config.verify_packet_sigs is true - can attackers forge packets if this configuration is disabled, compromising all protocol security?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7f21ec98-f52d-409e-9fca-8b2fe01c6185?mode=deep",
+    "timestamp": "2026-02-06 22:10:56.322010",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [State Machine Loop - Medium] The function uses an infinite loop (line 226) - can malicious state transitions cause infinite looping, consuming resources or creating DoS conditions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bec6689c-f6f9-4179-8fa0-93e74486ac9c?mode=deep",
+    "timestamp": "2026-02-06 22:11:17.513421",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Round ID Replay - High] In Idle state (lines 228-252), DkgBegin and NonceRequest with matching current IDs are ignored - but could an attacker replay old valid packets with future round IDs to prematurely advance the coordinator state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b6dffb73-b218-422f-8945-18f04b4a2089?mode=deep",
+    "timestamp": "2026-02-06 22:11:38.846313",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Sign Iteration Wraparound - High] At line 243, sign_iter_id uses wrapping_sub(1) - can this wraparound behavior be exploited when sign_iter_id is 0, creating inconsistent iteration tracking?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_40c8089c-5c1b-4aa9-83ab-3612d422b24d?mode=deep",
+    "timestamp": "2026-02-06 22:12:02.034321",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [DKG Failure Handling - High] At lines 281-296, DkgFailure errors are extracted and returned, but the coordinator state may be corrupted - can this leave the coordinator in an inconsistent state requiring reset?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_55a05952-aaaf-4902-aa3d-57f48344ab08?mode=deep",
+    "timestamp": "2026-02-06 22:12:25.188399",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Missing Aggregate Key - Critical] Lines 302-309 return DKG result only if aggregate_public_key exists - but what if gather_dkg_end succeeded without properly setting this key, allowing signing without valid DKG?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4b3b887b-a460-427f-b493-d2ce94d0a724?mode=deep",
+    "timestamp": "2026-02-06 22:12:48.994170",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Signature Type Confusion - High] In SigShareGather state (lines 327-389), signature vs schnorr_proof handling depends on signature_type - can type confusion cause wrong proof type to be returned, breaking verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_50a8cca7-0140-4ebb-a5e6-a570f854213b?mode=deep",
+    "timestamp": "2026-02-06 22:13:14.617069",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Taproot/Schnorr Proof Missing - Medium] Lines 339-355 and 356-372 check for missing schnorr_proof - but gather_sig_shares may succeed without setting it, can this cause silent failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ca511f11-5ef1-4ad3-abe6-27c2bcc6a069?mode=deep",
+    "timestamp": "2026-02-06 22:13:42.282939",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [Error Wrapping - Medium] At lines 328-332, gather_sig_shares errors are wrapped in SignError::Coordinator - does this mask critical errors that should abort the protocol?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c124fd44-25f0-4151-ad53-059cc99bccfd?mode=deep",
+    "timestamp": "2026-02-06 22:14:10.477957",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: process_message()] [State Loop Logic - Medium] Multiple states check 'if self.state == State::X' after gather functions - can race conditions between state changes and these checks cause incorrect flow control?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3356fb0a-5211-42fc-b203-afbceba2f47d?mode=deep",
+    "timestamp": "2026-02-06 22:14:39.913888",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_public_shares()] [Data Clearing - High] Lines 397-398 clear dkg_public_shares and party_polynomials unconditionally - can an attacker trigger this mid-DKG to erase valid state and force restart with different participants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9c15e3d0-c612-4fc5-87e1-45a226d646a7?mode=deep",
+    "timestamp": "2026-02-06 22:15:09.826298",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_public_shares()] [Signer Set Initialization - Critical] Line 399 initializes dkg_wait_signer_ids with range 0..num_signers - can this be exploited if num_signers is manipulated or doesn't match actual available signers?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bd5a8458-a5cd-4933-a9c9-c983e40610c3?mode=deep",
+    "timestamp": "2026-02-06 22:15:40.789559",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_public_shares()] [Message Signing Panic - High] Line 409 uses expect() on signing failure - can an attacker trigger conditions that cause signing to fail, panicking the coordinator and causing DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7429d847-ffca-4761-aa62-db729b852435?mode=deep",
+    "timestamp": "2026-02-06 22:16:11.436265",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_public_shares()] [State Transition - Medium] Line 414 moves to DkgPublicGather before sending packet - can failure to send the packet leave coordinator in waiting state with no incoming messages?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a14f02ba-1cdf-4c21-9cdf-98a2dcb25379?mode=deep",
+    "timestamp": "2026-02-06 22:16:43.568821",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_public_shares()] [Timestamp Recording - Low] Line 415 records start time - is this timestamp trusted? Can clock skew or manipulation affect timeout calculations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7506f1b6-b68c-4a50-bda9-9f74527a54d0?mode=deep",
+    "timestamp": "2026-02-06 22:17:17.536465",
+    "report_generated": false
+  }
+]
