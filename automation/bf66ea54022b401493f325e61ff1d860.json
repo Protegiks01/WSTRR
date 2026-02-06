@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [Critical] Can dkg_private_begin() at line 892 be called with dkg_private_begin.signer_ids containing invalid signer IDs, causing encryption to wrong recipients?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e553e02a-2b0a-435d-bad4-d552f9beec1d?mode=deep",
+    "timestamp": "2026-02-06 22:01:09.540741",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [High] Does the active_key_ids construction at lines 903-910 validate that key_ids belong to the specified signer_ids, or could mismatched mappings be accepted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_066139f3-9dfb-402e-8a71-800883014e0d?mode=deep",
+    "timestamp": "2026-02-06 22:01:22.405280",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [Critical] Can the encryption at line 942 fail if kex_public_key is a low-order point, and does it check for this before computing shared_secret?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cdc966a5-cfe4-4653-88cc-a743d6b64956?mode=deep",
+    "timestamp": "2026-02-06 22:01:35.861815",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [High] Does make_shared_secret() at line 941 validate that the resulting shared secret is non-zero, preventing trivial key recovery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9fa668b2-6b58-4313-b0f8-e6dd8a1bab6f?mode=deep",
+    "timestamp": "2026-02-06 22:01:49.279789",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [Critical] Can an attacker cause get_shares() at line 926 to return shares that don't match the polynomial commitments sent in dkg_public_begin()?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3c3373a9-99d5-45d4-b936-644f8956d703?mode=deep",
+    "timestamp": "2026-02-06 22:02:03.600988",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [High] Does the condition at line 935 properly filter inactive key_ids, or could shares be encrypted for key_ids not in the active set?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b71e253d-bd32-4db4-a914-c4383da18ed8?mode=deep",
+    "timestamp": "2026-02-06 22:02:18.863518",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [Medium] Can the error at lines 938-940 leak information about which key_ids are missing KEX public keys through timing or error messages?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_da1775fa-d962-409b-b6aa-df8bd8b1adb8?mode=deep",
+    "timestamp": "2026-02-06 22:02:34.887352",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [High] Does encrypt() at line 942 use authenticated encryption (AES-GCM), and is the nonce properly randomized to prevent nonce reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c00d90d9-cb6d-4cb9-a07c-d31800f99b4a?mode=deep",
+    "timestamp": "2026-02-06 22:02:53.117541",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_begin()] [Medium] Can the state transition at line 954 to DkgPrivateGather happen atomically with sending the message, preventing race conditions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_11f8fd82-b11e-45c6-95fe-b3abd2f3e9cb?mode=deep",
+    "timestamp": "2026-02-06 22:03:12.226796",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_end_begin()] [High] Can dkg_end_begin() at line 959 accept a dkg_end_begin with signer_ids that don't match the dkg_private_begin signer_ids, causing inconsistent state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fa9f1514-6476-47a8-9583-efdb4d170b88?mode=deep",
+    "timestamp": "2026-02-06 22:03:32.733600",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_end_begin()] [Medium] Does caching dkg_end_begin at line 962 prevent replay if the same message is received multiple times?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a037397a-b878-4c25-9baf-f6888a73870c?mode=deep",
+    "timestamp": "2026-02-06 22:03:54.353683",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_end_begin()] [Low] Can concurrent calls to dkg_end_begin() cause race conditions in updating dkg_end_begin_msg?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6b4bf018-1b41-447c-a7eb-d4d0c9a97be6?mode=deep",
+    "timestamp": "2026-02-06 22:04:17.402979",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [Critical] Can dkg_public_share() at line 974 accept public shares with dkg_public_shares.dkg_id != self.dkg_id, mixing shares from different DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e612cc4d-eff1-4da5-9796-8be124dd1535?mode=deep",
+    "timestamp": "2026-02-06 22:04:40.270444",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [High] Does the validation at lines 994-1001 properly check that party_id matches signer_id's expected parties, or could a signer send commitments for another signer's parties?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bff4d32e-09a0-4e6a-9526-acb02499e053?mode=deep",
+    "timestamp": "2026-02-06 22:05:04.114934",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [High] Can the duplicate check at lines 1004-1011 be bypassed by sending shares with slightly different polynomial commitments but same signer_id?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c93e99ad-d7d9-4b9d-981b-60f91779ac44?mode=deep",
+    "timestamp": "2026-02-06 22:05:29.571069",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [Critical] Does the kex_public_keys insertion at lines 1018-1021 validate that dkg_public_shares.kex_public_key is a valid curve point before storing?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8f643951-227e-4291-b9f4-d3a3ec4f71bd?mode=deep",
+    "timestamp": "2026-02-06 22:05:56.283443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [Medium] Can an attacker insert multiple kex_public_keys for the same key_id by controlling multiple iterations of the loop at lines 1018-1021?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_faf3892a-5a7e-4587-b96f-49278c90a4ce?mode=deep",
+    "timestamp": "2026-02-06 22:06:23.478331",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [High] Does the storage at lines 1023-1024 prevent overflow if dkg_public_shares map grows too large, causing memory exhaustion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1f48b8f7-cc38-4742-b94a-041e710023af?mode=deep",
+    "timestamp": "2026-02-06 22:06:52.011666",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_share()] [Low] Can the early return at line 990 leak information about whether a signer_id exists through timing differences?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e4b2db20-e758-44ff-ac15-afde55a89d9f?mode=deep",
+    "timestamp": "2026-02-06 22:07:20.600824",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Critical] Can dkg_private_shares() at line 1029 accept shares with mismatched dkg_id, allowing shares from previous DKG rounds to be decrypted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a9497281-4a62-4899-9914-89924ada1c18?mode=deep",
+    "timestamp": "2026-02-06 22:07:50.742598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Critical] Does get_kex_public_key() at line 1043 validate that the returned point is not the identity element, preventing trivial shared secret computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6e021df6-243d-41fc-91ae-85797200576b?mode=deep",
+    "timestamp": "2026-02-06 22:08:22.442384",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [High] Can the validation at lines 1048-1055 be bypassed if a signer controls multiple party_ids, sending shares for parties it doesn't own?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_092e8c10-2073-4d17-a83d-6c9c4aec82fc?mode=deep",
+    "timestamp": "2026-02-06 22:08:54.806934",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [High] Does the duplicate check at lines 1058-1061 prevent acceptance of modified shares sent in a second message from the same signer?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d35cfc3b-3da2-4771-b548-99a6fa4ddeea?mode=deep",
+    "timestamp": "2026-02-06 22:09:27.965736",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Critical] Can the shared_key computation at line 1069 result in a low-order point, and is this checked before use in make_shared_secret?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_85a42eee-22df-49f6-831c-6f660e6414b1?mode=deep",
+    "timestamp": "2026-02-06 22:10:00.587484",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_private_shares()] [Critical] Does decrypt() at line 1076 verify the AES-GCM authentication tag before returning plaintext, preventing acceptance of tampered ciphertext?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8f101014-5efb-4d5e-b14c-4bf14dfd68a5?mode=deep",
+    "timestamp": "2026-02-06 22:10:34.704650",
+    "report_generated": false
+  }
+]
