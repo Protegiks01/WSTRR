@@ -1,0 +1,32 @@
+[
+  {
+    "question": "[File: src/lib.rs] [Module Visibility] [Information Disclosure - Low] Does the public exposure of all modules (common, compute, errors, net, schnorr, state_machine, taproot, traits, util, v2, vss) at lines 8-36 inadvertently expose internal cryptographic primitives or state machine internals that should remain private, potentially allowing library users to bypass security invariants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cebcb7a3-6a2a-4dca-a4d6-fec3f17efca1?mode=deep",
+    "timestamp": "2026-02-06 19:22:06.797068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/lib.rs] [Feature Flag] [API Compatibility - Medium] Does the conditional compilation of v1 module with 'with_v1' feature flag at line 29-31 create security inconsistencies if downstream users mix v1 and v2 implementations, potentially leading to protocol version confusion attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_14705081-8b24-4a97-9b70-ddf31875f3fe?mode=deep",
+    "timestamp": "2026-02-06 19:22:19.472486",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/lib.rs] [Module Declaration] [Maintenance Risk - Low] Does the lack of explicit visibility controls on state_machine module at line 20-21 risk exposing coordinator and signer implementation details that could aid attackers in crafting state machine bypass attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d25c220c-f859-4dc9-aa2c-73d5d22e80e4?mode=deep",
+    "timestamp": "2026-02-06 19:22:32.769593",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/lib.rs] [Dependency Re-export] [Supply Chain - Medium] Does the public re-export of p256k1 curve library at line 38 create a tight coupling that could expose the entire WSTS library to vulnerabilities in the underlying curve implementation without version pinning visible in this file?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_871b53d2-0d95-40f7-b984-e9448742974a?mode=deep",
+    "timestamp": "2026-02-06 19:22:46.207176",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/lib.rs] [Clippy Directive] [Code Quality - Low] Do the allowed clippy lints (op_ref, result_large_err) at lines 8, 17, 20, 30, 33 suppress warnings that could indicate performance or memory safety issues in the actual module implementations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e50ba4fd-1a28-47fc-9c0a-547cc9815ae0?mode=deep",
+    "timestamp": "2026-02-06 19:23:00.519690",
+    "report_generated": false
+  }
+]
