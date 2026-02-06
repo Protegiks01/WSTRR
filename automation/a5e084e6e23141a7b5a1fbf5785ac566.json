@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadNonceLen] [Nonce Validation Bypass - High] If BadNonceLen(expected, got) is only triggered when array lengths mismatch but not when nonce values are malformed within correct-length arrays, can an attacker provide nonces with all-zero or duplicate values that pass length checks but enable nonce reuse attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7c4f0352-9712-4905-9167-bf82cdf6e643?mode=deep",
+    "timestamp": "2026-02-06 21:51:54.329151",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPartyKeys] [Public Key Validation Bypass - Critical] Does the Vec<u32> in BadPartyKeys only identify parties with invalid keys but not specify whether the invalidity stems from point-not-on-curve, incorrect polynomial evaluation, or rogue key attacks, allowing some forms of invalid keys to pass validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_40a29460-5e7d-40e9-854f-bbb98fbeb926?mode=deep",
+    "timestamp": "2026-02-06 21:52:06.981842",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPartySigs] [Signature Share Forgery - Critical] When BadPartySigs(Vec<u32>) identifies parties with invalid signature shares, does the verification logic correctly handle weighted signers where one party controls multiple key IDs, or could a malicious weighted signer provide valid shares for some key IDs but forged shares for others while only being partially detected?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1e57bc8b-9670-4b22-b857-f048d19a1c32?mode=deep",
+    "timestamp": "2026-02-06 21:52:19.763449",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadGroupSig] [Aggregation Bypass - Critical] If BadGroupSig is returned when all individual shares appear valid but the aggregate signature fails, does this indicate a critical vulnerability in the aggregation logic itself, potentially allowing an attacker to exploit mathematical inconsistencies in the Lagrange interpolation or binding value computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fb093786-228f-4eae-a950-6b196891f38d?mode=deep",
+    "timestamp": "2026-02-06 21:52:33.074942",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::TryFromInt] [Key ID Overflow - High] In the context of weighted signing where parties control multiple key IDs, if TryFromInt errors occur during key ID conversions, does this allow an attacker to provide key IDs that overflow into valid ranges, bypassing checks on maximum key ID values or causing incorrect Lagrange coefficient computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_35de141e-545c-4e18-b675-e3fec4f30a64?mode=deep",
+    "timestamp": "2026-02-06 21:52:47.112275",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Trait: From<TryFromIntError> for AggregatorError] [Error Detail Loss - Medium] Does discarding the TryFromIntError details prevent the system from distinguishing between benign integer conversions that happen to fail versus malicious inputs specifically crafted to cause conversion failures at critical points in signature aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9928360c-87bc-4294-be73-22147be3033e?mode=deep",
+    "timestamp": "2026-02-06 21:53:02.602798",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError] [Serialization Attack - Medium] Since AggregatorError implements Serialize/Deserialize, can a compromised or malicious coordinator send fabricated aggregation errors with false BadPartySigs(Vec<u32>) accusations to honest signers, causing them to incorrectly blacklist other honest parties?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2642a897-0f91-48b9-8733-26bfb15a2b67?mode=deep",
+    "timestamp": "2026-02-06 21:53:18.821996",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadNonceLen] [DoS via Size Mismatch - Medium] Can an attacker deliberately provide nonce arrays of extreme sizes (very small or very large) to trigger BadNonceLen errors that consume excessive resources when error messages are formatted, logged, or transmitted over the network?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c2d4080e-e0e6-4e01-8ebc-df98beda1f61?mode=deep",
+    "timestamp": "2026-02-06 21:53:37.232023",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPolyCommitments] [Scalar Leakage - High] Does including the actual Scalar values in the error variant risk leaking sensitive cryptographic material if error messages are logged, transmitted unencrypted, or exposed through debugging interfaces, potentially aiding cryptanalytic attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_220c591c-ec34-4a54-8812-9c7cbe419fc8?mode=deep",
+    "timestamp": "2026-02-06 21:53:56.535702",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPartyKeys] [Weighted Threshold Bypass - Critical] In weighted signature schemes where threshold is measured in total key IDs rather than party count, if BadPartyKeys only reports party IDs (u32) without indicating how many key IDs each party controls, can validation logic incorrectly compute whether enough valid keys remain to meet the threshold?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2be0c52e-202e-4870-8a17-497b1aa68ca8?mode=deep",
+    "timestamp": "2026-02-06 21:54:16.515076",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPartySigs] [Duplicate Detection Failure - High] Does the Vec<u32> in BadPartySigs allow duplicate party IDs, and if a malicious coordinator inserts the same party ID multiple times, could honest signers incorrectly conclude that more parties failed than actually did, artificially raising the failure rate and potentially aborting valid signing sessions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_45a28aa2-85aa-4a62-b587-7d24f3e8f8c8?mode=deep",
+    "timestamp": "2026-02-06 21:54:37.363992",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError] [Clone Performance - Low] Since AggregatorError implements Clone and some variants contain Vec<Scalar> which are large cryptographic objects, can cloning these errors during error propagation cause performance degradation or enable timing side-channels?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_df77e109-1edb-4e93-b4f3-60345d2e6425?mode=deep",
+    "timestamp": "2026-02-06 21:54:58.249043",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadGroupSig] [No Diagnostic Data - Medium] Does the BadGroupSig variant provide any diagnostic information about why the group signature failed (expected R point, expected s value, computed challenge), or is it a opaque error that makes debugging signature forgery attempts or aggregation bugs impossible?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3792a2cd-40d6-4ff3-8d26-e54e5ae460ca?mode=deep",
+    "timestamp": "2026-02-06 21:55:21.749046",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError] [Missing Variants - High] Does the AggregatorError enum lack variants for critical conditions such as non-contributing signers (parties that didn't provide shares), insufficient threshold for aggregation, binding value computation failures, or Lagrange coefficient errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f041b6a3-fab9-4430-b3c3-b5b83c8a828b?mode=deep",
+    "timestamp": "2026-02-06 21:55:46.197012",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadNonceLen] [Off-by-One Exploitation - Medium] If the expected vs got nonce length comparison in BadNonceLen has an off-by-one error tolerance or handles boundary cases incorrectly, can an attacker provide arrays of length threshold-1 or threshold+1 that pass validation but cause array index errors or incorrect signature computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ac42ef1f-3fc0-436a-be24-718191911833?mode=deep",
+    "timestamp": "2026-02-06 21:56:10.539846",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPolyCommitments] [Vector Ordering Attack - Medium] Are the Scalar values in BadPolyCommitments(Vec<Scalar>) guaranteed to be in any specific order (e.g., sorted by party ID or in the order they failed), or can inconsistent ordering across different error instances cause confusion when aggregating errors from multiple verification attempts?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_380f5803-445a-4d7b-8d9e-2896fc3278ce?mode=deep",
+    "timestamp": "2026-02-06 21:56:35.736692",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPartyKeys] [Taproot Tweak Confusion - High] When using taproot-compatible signatures with key tweaks, does BadPartyKeys correctly identify whether a party's key failed due to invalid base key versus invalid tweak application, or could tweak-related errors be misattributed to base key problems?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_174e5619-f067-4264-95d1-857265f41a15?mode=deep",
+    "timestamp": "2026-02-06 21:57:03.377849",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError::BadPartySigs] [BIP-340 Parity Violation - Critical] In Schnorr signature verification under BIP-340 rules, if a signature share fails due to incorrect Y-coordinate parity handling, is this properly detected and reported via BadPartySigs, or could parity errors be silent and cause the aggregate signature to have invalid R point parity?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_13839f05-dc62-4024-a202-1cea90d376d6?mode=deep",
+    "timestamp": "2026-02-06 21:57:30.750105",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: AggregatorError] [PartialEq Timing - Low] Does the PartialEq implementation for AggregatorError use constant-time comparison for variants containing Scalar values or Vec<u32>, or could timing differences in error comparison reveal information about which parties or scalars are being compared?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e0a905a3-4d70-481b-8951-001fc53503dd?mode=deep",
+    "timestamp": "2026-02-06 21:57:59.712242",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::MissingNonce] [Replay Attack - High] If EncryptionError::MissingNonce is returned when a 12-byte AES-GCM nonce is absent from the encrypted buffer, but no validation ensures nonce uniqueness, can an attacker replay previously encrypted private shares by stripping the nonce and causing decryption to fail in a controlled manner?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fd565ac4-a612-46c7-bba3-0ec37edf7195?mode=deep",
+    "timestamp": "2026-02-06 21:58:29.874418",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::MissingData] [Buffer Truncation Attack - Medium] Does MissingData error correctly distinguish between truly missing encrypted data versus data that was deliberately truncated by an attacker to cause partial decryption attempts that might leak information through error timing or partial plaintext exposure?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_755419e4-eae8-43a3-86bc-7887e6224e9c?mode=deep",
+    "timestamp": "2026-02-06 21:59:00.521911",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::AesGcm] [Error Granularity Loss - High] Does wrapping the opaque AesGcmError hide critical failure details such as authentication tag mismatch versus nonce size error versus key derivation failure, preventing the system from distinguishing between passive eavesdropping attacks versus active tampering?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3c965bab-3efd-40a1-a07e-308c2e5d30e5?mode=deep",
+    "timestamp": "2026-02-06 21:59:31.789078",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::EllipticCurveError] [Key Exchange Failure - Critical] When EllipticCurveError is returned during Diffie-Hellman shared secret derivation for AES key generation, does the error leak whether the failure was due to invalid public key from sender, invalid private key from receiver, or point-at-infinity resulting from malicious key selection?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0f6ca504-d6a1-4dd1-8102-e9bbeb79e18c?mode=deep",
+    "timestamp": "2026-02-06 22:00:03.458161",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Trait: From<AesGcmError> for EncryptionError] [Authentication Bypass - Critical] Does the From trait conversion from AesGcmError to EncryptionError::AesGcm preserve information about GCM authentication tag verification failures, or could authentication failures be indistinguishable from other AES-GCM errors, allowing tampered ciphertexts to be retried or partially processed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a494daad-629d-4e20-a47f-9b9fb07378d8?mode=deep",
+    "timestamp": "2026-02-06 22:00:36.260901",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Trait: From<EllipticCurveError> for EncryptionError] [Point Validation Bypass - Critical] When converting EllipticCurveError to EncryptionError, is there risk that point-not-on-curve errors during DH key exchange are treated the same as other elliptic curve errors, allowing invalid curve attacks where the attacker provides points on a weaker curve?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_56ab75ee-cabe-47ca-b6c7-d69f0e6052dc?mode=deep",
+    "timestamp": "2026-02-06 22:01:10.398530",
+    "report_generated": false
+  }
+]
