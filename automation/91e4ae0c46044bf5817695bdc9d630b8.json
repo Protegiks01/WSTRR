@@ -1,0 +1,44 @@
+[
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [High - Scalar Zero Test] The test suite at lines 124-186 doesn't test expand_to_scalar() or hash_to_scalar() producing zero scalars - should there be explicit tests that these functions never output zero?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8f13b10e-59fa-4a99-8f56-37dcd316df3c?mode=deep",
+    "timestamp": "2026-02-06 21:46:18.187351",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [Medium - Invalid Point Tests] Lines 130-143 test valid DH exchange but don't test invalid public keys (point-at-infinity, low-order points) - are these cases covered in integration tests?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a7bc60ab-00f5-460c-ab19-243a2128435c?mode=deep",
+    "timestamp": "2026-02-06 21:46:30.566843",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [High - Nonce Reuse Detection] The encrypt/decrypt test at lines 147-185 doesn't verify that sequential encrypt() calls produce different nonces - could test code accidentally use a deterministic RNG enabling nonce reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1405f1bf-f5ad-4ca5-9994-c2537cb79b3e?mode=deep",
+    "timestamp": "2026-02-06 21:46:43.512030",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [Critical - Authentication Failure] Line 179-184 tests malformed ciphertext but doesn't test a ciphertext with valid structure but wrong authentication tag - is tag verification being tested?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_da0e70a2-ad2c-40fb-b423-f68a89906dec?mode=deep",
+    "timestamp": "2026-02-06 21:46:57.702482",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [Medium - Domain Separation Tests] Are there tests verifying that expand_to_scalar() with different dst values produces uncorrelated outputs, preventing cross-context collisions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ae978f5e-80a2-4e97-a62f-afea3d577468?mode=deep",
+    "timestamp": "2026-02-06 21:47:11.764460",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [Low - Error Path Coverage] The tests explicitly verify MissingNonce (line 166) and MissingData (line 173) errors, but are all error paths in encrypt() also tested?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_911220f9-5e8e-4baf-80b5-f1c573d45cb1?mode=deep",
+    "timestamp": "2026-02-06 21:47:27.854215",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Test Coverage] [High - Concurrent Encryption] Are there tests running multiple encrypt()/decrypt() operations concurrently to verify thread-safety and independence of RNG state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7649d336-d325-4aa8-ae6b-c4bff4dd6a4e?mode=deep",
+    "timestamp": "2026-02-06 21:47:44.098850",
+    "report_generated": false
+  }
+]
