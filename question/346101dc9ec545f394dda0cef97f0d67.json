@@ -1,7 +1,0 @@
-[
-  "[File: src/lib.rs] [Module Visibility] [Information Disclosure - Low] Does the public exposure of all modules (common, compute, errors, net, schnorr, state_machine, taproot, traits, util, v2, vss) at lines 8-36 inadvertently expose internal cryptographic primitives or state machine internals that should remain private, potentially allowing library users to bypass security invariants?",
-  "[File: src/lib.rs] [Feature Flag] [API Compatibility - Medium] Does the conditional compilation of v1 module with 'with_v1' feature flag at line 29-31 create security inconsistencies if downstream users mix v1 and v2 implementations, potentially leading to protocol version confusion attacks?",
-  "[File: src/lib.rs] [Module Declaration] [Maintenance Risk - Low] Does the lack of explicit visibility controls on state_machine module at line 20-21 risk exposing coordinator and signer implementation details that could aid attackers in crafting state machine bypass attacks?",
-  "[File: src/lib.rs] [Dependency Re-export] [Supply Chain - Medium] Does the public re-export of p256k1 curve library at line 38 create a tight coupling that could expose the entire WSTS library to vulnerabilities in the underlying curve implementation without version pinning visible in this file?",
-  "[File: src/lib.rs] [Clippy Directive] [Code Quality - Low] Do the allowed clippy lints (op_ref, result_large_err) at lines 8, 17, 20, 30, 33 suppress warnings that could indicate performance or memory safety issues in the actual module implementations?"
-]
