@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [Critical: Message Binding] Does compute_intermediate() bind the message parameter into binding value computation, or can the same binding be used across different messages?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d1a8cfe4-72f3-4d0e-b412-99d29c71ab58?mode=deep",
+    "timestamp": "2026-02-06 19:13:03.638631",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [Critical: Nonce Aggregation] Does compute_intermediate() correctly aggregate public nonces using the binding values, preventing malicious nonce injection?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0e98ca47-10f0-4fe3-8e4d-3ce1cf4add14?mode=deep",
+    "timestamp": "2026-02-06 19:13:16.256607",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [High: Signer ID Validation] Does compute_intermediate() validate that signer_ids array matches the expected set of participating signers?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0e9db60e-90cb-4009-8892-303dcaf8ec9a?mode=deep",
+    "timestamp": "2026-02-06 19:13:29.237249",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [High: Key ID Validation] Does compute_intermediate() verify that key_ids contains no duplicates and all values are within [0, num_keys)?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_44d914b6-5b5e-4a0f-8271-c5fbb20b4408?mode=deep",
+    "timestamp": "2026-02-06 19:13:42.726448",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [High: Nonce Count] Does compute_intermediate() verify that nonces array length matches key_ids length, preventing index mismatches?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5351be3f-35f4-47a8-a0c2-40cb6fc0ccce?mode=deep",
+    "timestamp": "2026-02-06 19:13:57.419410",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [Medium: Empty Inputs] Can compute_intermediate() be called with empty signer_ids or key_ids arrays, causing division by zero or invalid Point returns?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7d077df3-fc65-4e82-8c23-f2c0f5f56713?mode=deep",
+    "timestamp": "2026-02-06 19:14:13.858104",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [Medium: Identity Point] Can compute_intermediate() return identity point as the aggregated nonce R, causing signature verification failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_25921ac5-c9fd-44db-b2da-e88bb2c48fa2?mode=deep",
+    "timestamp": "2026-02-06 19:14:30.911311",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: validate_party_id()] [High: Authorization Bypass] Can validate_party_id() return true for a party_id that doesn't actually belong to signer_id, enabling unauthorized signing?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e37c9ff6-8ca9-4d94-a8a6-f84d04c83f9c?mode=deep",
+    "timestamp": "2026-02-06 19:14:49.267158",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: validate_party_id()] [High: Key ID Mapping] Does validate_party_id() correctly check that party_id owns at least one key_id in signer_key_ids for the given signer_id?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7499a84f-63ec-4fb5-b1d7-76ec5565d1f1?mode=deep",
+    "timestamp": "2026-02-06 19:15:07.942906",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: validate_party_id()] [Medium: Empty Key Set] Can validate_party_id() return true when signer_key_ids has an empty set for signer_id, accepting any party_id?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6a8c92d4-b8ef-4aef-8f44-300d52f658b3?mode=deep",
+    "timestamp": "2026-02-06 19:15:27.702757",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: validate_party_id()] [Medium: Missing Signer] Can validate_party_id() return true when signer_id is not present in signer_key_ids HashMap?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_837e93d1-847b-4ca9-95ea-051fc956cf05?mode=deep",
+    "timestamp": "2026-02-06 19:15:47.189460",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [Critical: Signature Share Validation] Does sign() validate that all inputs (signer_ids, key_ids, nonces) are consistent before generating signature shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7a9ee487-781b-4b60-ad94-a57f539f9a1a?mode=deep",
+    "timestamp": "2026-02-06 19:16:08.813430",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [Critical: Lagrange Coefficients] Does sign() compute Lagrange coefficients correctly using the exact key_ids set, or can coefficient errors enable forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5c849e52-742f-46f1-bd23-24428e6878db?mode=deep",
+    "timestamp": "2026-02-06 19:16:32.108785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [Critical: Challenge Computation] Does sign() compute the challenge hash binding the message, all nonces, and public key, preventing signature malleability?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_be507a84-753f-4133-ae7c-7a1e25072131?mode=deep",
+    "timestamp": "2026-02-06 19:16:55.853452",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [Critical: Private Key Usage] Does sign() use the correct private key for each owned key_id when computing signature shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4a5303a2-e0da-4cc7-b2ae-645af845e462?mode=deep",
+    "timestamp": "2026-02-06 19:17:20.364443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [Critical: Nonce Usage] Does sign() use fresh nonces that match the provided public nonces array, preventing nonce reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d8f9de64-ed42-4cff-ba90-d1e5003bdcdb?mode=deep",
+    "timestamp": "2026-02-06 19:17:45.748216",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [High: Share Count] Does sign() return exactly one SignatureShare per owned key_id, or can extra/missing shares break aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6568c260-3c9a-4a70-80c4-b6381d63f4f1?mode=deep",
+    "timestamp": "2026-02-06 19:18:12.072964",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [High: Key ID Filtering] Does sign() only generate signature shares for key_ids owned by this signer, ignoring others?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1addbdb9-6b40-48a8-a74b-e315090690af?mode=deep",
+    "timestamp": "2026-02-06 19:18:38.148592",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign()] [Medium: Empty Key Set] Can sign() be called when this signer owns no key_ids in the provided key_ids array, and does it return empty Vec or error?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2af1adbf-c845-4a6e-8535-2b028d7b37f9?mode=deep",
+    "timestamp": "2026-02-06 19:19:05.902052",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign_schnorr()] [Critical: BIP-340 Compliance] Does sign_schnorr() follow BIP-340 even-Y parity rules for the aggregated R point when computing challenges?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4f84c0fc-84c8-4368-ba6f-7b01f40e5bc9?mode=deep",
+    "timestamp": "2026-02-06 19:19:34.940993",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign_schnorr()] [Critical: Parity Adjustment] Does sign_schnorr() negate nonces correctly when R has odd Y coordinate, preventing signature verification failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_719949ce-3759-47ff-a204-cc63520b5c62?mode=deep",
+    "timestamp": "2026-02-06 19:20:05.120544",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign_schnorr()] [Critical: Public Key Parity] Does sign_schnorr() apply even-Y adjustment to the group public key before challenge computation per BIP-340?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3998ba68-eb91-4583-9715-6e1f769a2a8e?mode=deep",
+    "timestamp": "2026-02-06 19:20:35.505501",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign_schnorr()] [High: Challenge Domain] Does sign_schnorr() use a different challenge hash domain than sign() to prevent cross-protocol attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_adcf47ca-f6d1-48da-a149-ca9475c9e75b?mode=deep",
+    "timestamp": "2026-02-06 19:21:06.706465",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign_schnorr()] [High: Signature Format] Does sign_schnorr() return signature shares compatible with BIP-340 proof aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ecc7fad-4b6d-445b-b60e-639a076f1be2?mode=deep",
+    "timestamp": "2026-02-06 19:21:39.203013",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: sign_schnorr()] [Medium: Consistency] Does sign_schnorr() use the same Lagrange coefficients and binding values as sign(), or can inconsistencies cause failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1df31d53-f38e-4ceb-a21f-55e712a0b3b2?mode=deep",
+    "timestamp": "2026-02-06 19:22:10.341489",
+    "report_generated": false
+  }
+]
