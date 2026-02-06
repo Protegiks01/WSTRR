@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: nonce_request()] [Critical] Can nonce_request() be called multiple times with the same sign_id and sign_iter_id, causing nonce reuse across different signature attempts?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0c27e5ba-88e9-46ab-b0f9-6dc3771b4388?mode=deep",
+    "timestamp": "2026-02-06 19:25:24.347486",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: nonce_request()] [High] Does gen_nonces() at line 731 use the network_private_key as a nonce seed, and could network_private_key leakage lead to nonce predictability?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c3c1f425-a379-4fe0-8b03-d0c37f0a8ad7?mode=deep",
+    "timestamp": "2026-02-06 19:25:36.993350",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: nonce_request()] [High] Can the NonceResponse at lines 733-741 include nonces that don't correspond to the actual key_ids owned by this signer, causing Lagrange interpolation errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4845cbc3-1919-4ed1-9570-7de64ac45e2d?mode=deep",
+    "timestamp": "2026-02-06 19:25:50.229583",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: nonce_request()] [Medium] Does nonce_request() check that nonce_request.message is well-formed before including it in the response, or could malformed messages be propagated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7e229bec-2264-43c8-bd43-6712d18ac9fb?mode=deep",
+    "timestamp": "2026-02-06 19:26:03.815815",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: nonce_request()] [Low] Can multiple concurrent nonce_request() calls cause race conditions in self.signer.gen_nonces(), producing non-deterministic nonces?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_962bbf9e-2b53-485c-baca-ab37c6edd210?mode=deep",
+    "timestamp": "2026-02-06 19:26:17.974687",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Critical] Does sign_share_request() at line 757 verify that sign_request.dkg_id matches self.dkg_id, or can signature shares be produced using keys from a different DKG round?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d37a1510-f45c-4f8b-8387-f009b901cf39?mode=deep",
+    "timestamp": "2026-02-06 19:26:34.474495",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Critical] Can the signer_id_set construction at lines 762-766 allow duplicate signer_ids to pass the validation at line 772, bypassing the duplicate detection?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fdd0a679-046c-43c3-89ed-4158016fa070?mode=deep",
+    "timestamp": "2026-02-06 19:26:50.845619",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [High] Does the check at line 774 properly detect when signer_id_set.last() == Some(&self.total_signers), which is an off-by-one error for valid signer IDs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c1e05811-eaef-4f9c-ab45-cf5f83dfc2af?mode=deep",
+    "timestamp": "2026-02-06 19:27:09.001214",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Critical] Can the nonces validation at lines 781-795 be bypassed if some nonces are valid and others invalid, accepting a partial nonce set?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7754b928-076f-42af-b8eb-ef2028fc45d8?mode=deep",
+    "timestamp": "2026-02-06 19:27:29.236149",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Critical] Does the nonce.is_valid() check at line 788 verify that the nonce is non-zero and the point is on the curve, preventing zero-nonce attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2793785e-7e39-4d26-bd10-66d17692c6a2?mode=deep",
+    "timestamp": "2026-02-06 19:27:47.374569",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [High] Can the key_ids collection at lines 800-804 contain duplicates, causing incorrect Lagrange coefficient computation in sign operations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fb116f3b-cd8a-412d-9c74-cadde58d5a46?mode=deep",
+    "timestamp": "2026-02-06 19:28:03.578230",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Critical] Does sign_taproot at line 811 validate that merkle_root is correctly bound to the message and nonces, preventing taproot commitment forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_634bebbb-20f0-482d-9dbb-8c32060cab05?mode=deep",
+    "timestamp": "2026-02-06 19:28:24.860548",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [High] Can an attacker provide a different signature_type than what was agreed in the nonce commitment phase, breaking the binding property?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_33b40609-e408-4211-94bb-ab36b418d00b?mode=deep",
+    "timestamp": "2026-02-06 19:28:46.193798",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Critical] Does gen_nonces() at line 820 generate fresh nonces after signing, and are the old nonces securely cleared to prevent reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e0297133-6954-4837-8bea-44ccc7c9e723?mode=deep",
+    "timestamp": "2026-02-06 19:29:09.484582",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Medium] Can the SignatureShareResponse at lines 822-828 be sent even if signature_shares generation failed, including invalid shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a068d7f3-fad0-42e9-b536-fab46871ad5d?mode=deep",
+    "timestamp": "2026-02-06 19:29:33.790156",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: sign_share_request()] [Low] Does the branch at line 838-841 properly handle the case where self.signer_id is not in the request without leaking timing information?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c87df5d3-5952-400f-85a4-623365e2c41e?mode=deep",
+    "timestamp": "2026-02-06 19:29:58.683574",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_begin()] [High] Can dkg_begin() at line 844 accept a dkg_begin.dkg_id that is less than self.dkg_id, allowing replay of old DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2b26a81d-cf71-4caa-a50c-219c070e9984?mode=deep",
+    "timestamp": "2026-02-06 19:30:24.197572",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_begin()] [High] Does reset() at line 849 with dkg_begin.dkg_id properly validate that the new dkg_id is greater than the current one before resetting state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c15a48ac-0865-4792-a6d7-184a9c44dcb8?mode=deep",
+    "timestamp": "2026-02-06 19:30:52.421951",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_begin()] [Medium] Can multiple concurrent dkg_begin() calls cause race conditions in the state transition at line 850?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_508fefc9-45ea-4027-bc65-2d7e130debc3?mode=deep",
+    "timestamp": "2026-02-06 19:31:21.273257",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_begin()] [Low] Does the call to dkg_public_begin() at line 854 validate that polynomial generation succeeded before broadcasting shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7d0808a3-61ec-48f4-93fb-21250948af78?mode=deep",
+    "timestamp": "2026-02-06 19:31:50.208978",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_begin()] [Critical] Does get_poly_commitments() at lines 862-864 generate polynomial commitments bound to the dkg_id context, or could commitments be reused across rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_02180dba-d9de-461e-bbd3-5a68ff246f22?mode=deep",
+    "timestamp": "2026-02-06 19:32:21.120911",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_begin()] [High] Can the polynomial commitments in comms be manipulated after generation but before insertion into public_share at lines 879-883?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_173c5f5a-f57c-42fa-966a-dc7c1cb6d475?mode=deep",
+    "timestamp": "2026-02-06 19:32:52.411437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_begin()] [Critical] Does the kex_public_key at line 876 correctly derive from kex_private_key, and is the scalar multiplication constant-time to prevent side-channel leakage?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f8a2c1e2-6e90-48d4-9459-942c0d57a139?mode=deep",
+    "timestamp": "2026-02-06 19:33:24.196587",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_begin()] [High] Can the state transition at line 888 to DkgPublicGather happen before the message is sent, causing state desync?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5f5dfbd3-0e1c-4ced-a70b-d2c8152bbcc2?mode=deep",
+    "timestamp": "2026-02-06 19:33:57.600570",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_public_begin()] [Medium] Does the loop at lines 879-883 validate that poly.id.id.get_u32() doesn't overflow or produce invalid party_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0d7ec106-8bad-40a8-9b38-091532a3cea6?mode=deep",
+    "timestamp": "2026-02-06 19:34:31.532622",
+    "report_generated": false
+  }
+]
