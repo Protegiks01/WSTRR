@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [Nonce Reuse - Critical] Are sign_id and sign_iter_id validated to be unique combinations, or can coordinator request nonces for already-signed messages causing nonce reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5283ddda-f626-40ef-b611-c88513d94f4a?mode=deep",
+    "timestamp": "2026-02-06 21:25:39.064425",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [Message Binding - Critical] Is there validation that the message bytes match the sign_id, preventing coordinator from switching messages after nonces are generated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0ea13ac8-332c-4584-9ace-674c441d982f?mode=deep",
+    "timestamp": "2026-02-06 21:25:51.688222",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: NonceRequest::hash()] [Taproot Binding - Critical] For SignatureType::Taproot, is the merkle_root optional handling (lines 301-303) secure, or can None vs Some(root) cause signature malleability?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f1515c49-31e1-495d-ae43-0e82be25faf6?mode=deep",
+    "timestamp": "2026-02-06 21:26:04.725985",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [Sign Iter ID - High] Can sign_iter_id be arbitrarily large or wrap around, causing state machine confusion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9dd22b8a-8fa6-41b0-b568-7e04322fc929?mode=deep",
+    "timestamp": "2026-02-06 21:26:18.274002",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [Empty Message - High] Can message be an empty Vec<u8>, causing signing of nothing and potential protocol bypass?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_52949e8d-b16a-459d-9dc7-c0f0256443b0?mode=deep",
+    "timestamp": "2026-02-06 21:26:32.391046",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: NonceRequest::hash()] [Domain Separation - High] Are the three signature types (Frost/Schnorr/Taproot) sufficiently separated in hash (lines 297-305) to prevent cross-type attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e5e8844d-1a60-464e-a453-7836661b50dd?mode=deep",
+    "timestamp": "2026-02-06 21:26:48.606466",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [DoS - Medium] Can message be extremely large, causing memory exhaustion when stored or hashed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_38ccb137-d765-4709-b6f4-1d754cf9cc6c?mode=deep",
+    "timestamp": "2026-02-06 21:27:05.424014",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [DKG ID Mismatch - High] Is dkg_id validated to match a successfully completed DKG round, or can coordinator request signatures for invalid DKG?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_76d23077-17e7-469a-b30f-60eb34262df2?mode=deep",
+    "timestamp": "2026-02-06 21:27:24.038394",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: NonceRequest::hash()] [Merkle Root Validation - Medium] For Taproot signatures with Some(merkle_root), is the 32-byte merkle_root validated before hashing?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_30d8a8d6-6718-42b1-bcf0-165785356aa1?mode=deep",
+    "timestamp": "2026-02-06 21:27:43.922340",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Nonce Count Mismatch - Critical] Is there validation that nonces.len() == key_ids.len(), or can mismatched lengths cause indexing errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a3d8bd51-1b5b-4b6b-8655-a5d18df410f5?mode=deep",
+    "timestamp": "2026-02-06 21:28:04.241297",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Duplicate Key IDs - Critical] Are key_ids checked for duplicates, or can a signer claim multiple nonces for the same key_id?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_345c1ad5-02f3-411f-9eca-78fa9be1d88e?mode=deep",
+    "timestamp": "2026-02-06 21:28:26.032308",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Zero Nonce - Critical] Are nonces validated to be non-zero points (checking D and E), or can zero nonces enable signature forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_865f2a9e-64f0-486f-ba29-f34997e256f6?mode=deep",
+    "timestamp": "2026-02-06 21:28:49.779136",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Message Mismatch - Critical] Is the message field validated to match the NonceRequest.message exactly, or can signer claim nonces for a different message?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_029e995d-ed41-4a44-b8c0-1bbd4c516ed8?mode=deep",
+    "timestamp": "2026-02-06 21:29:13.261044",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: NonceResponse::hash()] [Nonce Compression - High] Does hashing compressed nonces (lines 362-363) ensure uniqueness, or can different point representations hash the same?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4f6bf18d-4d5b-4eec-92d4-6072b2dbf4a6?mode=deep",
+    "timestamp": "2026-02-06 21:29:37.725612",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Key ID Range - High] Are key_ids validated to be within the signer's assigned range from DKG, or can out-of-range IDs be claimed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b6330ae9-00f6-4d48-b92d-4e5d5a18a484?mode=deep",
+    "timestamp": "2026-02-06 21:30:03.037965",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Empty Response - High] Can key_ids and nonces be empty vectors, allowing a signer to participate without contributing?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_716f7d74-f1db-4db0-a06d-ac1eb2462b73?mode=deep",
+    "timestamp": "2026-02-06 21:30:29.521893",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Sign IDs Mismatch - High] Are dkg_id, sign_id, and sign_iter_id validated to match the NonceRequest, or can they be manipulated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a545702f-fb92-499e-a292-10dce5c6c0b0?mode=deep",
+    "timestamp": "2026-02-06 21:30:57.546400",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: NonceResponse::hash()] [Hash Order - Medium] Does hashing key_ids before nonces (lines 357-364) prevent reordering attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e19237fd-a440-49c3-bb55-b505cae7ec8f?mode=deep",
+    "timestamp": "2026-02-06 21:31:26.947570",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [DoS - Medium] Can attacker send responses with thousands of key_ids/nonces causing expensive verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_630fd58f-dc90-4723-9075-e357d501705d?mode=deep",
+    "timestamp": "2026-02-06 21:31:56.367848",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Point Validation - Critical] Are nonce points D and E validated to be on the curve before compression, or can invalid points be accepted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d624acd7-942b-4a38-af6f-d1f9e1e96c08?mode=deep",
+    "timestamp": "2026-02-06 21:32:28.372246",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Nonce Response Validation - Critical] Are all nonce_responses validated to have matching dkg_id/sign_id/sign_iter_id, or can mixed responses from different rounds be included?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_17c14a83-cb03-40f8-83fb-d7a4f1382b46?mode=deep",
+    "timestamp": "2026-02-06 21:33:00.496960",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Message Consistency - Critical] Do all nonce_responses have the same message field, and does it match SignatureShareRequest.message?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a1c6e974-17a6-4a8c-bac1-dd35f2dcbe9b?mode=deep",
+    "timestamp": "2026-02-06 21:33:33.539756",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Duplicate Nonces - Critical] Can nonce_responses contain duplicate signer_ids, allowing double-counting of nonces in binding value computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_db99d5da-ba20-4aa2-bd51-c6e131c30a90?mode=deep",
+    "timestamp": "2026-02-06 21:34:07.814010",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareRequest::hash()] [Missing Iter ID - High] Why is sign_iter_id not hashed (line 412-415), potentially allowing replay across iterations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2d9fb606-404c-4c02-acff-01f505504b0a?mode=deep",
+    "timestamp": "2026-02-06 21:34:40.360485",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Threshold Check - Critical] Are there enough nonce_responses to meet the threshold, or can coordinator request signatures with insufficient participants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2d7a7ff6-23c2-40c1-9381-40040c9c1c2f?mode=deep",
+    "timestamp": "2026-02-06 21:35:14.461295",
+    "report_generated": false
+  }
+]
