@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_sig_shares()] [Signature Shares Clearing - High] Line 965 clears signature_shares - can this erase valid data if called multiple times?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_443a15b4-8fc3-44c8-ac57-cb1cf65f70d9?mode=deep",
+    "timestamp": "2026-02-06 22:06:45.627880",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_sig_shares()] [Nonce Response Collection - Critical] Lines 970-977 collect nonce_responses from message_nonces - can missing entry cause panic at line 973 ok_or()?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4f0de283-f663-4a07-9fde-1151a2df05ce?mode=deep",
+    "timestamp": "2026-02-06 22:06:58.295131",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_sig_shares()] [Message Cloning - Low] Line 983 clones message - same concerns as request_nonces?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a83831f0-f114-4d59-9518-cfd0ad8b7761?mode=deep",
+    "timestamp": "2026-02-06 22:07:10.625401",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_sig_shares()] [Nonce Response Broadcasting - Critical] Lines 982-983 include all nonce_responses in request - can large nonce sets cause message size issues or validation overhead?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8ac05b8b-c61b-48e2-95eb-f5d5e0eca4f8?mode=deep",
+    "timestamp": "2026-02-06 22:07:24.498016",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_sig_shares()] [Message Signing Panic - High] Line 988 expects SignatureShareRequest signing to succeed - panic risk?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_aef12991-540f-46ff-bbf7-ca18f36e5b3f?mode=deep",
+    "timestamp": "2026-02-06 22:07:38.893327",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Message Type Check - Medium] Lines 1003-1005 early return if not SignatureShareResponse - should this be an error instead?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4eccf887-b00d-451f-a039-e13fef3f6073?mode=deep",
+    "timestamp": "2026-02-06 22:07:54.787227",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Message Nonce Lookup - High] Lines 1007-1013 get message_nonces with warning if missing - should this be a hard error to prevent incorrect state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_444b622e-2495-4d67-a87b-8759a35323d2?mode=deep",
+    "timestamp": "2026-02-06 22:08:12.844701",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Wait List Check - Medium] Lines 1015-1025 check if signer is in wait list - but signer is removed at line 1042-1044 regardless of validation success, can this cause accounting errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ed07e7a-e2fc-4016-82d5-428f4824f432?mode=deep",
+    "timestamp": "2026-02-06 22:08:31.512602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Early Removal from Wait List - High] Lines 1042-1044 remove signer from wait list before validation - if validation fails later, signer won't be waited on again, can this cause threshold miss?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e3b87cce-8517-46e4-8177-6556bb7e99b5?mode=deep",
+    "timestamp": "2026-02-06 22:08:51.120392",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Key ID Set Validation - Critical] Lines 1066-1076 construct key ID set from signature_shares and compare to config - can attacker provide subset of expected key_ids to bypass validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b60dfedd-40b0-4b63-b0e0-339b3558afb8?mode=deep",
+    "timestamp": "2026-02-06 22:09:11.072296",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Duplicate Share Handling - Low] Lines 1078-1086 handle duplicate shares - should this be an error since signer should be removed from wait list?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b73142c6-b0ef-44cf-9d3c-00ad2b5a6e96?mode=deep",
+    "timestamp": "2026-02-06 22:09:33.553319",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Key ID Recording Logic - High] Lines 1093-1097 record key_ids from signature shares - but can duplicate key_ids within shares cause incorrect counting?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d5841e62-3aac-4b72-a58c-897dc03874bb?mode=deep",
+    "timestamp": "2026-02-06 22:09:56.432027",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Completion Check - Critical] Line 1113 checks if sign_wait_signer_ids is empty - but doesn't verify threshold is actually met with received key_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_07a4b022-2f5a-40b2-bb99-5d0cae5e4bf2?mode=deep",
+    "timestamp": "2026-02-06 22:10:19.641497",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Nonce Collection - High] Lines 1115-1124 collect nonces and flatten them - can duplicate or missing nonces cause aggregation failure?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1b65e9ed-3137-41f3-8198-2c9d9e6deafb?mode=deep",
+    "timestamp": "2026-02-06 22:10:43.573385",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Key ID Collection - High] Lines 1126-1129 flatten key_ids from nonce_responses - can mismatch with signature_shares key_ids cause issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_eed7a44f-af6f-477c-b4ef-490b15f2dde1?mode=deep",
+    "timestamp": "2026-02-06 22:11:08.713845",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Share Collection - Medium] Lines 1131-1135 flatten signature shares using indexing - can panic if signature_shares doesn't contain expected signer_id?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cf359081-5166-4c1f-a454-af4d81904031?mode=deep",
+    "timestamp": "2026-02-06 22:11:35.639442",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Aggregator Init - High] Line 1145 initializes aggregator with party_polynomials - are these polynomials validated before use?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a6ccb818-eaee-44e0-aef0-a8681ab18812?mode=deep",
+    "timestamp": "2026-02-06 22:12:03.161337",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Taproot Signature - Critical] Lines 1147-1156 generate Taproot schnorr_proof with merkle_root - can merkle_root be None when it should be Some, breaking Taproot verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d0eb2404-0eb8-4467-899e-b55111de1321?mode=deep",
+    "timestamp": "2026-02-06 22:12:32.045359",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Schnorr Signature - Critical] Lines 1157-1162 generate Schnorr proof without merkle_root - is this BIP-340 compliant?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ed7bacc2-61d3-4b2d-99e0-51e08f3a3861?mode=deep",
+    "timestamp": "2026-02-06 22:13:01.349360",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [FROST Signature - Critical] Lines 1163-1169 generate regular FROST signature - can signature_type confusion cause wrong signature type to be generated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9e0d10ca-1318-447c-9c6f-82613acb9fa9?mode=deep",
+    "timestamp": "2026-02-06 22:13:32.126284",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_sig_shares()] [Aggregation Error Handling - High] Aggregator sign operations at lines 1148-1168 return Result - are all error cases properly handled or can they be suppressed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6acef454-043e-4dcd-b91b-ef708d648dcd?mode=deep",
+    "timestamp": "2026-02-06 22:14:04.102024",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: compute_aggregate_nonce()] [Public Nonce Collection - Medium] Lines 1179-1184 get public_nonces with unwrap_or_default - can default value cause incorrect computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8e6e34b6-7dc6-4755-a663-0247900cace9?mode=deep",
+    "timestamp": "2026-02-06 22:14:36.079738",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: compute_aggregate_nonce()] [Party ID Extraction - High] Lines 1185-1189 flatten key_ids from public_nonces - comment says 'XXX this needs to be key_ids for v1 and signer_ids for v2', is this correctly implemented?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dfd7f003-a6f0-481f-a630-448e80a973b7?mode=deep",
+    "timestamp": "2026-02-06 22:15:09.553526",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: compute_aggregate_nonce()] [Nonce Flattening - Medium] Lines 1190-1194 flatten nonces - can duplicate nonces from same signer cause aggregation issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f731f38b-ee9b-44b2-a884-dd6fd0919671?mode=deep",
+    "timestamp": "2026-02-06 22:15:43.251637",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: compute_aggregate_nonce()] [Intermediate Computation - Critical] Line 1195 calls compute::intermediate with message, party_ids, nonces - are these validated to prevent binding value manipulation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_97163434-3d48-4e35-885b-15050417e93a?mode=deep",
+    "timestamp": "2026-02-06 22:16:18.478401",
+    "report_generated": false
+  }
+]
