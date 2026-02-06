@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Panic on Error] If Scalar::random() can fail internally (e.g., due to RNG failure), does it panic or return an error, and could this be exploited to cause DoS? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_73440242-9cba-452d-ab74-ef9e5f567e7f?mode=deep",
+    "timestamp": "2026-02-06 21:36:38.869626",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Empty Polynomial] What happens if n=0 and the function generates a 1-element polynomial (just the constant term) - is this handled correctly by downstream verification code? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b8b2c659-d8a3-4dfa-8707-a14fd80f1fa3?mode=deep",
+    "timestamp": "2026-02-06 21:36:51.479725",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Large Degree] For extremely large but valid n values (e.g., n=1000000), does the polynomial implementation handle evaluation and operations efficiently without overflow? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_33ca8c9b-1a9b-487d-93ff-fcd53457635b?mode=deep",
+    "timestamp": "2026-02-06 21:37:05.073910",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Zero Coefficients] If Scalar::random() can legitimately return zero (though unlikely), could a polynomial with a zero leading coefficient have effective degree less than n? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_51fcb54d-a81e-446e-b39f-dc2115c99f81?mode=deep",
+    "timestamp": "2026-02-06 21:37:18.429749",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Struct: VSS] [Unused Fields] The VSS struct has no fields - is this intentional for a pure utility struct, or should it maintain state to prevent misuse? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_88e37a31-a2d5-4f07-84cd-edc2b59aa80c?mode=deep",
+    "timestamp": "2026-02-06 21:37:32.929089",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Missing Validation] Should random_poly() validate that n is reasonable (e.g., n < some maximum threshold) before attempting polynomial generation? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d0af0026-a30a-4e90-a1ed-3cc882e2aa2d?mode=deep",
+    "timestamp": "2026-02-06 21:37:49.102057",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Error Handling] Should random_poly() return Result instead of panicking on allocation failure or RNG exhaustion, allowing callers to handle errors gracefully? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b651c32c-4047-4752-97c3-57fd5824cacb?mode=deep",
+    "timestamp": "2026-02-06 21:38:05.779225",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Degree-Threshold Invariant] Since callers use random_poly(threshold-1), if threshold=1, does n=0 create a degree-0 polynomial that violates the assumption that threshold signatures require multiple parties? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_438f5d95-b73c-46bd-9ceb-a37b2d627fc7?mode=deep",
+    "timestamp": "2026-02-06 21:38:23.370068",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Polynomial Secret] Does the constant term (first coefficient) become the private key share, and if so, is there any protection against the caller accidentally exposing or logging the returned polynomial? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1c20d442-e72a-4ba9-af73-a52794682e4a?mode=deep",
+    "timestamp": "2026-02-06 21:38:42.206961",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Coefficient Distribution] Are the randomly generated scalars uniformly distributed across the entire scalar field, or could bias in certain ranges weaken the polynomial's security properties? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e9d910e3-5771-4969-8224-7976757f2a72?mode=deep",
+    "timestamp": "2026-02-06 21:39:02.167968",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [RNG Requirements] Does the CryptoRng trait bound actually enforce cryptographic security, or is it merely a marker trait that could be implemented by weak RNGs? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_18d1655e-cc6e-4554-a892-faf2d459cb03?mode=deep",
+    "timestamp": "2026-02-06 21:39:23.843009",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Polynomial Cloning] After random_poly() returns, could unauthorized cloning or copying of the Polynomial expose the secret coefficients in memory longer than necessary? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a7df088d-bfce-455a-ae9b-ed836e29da27?mode=deep",
+    "timestamp": "2026-02-06 21:39:46.087122",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Memory Zeroing] When the Polynomial goes out of scope, are the scalar coefficients securely zeroed from memory, or could they remain accessible to memory inspection attacks? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cf29ddc2-e434-4ad0-ac9a-c040046ccab8?mode=deep",
+    "timestamp": "2026-02-06 21:40:09.076350",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Concurrent Access] If multiple threads call random_poly() with the same RNG instance concurrently, could this cause race conditions or RNG state corruption? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_07b1b21e-81a7-429c-a1a4-ea38b4e4cb10?mode=deep",
+    "timestamp": "2026-02-06 21:40:33.014186",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Degree Bounds] Is there an implicit maximum degree that the Polynomial type can handle, and could exceeding it cause silent failure or incorrect operations? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1b0615e2-96fb-4d75-86a7-4d4fcb3a7bd3?mode=deep",
+    "timestamp": "2026-02-06 21:40:58.111491",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Feldman VSS vs Pedersen VSS] Does this implementation provide information-theoretic hiding of shares (Pedersen) or only computational hiding (Feldman), and is this distinction documented? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3bd07543-abc5-4b52-b3ca-3233a254981a?mode=deep",
+    "timestamp": "2026-02-06 21:41:23.821608",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Polynomial Commitment Binding] After random_poly() generates coefficients, how is it ensured that the public commitment (poly*G) exactly matches these private coefficients without leakage? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fee48197-7ad0-47f9-839c-12ec025b9943?mode=deep",
+    "timestamp": "2026-02-06 21:41:51.740851",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Share Distribution] After polynomial generation, how are private shares f(i) distributed to parties, and could random_poly() be involved in a share distribution vulnerability? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f02e05e3-295a-4f33-8581-00dd0054ec36?mode=deep",
+    "timestamp": "2026-02-06 21:42:19.749099",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Resharing Security] If random_poly() is used during proactive resharing, could old polynomial coefficients be related to new ones in a way that leaks information? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d4867157-b88b-4fb3-9cf2-011f6a5e3405?mode=deep",
+    "timestamp": "2026-02-06 21:42:48.960973",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Polynomial Reconstruction] Could an attacker who observes n+1 shares reconstruct the polynomial even without reaching threshold, if the degree is set incorrectly? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_56628e24-77b8-48a5-9ea9-7faf1760f196?mode=deep",
+    "timestamp": "2026-02-06 21:43:19.488876",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Cheating Detection] Does the VSS protocol have mechanisms to detect if a party generated their polynomial with incorrect degree, separate from this function? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c427c394-e505-4760-8031-deabc61d3c3f?mode=deep",
+    "timestamp": "2026-02-06 21:43:50.937128",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Multi-Party Computation] In the DKG phase, if multiple parties call random_poly() and their polynomials are summed, could correlations or patterns emerge that weaken security? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_81e134eb-a57f-40a2-ab60-7c7cbb1bbaa9?mode=deep",
+    "timestamp": "2026-02-06 21:44:21.603952",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Random Oracle Assumption] Does the security of randomly generated polynomials rely on random oracle assumptions that might not hold with the actual RNG implementation? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4e023452-434d-4bfe-9165-bb051dad4fc9?mode=deep",
+    "timestamp": "2026-02-06 21:44:54.178180",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Boundary: n=0] When n=0, does random_poly() correctly generate a polynomial with 1 coefficient (constant term), and is this constant term cryptographically secure? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5f8c82f8-514f-46c1-ac29-00b338e02f05?mode=deep",
+    "timestamp": "2026-02-06 21:45:28.113443",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/vss.rs] [Function: random_poly()] [Boundary: n=u32::MAX-1] At the upper bound where n=u32::MAX-1, does the n+1 calculation on line 12 equal u32::MAX, and does this cause issues in range or usize conversion? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9b617010-b401-498b-84fb-d17b5ea4584d?mode=deep",
+    "timestamp": "2026-02-06 21:46:02.614915",
+    "report_generated": false
+  }
+]
