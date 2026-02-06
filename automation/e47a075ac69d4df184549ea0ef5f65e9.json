@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/net.rs] [Function: Signable::sign()] [Signature Forgery - Critical] Can an attacker cause ecdsa::Signature::new() to fail silently by providing specific private_key values that result in Ok() but invalid signatures that still pass verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f3e440e0-7313-46b7-802f-29a841ffbc8a?mode=deep",
+    "timestamp": "2026-02-06 22:09:20.020047",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Signable::verify()] [Signature Verification Bypass - Critical] Does the early return on ecdsa::Signature::try_from() failure (line 40-41) allow an attacker to bypass signature verification by providing malformed signature bytes that trigger the error path?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9d9859e6-2912-49d0-8dad-ec0287b22620?mode=deep",
+    "timestamp": "2026-02-06 22:09:32.735381",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Signable::hash()] [Hash Collision - High] Is the hash() trait method abstract enough that implementations could fail to include critical fields, allowing two different messages to produce identical hashes for signature verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7644e915-79eb-49f0-9d13-b2de9c063644?mode=deep",
+    "timestamp": "2026-02-06 22:09:45.866274",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Signable::sign()] [Key Compromise - Critical] Does the sign() method protect against side-channel attacks during ecdsa::Signature::new() computation, or could timing/power analysis reveal the private_key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_185d3e36-1290-4245-bffe-9902e7308882?mode=deep",
+    "timestamp": "2026-02-06 22:09:59.450921",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Signable::verify()] [DoS - Medium] Can an attacker cause expensive verification operations by sending packets with maximum-length signature bytes that still parse as valid ecdsa::Signature objects?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4f12ef04-07b0-444a-beb2-7b67b4f2bdc3?mode=deep",
+    "timestamp": "2026-02-06 22:10:13.647491",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgBegin] [State Machine Bypass - High] Does DkgBegin validation check that dkg_id is monotonically increasing to prevent replay of old DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_53d8a761-50c2-45f7-b8a3-27df93b0e30d?mode=deep",
+    "timestamp": "2026-02-06 22:10:29.015198",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgBegin::hash()] [Hash Domain Separation - Medium] Is the domain separator 'DKG_BEGIN' (line 134) sufficient to prevent cross-protocol attacks where DkgBegin hashes collide with other message types?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a6825982-21ec-4b2e-ade0-b8405194af0b?mode=deep",
+    "timestamp": "2026-02-06 22:10:45.928600",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgBegin] [Integer Overflow - Low] Can dkg_id overflow u64::MAX causing wrap-around to zero and allowing replay of ancient DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d54a9ac4-43c8-452c-be9f-b48b90b8f0f0?mode=deep",
+    "timestamp": "2026-02-06 22:11:04.778877",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgBegin::hash()] [Endianness - Low] Does to_be_bytes() (line 135) ensure consistent hashing across different architectures, or could little-endian systems produce different hashes?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_67e6a28c-af30-4301-951d-65a24dd5d4b9?mode=deep",
+    "timestamp": "2026-02-06 22:11:24.678034",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [DKG Poisoning - Critical] Can an attacker provide empty comms vector allowing them to participate in DKG without contributing any polynomial commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dda2172c-b142-4824-a123-672a559c5899?mode=deep",
+    "timestamp": "2026-02-06 22:11:45.960064",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [Duplicate ID - High] Is there validation to prevent duplicate party_id values in the comms vector (line 147), which could enable double-counting of shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9b61ba5e-0441-47ce-bc4c-f9123db8f051?mode=deep",
+    "timestamp": "2026-02-06 22:12:08.106434",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPublicShares::hash()] [Hash Manipulation - High] Does the hash implementation (lines 157-162) enforce ordering of comms, or can an attacker reorder entries to produce the same hash for different semantic content?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ead62979-a3f3-48b9-9fea-fd7b8b9eef82?mode=deep",
+    "timestamp": "2026-02-06 22:12:31.085544",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [Point Validation - Critical] Is kex_public_key (line 149) validated to be a valid curve point before use in Diffie-Hellman, or could invalid points compromise key exchange?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a816ece5-94f8-4418-ba7d-2672152ca24f?mode=deep",
+    "timestamp": "2026-02-06 22:12:54.460228",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPublicShares::hash()] [Missing Field - High] Why is kex_public_key not included in the hash() implementation (line 153-163), allowing attackers to change it without invalidating the signature?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_858065e6-594e-4f6f-a63f-4f3577c2bb45?mode=deep",
+    "timestamp": "2026-02-06 22:13:19.308831",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [DoS - Medium] Can an attacker send comms with extremely large poly vectors causing memory exhaustion or expensive hash operations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4a8e0b60-e1c4-42aa-bb65-7a55eac21ee3?mode=deep",
+    "timestamp": "2026-02-06 22:13:44.647497",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [ID Range - High] Are party_id values validated to be within expected range [1, N], or can out-of-range IDs break Lagrange interpolation later?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1e3b6be1-3657-4b05-8a5f-0a4623fa74ee?mode=deep",
+    "timestamp": "2026-02-06 22:14:14.691506",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPublicShares::hash()] [Compress Safety - Medium] Does Point::compress() (line 160) handle identity point or invalid points safely, or could it panic on malicious input?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c5f66aaf-d652-4880-a191-77a107e694d2?mode=deep",
+    "timestamp": "2026-02-06 22:14:42.925521",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [Empty Poly - High] Can PolyCommitment.poly be empty, allowing a signer to claim threshold participation without providing actual commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_30e60bba-ffd6-4709-8ab1-a64179a1822e?mode=deep",
+    "timestamp": "2026-02-06 22:15:12.593761",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [Threshold Bypass - Critical] If comms contains fewer entries than the threshold, can this message still be accepted, allowing threshold bypass?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ee866403-9c09-44be-bb2e-c6becfd6df59?mode=deep",
+    "timestamp": "2026-02-06 22:15:42.074577",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateBegin] [Signer Exclusion - High] Can a malicious coordinator selectively exclude honest signers by omitting their IDs from signer_ids (line 172), causing DKG failure?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ac2aee09-5c60-4dc8-89e0-0d3e89f1752d?mode=deep",
+    "timestamp": "2026-02-06 22:16:13.141806",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateBegin] [Key ID Mismatch - High] Is there validation that key_ids correspond to the party_ids from accepted DkgPublicShares, or can coordinator inject arbitrary key_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6a701b0e-3061-4e8c-a876-4506381daf66?mode=deep",
+    "timestamp": "2026-02-06 22:16:44.597883",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPrivateBegin::hash()] [Hash Ordering - Medium] Does the hash iterate key_ids before signer_ids (lines 181-186), and could reordering these loops cause hash collisions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b771d56a-f4c4-4ee9-91cf-4d700a8aa6ee?mode=deep",
+    "timestamp": "2026-02-06 22:17:18.282558",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateBegin] [Duplicate IDs - High] Are signer_ids and key_ids checked for duplicates, or can duplicates cause double-counting in threshold calculations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1847cdcf-23f2-458e-93ca-85f24d88af6b?mode=deep",
+    "timestamp": "2026-02-06 22:17:52.794529",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateBegin] [Empty Lists - High] Can signer_ids or key_ids be empty vectors, forcing all signers to abort DKG and causing DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_07c1405c-8f2c-429e-a14e-303f0bd93f0e?mode=deep",
+    "timestamp": "2026-02-06 22:18:27.809976",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateBegin] [ID Consistency - Critical] Is there enforcement that the signer_ids match those who sent valid DkgPublicShares, preventing coordinator from injecting fake participants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_93a0edec-f8a8-4163-8ffa-f5c48e0ad4a9?mode=deep",
+    "timestamp": "2026-02-06 22:19:03.033510",
+    "report_generated": false
+  }
+]
