@@ -184,7 +184,7 @@ class GetReports:
 
             # Check if the content exists AND if it does NOT contain the "#NoVulnerability" string
             if clipboard_content and (
-                    "NoVulnerability" not in clipboard_content and "#No" not in clipboard_content ):
+                    "NoVulnerability" not in clipboard_content ):
                 filename = f"audited/audit_{uuid.uuid4().hex}.md"
                 with open(filename, "w") as f:
                     f.write(clipboard_content)
