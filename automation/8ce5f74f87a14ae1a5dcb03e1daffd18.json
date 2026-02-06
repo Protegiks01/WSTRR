@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/util.rs] [High - Shared Key Point Validation] After computing shared_key = private_key * public_key, is there validation that shared_key is not the identity before passing to make_shared_secret_from_key()?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ed7daf13-2631-4ba4-9eb1-7eb434d0dd8f?mode=deep",
+    "timestamp": "2026-02-06 21:41:26.507916",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Critical - Cross-Protocol DH] Can an attacker reuse the same public_key from DKG share encryption in a signing round to correlate encrypted data across protocol phases, compromising key isolation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3041facc-f9e8-46cd-a3a8-afcc71155ac6?mode=deep",
+    "timestamp": "2026-02-06 21:41:39.137542",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Medium - Point Compression in KDF] The shared_key is compressed at line 57 before KDF - does compression preserve all necessary entropy, or could two different shared_key points compress to the same bytes due to Y-coordinate loss?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a6e24e66-e040-4065-a4df-89cf3696de56?mode=deep",
+    "timestamp": "2026-02-06 21:41:51.953759",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: make_shared_secret_from_key()] [High - Point Compression Collisions] At line 57, shared_key.compress() produces x-coordinate only - can an attacker find two different shared keys (differing only in Y-coordinate parity) that produce identical shared secrets?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d08ec495-3cf1-4edf-bf2e-a1a65d182730?mode=deep",
+    "timestamp": "2026-02-06 21:42:05.477232",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: make_shared_secret_from_key()] [Medium - Domain String Hardcoded] The domain string 'DH_SHARED_SECRET_KEY/' at line 58 is hardcoded - is this string unique across all WSTS operations, or could it collide with domain strings in other components causing key reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7b138030-f2ce-45c1-bda6-af1ddae89076?mode=deep",
+    "timestamp": "2026-02-06 21:42:19.707082",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: make_shared_secret_from_key()] [High - KDF Context Binding] Does the domain string 'DH_SHARED_SECRET_KEY/' include any context about DKG round ID, party ID, or other binding information to prevent key confusion attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9e4e083a-cd7f-4b08-9de1-dc1f9923e607?mode=deep",
+    "timestamp": "2026-02-06 21:42:34.502044",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: make_shared_secret_from_key()] [Low - Trailing Slash Significance] Why does the domain string end with '/' at line 58? Could removing or modifying this character enable collision with other domain strings elsewhere in the codebase?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3b3e64c4-510c-4dd2-8f37-4efe84921c87?mode=deep",
+    "timestamp": "2026-02-06 21:42:50.351170",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: make_shared_secret_from_key()] [Medium - Compressed Bytes Validation] Does compress().as_bytes() guarantee a fixed 32-byte output, or could certain invalid points produce shorter outputs that truncate the KDF input?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5a9668ab-e93a-4d7a-9a47-5c276dc56b47?mode=deep",
+    "timestamp": "2026-02-06 21:43:07.922518",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [Critical - Counter Fixed to One] The counter is hardcoded to 1 at line 66 - ANSI X9.63 KDF is designed to derive multiple keys by incrementing the counter, but this implementation only derives one key block. Can this limit enable key exhaustion or related-key attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_eccaa37a-486c-470a-a21e-715f84fb3d17?mode=deep",
+    "timestamp": "2026-02-06 21:43:27.485195",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [High - Single Block Output] Line 66 sets counter=1 and never increments it - this limits output to 32 bytes (one SHA256 block). What if WSTS needs longer derived keys in the future? Could this cause truncation vulnerabilities?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4da19c14-9236-4ffe-ae06-b1b8234fbca2?mode=deep",
+    "timestamp": "2026-02-06 21:43:47.516018",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [Medium - Endianness Dependency] The counter is converted to big-endian at line 69 - is this consistent with the ANSI X9.63 specification? Endianness mismatches could cause key derivation incompatibilities.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_239e775b-071d-4cc8-bb65-51252685eb06?mode=deep",
+    "timestamp": "2026-02-06 21:44:08.573831",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [High - Empty shared_key] What happens if shared_key is an empty slice? The KDF would derive a key from only the counter and shared_info, making it independent of the DH secret and predictable.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_75f304d7-d9ef-48c5-af7b-799e0974d56b?mode=deep",
+    "timestamp": "2026-02-06 21:44:30.067373",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [High - Empty shared_info] Can shared_info be empty, and if so, does this reduce the domain separation between different derived keys, enabling cross-context attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3b13290d-918d-4a8f-9fac-a0eb60550b52?mode=deep",
+    "timestamp": "2026-02-06 21:44:52.613383",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [Medium - Hash Input Ordering] The hash input order is shared_key, counter, shared_info (lines 68-70) - is this the exact order specified by ANSI X9.63, or could misordering cause incompatibility or security issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4c6e4838-650b-4c91-b166-46be1428748b?mode=deep",
+    "timestamp": "2026-02-06 21:45:18.719005",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [Low - No Output Length Parameter] Unlike standard X9.63 KDF which takes a requested output length, this function hardcodes 32 bytes - does this match all WSTS key length requirements?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_65b22537-34d3-440a-ace3-a29c7a82f62f?mode=deep",
+    "timestamp": "2026-02-06 21:45:43.220454",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [High - shared_info Not Context-Bound] Is shared_info always unique per encryption context? If multiple DKG shares use the same shared_info, they'd derive identical encryption keys from different DH secrets, breaking confidentiality.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f2949f40-03f0-4b71-9719-fff97932edcb?mode=deep",
+    "timestamp": "2026-02-06 21:46:08.873008",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [Medium - Integer Overflow] If counter were ever incremented beyond u32::MAX, would it wrap to zero? Though unlikely with counter=1, this could cause key repetition in multi-block scenarios.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_525d3e25-b120-4e64-b05d-c027782e39d5?mode=deep",
+    "timestamp": "2026-02-06 21:46:33.973028",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: ansi_x963_derive_key()] [Low - Clone vs Finalize] Line 72 calls finalize() directly without cloning - is there any scenario where the hasher needs to be reused, or is this always the terminal operation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_86187830-2a19-42fa-8020-d879dfea3db9?mode=deep",
+    "timestamp": "2026-02-06 21:47:01.776977",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [Critical - Nonce Randomness] Line 87 uses rng.fill_bytes() to generate the nonce - if the RNG is weak, predictable, or seeded incorrectly, can an attacker predict nonces and break AES-GCM security through nonce reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_df086981-ced7-4f73-a8fd-af5cc487bad0?mode=deep",
+    "timestamp": "2026-02-06 21:47:30.703014",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [Critical - Nonce Reuse Vulnerability] AES-GCM security catastrophically fails if the same key+nonce pair is ever reused. Does WSTS ensure each encryption operation uses a unique nonce, even across multiple DKG rounds or signing sessions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bc81649d-0c23-4ca6-a9a0-a0749b598cc9?mode=deep",
+    "timestamp": "2026-02-06 21:47:59.632657",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [High - RNG Failure Handling] What happens if rng.fill_bytes() fails or produces low-entropy output at line 87? There's no error checking before using nonce_bytes for encryption.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3928cfcf-29ee-4730-bbad-24fec5358e97?mode=deep",
+    "timestamp": "2026-02-06 21:48:27.960502",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [Critical - Key Derivation Security] The key parameter is passed directly from make_shared_secret() - if the DH shared secret is weak or predictable, the encryption is completely broken. Is there validation that key has sufficient entropy?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e6d126a6-8304-425a-b065-4a96081e5fc4?mode=deep",
+    "timestamp": "2026-02-06 21:48:57.883761",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [High - Empty Plaintext] Can data be empty at line 92? AES-GCM can encrypt empty plaintexts, but this might leak that a DKG share is zero or missing, providing oracle information to attackers.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6b7eaf92-cff0-4084-be25-d48fc5b04e4d?mode=deep",
+    "timestamp": "2026-02-06 21:49:29.226613",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [Medium - Large Plaintext DoS] Is there a size limit on data? Extremely large plaintexts could cause DoS through memory exhaustion or slow encryption times when processing DKG shares.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3e8aba17-721a-4585-847f-b87a69968f9c?mode=deep",
+    "timestamp": "2026-02-06 21:50:01.021702",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/util.rs] [Function: encrypt()] [High - Nonce Exposure] The nonce is prepended to the ciphertext at lines 95-96 - while this is standard, does WSTS documentation make clear that anyone intercepting encrypted DKG shares can see all nonces, enabling pattern analysis?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7a62731c-db2a-4d07-bae2-81587d18ae74?mode=deep",
+    "timestamp": "2026-02-06 21:50:33.302373",
+    "report_generated": false
+  }
+]
