@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/net.rs] [Function: DkgPrivateBegin::hash()] [DoS - Medium] Can extremely large signer_ids or key_ids vectors cause expensive hash computation leading to DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_016afcc8-cbcf-4f18-8802-1b884ee1bcfe?mode=deep",
+    "timestamp": "2026-02-06 21:50:18.699833",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Share Encryption - Critical] Are the encrypted shares in the HashMap properly authenticated with AES-GCM, or could they be modified in transit without detection?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3b886bb8-4709-4268-88d6-331ad4dc2e26?mode=deep",
+    "timestamp": "2026-02-06 21:50:31.755930",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Missing Shares - High] Can shares vector be incomplete (missing dst_key_id entries for some recipients), allowing selective share distribution attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f9255f81-1fe5-4cdc-82ac-25626388375b?mode=deep",
+    "timestamp": "2026-02-06 21:50:44.867761",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPrivateShares::hash()] [Hash Determinism - High] Does sorting dst_ids (line 209-210) ensure deterministic hashing, or could HashMap iteration order still cause non-determinism?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_42cfaab4-3223-4e08-ac9b-3a3113780639?mode=deep",
+    "timestamp": "2026-02-06 21:50:58.263650",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Duplicate Shares - High] Can a malicious signer include duplicate dst_key_id entries in the HashMap, sending multiple different encrypted shares to the same recipient?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bef399e7-a650-41b8-b676-95f9355d2452?mode=deep",
+    "timestamp": "2026-02-06 21:51:12.635196",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Wrong Recipient - Critical] Is there validation that dst_key_id values in shares correspond to legitimate participants from DkgPrivateBegin.key_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e9c13a3f-cbcc-43f5-88ab-77b0daaa92be?mode=deep",
+    "timestamp": "2026-02-06 21:51:29.020720",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Src ID Validation - High] Are src_party_id values (line 198) validated to match the signer's actual party IDs from their DkgPublicShares.comms?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d32459cd-06c9-496c-98ae-8db1e6ade62d?mode=deep",
+    "timestamp": "2026-02-06 21:51:45.830691",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPrivateShares::hash()] [Nested Loop Security - Medium] Does the double loop over shares and dst_ids (lines 207-214) properly handle malicious nested structures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6d0d55bd-a11f-4937-abf2-7bc583bec62a?mode=deep",
+    "timestamp": "2026-02-06 21:52:04.325987",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Empty Encrypted Share - High] Can encrypted share Vec<u8> be empty, bypassing share validation and allowing malicious shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_32377e5c-b36e-4f5c-9356-5a0bf99f7eea?mode=deep",
+    "timestamp": "2026-02-06 21:52:24.612168",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [DoS - Medium] Can attacker send shares with extremely large encrypted Vec<u8> values causing memory exhaustion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_224d9b99-7f68-484b-9890-5f26a0edf2f9?mode=deep",
+    "timestamp": "2026-02-06 21:52:45.199722",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPrivateShares::hash()] [Hash Collision - Medium] If two signers send shares with different orderings but same content after sorting, will they have same hash allowing signature reuse?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e969c6fb-8915-4798-afdf-06a7c4e48f4f?mode=deep",
+    "timestamp": "2026-02-06 21:53:06.977499",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEndBegin] [Premature Finalization - High] Can coordinator send DkgEndBegin before all expected private shares are received, causing honest signers to finalize with incomplete data?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6b7dbcc6-98b8-4f3b-b265-94ad70ed9f5e?mode=deep",
+    "timestamp": "2026-02-06 21:53:29.605168",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEndBegin] [Signer List Manipulation - High] Can coordinator modify signer_ids list to exclude signers who reported bad shares, hiding evidence of malicious behavior?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0b4ece4d-e18f-43e5-9299-0e26e1e53d1a?mode=deep",
+    "timestamp": "2026-02-06 21:53:53.859683",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEndBegin] [Key ID Mismatch - Critical] Must key_ids exactly match those from DkgPrivateBegin, or can coordinator change the set causing inconsistent final key generation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_241388e1-f3be-432c-9285-b2beddf9d930?mode=deep",
+    "timestamp": "2026-02-06 21:54:19.296732",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgEndBegin::hash()] [Hash Order - Medium] Does hashing key_ids before signer_ids (lines 234-239) match DkgPrivateBegin's hash order for consistency?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_449ede84-2111-4334-adb0-8802bc3e8dcd?mode=deep",
+    "timestamp": "2026-02-06 21:54:44.805718",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEndBegin] [Empty Lists - High] Are empty signer_ids or key_ids allowed, forcing DKG abortion and causing DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_96456c55-0ece-4a8e-b6b9-472ee0e3d7f1?mode=deep",
+    "timestamp": "2026-02-06 21:55:11.338673",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEnd] [Status Manipulation - High] Can a malicious signer send DkgStatus::Success even when they detected bad shares, hiding attacks from the coordinator?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_34a6baf7-767d-44a8-8454-04bb58a0b0d2?mode=deep",
+    "timestamp": "2026-02-06 21:55:39.134803",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgEnd::hash()] [Missing Status Hash - Critical] Why is status field not included in hash() (lines 255-259), allowing attackers to change DkgStatus without invalidating the signature?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_349f6602-f470-4d4e-9537-10af6eb42039?mode=deep",
+    "timestamp": "2026-02-06 21:56:07.939931",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEnd] [Signer ID Validation - High] Is signer_id validated to be in the expected set from DkgEndBegin.signer_ids, or can unknown signers send DkgEnd messages?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cf84abc5-5b67-45c9-ad0d-9abc82c29d80?mode=deep",
+    "timestamp": "2026-02-06 21:56:36.744881",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEnd] [DKG ID Mismatch - High] Is dkg_id strictly checked to match the current round, preventing replay of DkgEnd from previous rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1c690001-a7c1-41eb-9ea0-f404f7cd52da?mode=deep",
+    "timestamp": "2026-02-06 21:57:04.984724",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Enum: DkgFailure] [Information Leak - Medium] Does returning detailed failure reasons in BadPublicShares/BadPrivateShares reveal information that helps attackers?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_980e0fe0-5bda-42d1-962f-28d09748a986?mode=deep",
+    "timestamp": "2026-02-06 21:57:35.405908",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: BadPrivateShare] [Tuple Proof Validation - High] Is tuple_proof properly validated before accepting the BadPrivateShare report, or can false accusations be made?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e9bc41e0-db5b-4a7b-8375-904a7e9e1746?mode=deep",
+    "timestamp": "2026-02-06 21:58:05.604579",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: BadPrivateShare] [Shared Key Validation - High] Is shared_key validated to be a valid curve point, or can invalid points in the proof cause verification failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4f95eaac-1f06-4182-904b-1f94b8dcfd9c?mode=deep",
+    "timestamp": "2026-02-06 21:58:35.581694",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Enum: DkgFailure::MissingPublicShares] [Set Validation - Medium] Can the HashSet contain arbitrary signer_ids, allowing false accusations of missing shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1646fe59-b83d-49f0-9a77-598c759dc9e0?mode=deep",
+    "timestamp": "2026-02-06 21:59:06.527884",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Enum: DkgFailure::BadPrivateShares] [HashMap Validation - Medium] Are the HashMap keys validated to be legitimate signer_ids, preventing injection of fake bad share reports?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_023c656d-702f-495b-92ea-6fc3b8b99e38?mode=deep",
+    "timestamp": "2026-02-06 21:59:38.034369",
+    "report_generated": false
+  }
+]
