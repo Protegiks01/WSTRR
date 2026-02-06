@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_private_shares()] [Signer Set Reduction - Critical] Lines 422-426 restrict dkg_wait_signer_ids to only those who sent DkgPublicShares - can an attacker who compromised some signers intentionally skip public shares to be excluded from private share phase?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5b129936-9a60-4667-8a7c-1c38e5dc701c?mode=deep",
+    "timestamp": "2026-02-06 21:30:41.632850",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_private_shares()] [Empty Key IDs - High] Line 435 sends empty key_ids vec - is this intentional? Could signers misinterpret this as no keys needed, skipping private share generation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a24e08f0-0fef-4cd7-be9c-32b24add02c3?mode=deep",
+    "timestamp": "2026-02-06 21:30:54.082826",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_private_shares()] [Signer ID Collection - Medium] Line 434 collects signer_ids from dkg_public_shares keys - can duplicate handling or ordering issues cause problems if map iteration order is non-deterministic?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8f2d9f83-468e-4a29-80c5-82896830e609?mode=deep",
+    "timestamp": "2026-02-06 21:31:07.173453",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_private_shares()] [Message Signing Panic - High] Line 439 uses expect() on DkgPrivateBegin signing - same panic risk as start_public_shares()?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_43b34f91-0f28-47b3-a3f0-b58615ddd2b1?mode=deep",
+    "timestamp": "2026-02-06 21:31:20.694691",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_dkg_end()] [Signer Set Reduction - Critical] Lines 451-455 restrict wait set to dkg_private_shares senders only - can a malicious signer participate in public shares but skip private shares to avoid DkgEnd validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_109e1c7c-7366-42ed-ba4b-3030538d100a?mode=deep",
+    "timestamp": "2026-02-06 21:31:35.003506",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_dkg_end()] [Empty Key IDs - High] Line 464 sends empty key_ids - if this is a bug, could it cause signers to fail DKG validation or produce inconsistent shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_edd48889-cd0c-41e4-a770-6ee695752e62?mode=deep",
+    "timestamp": "2026-02-06 21:31:50.822910",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: start_dkg_end()] [Message Signing Panic - High] Line 468 expects DkgEndBegin signing to succeed - can controlled failure cause coordinator panic?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e86ca4a7-d42b-4bfa-9173-44d5afd8c86e?mode=deep",
+    "timestamp": "2026-02-06 21:32:05.391437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_public_shares()] [DKG ID Validation - High] Lines 479-483 check dkg_id match - but what if attacker sends shares for future dkg_id, can coordinator cache them and use them out of order?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bda10a98-085d-4c3d-8d2f-e82f8a63b2d9?mode=deep",
+    "timestamp": "2026-02-06 21:32:24.034594",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_public_shares()] [Missing Public Key Handling - Medium] Lines 487-491 silently return Ok(()) if signer_id not in config - should this be an error? Can attacker spam with invalid signer_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1427254a-a913-415b-aedd-f2dec3ff473b?mode=deep",
+    "timestamp": "2026-02-06 21:32:43.693106",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_public_shares()] [Duplicate Detection - Low] Lines 493-500 detect and log duplicate shares - but is this exploitable for DoS by sending many duplicates?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d1f16862-1cbc-4502-87df-024dae8568c3?mode=deep",
+    "timestamp": "2026-02-06 21:33:04.404383",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_public_shares()] [Automatic State Transition - High] Lines 514-516 auto-transition when wait set empty - can an attacker race to send minimal shares and trigger premature transition?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1b4b99c9-ebe6-4ed7-9b16-7a1adcd5b923?mode=deep",
+    "timestamp": "2026-02-06 21:33:25.990785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_public_shares()] [No Validation - Critical] This function stores DkgPublicShares without validating polynomial commitments, Schnorr ID proofs, or polynomial degree - can attacker inject malicious commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8a7bcc49-4d0b-45d8-9e2a-99083b4feced?mode=deep",
+    "timestamp": "2026-02-06 21:33:47.961753",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_private_shares()] [DKG ID Check - High] Similar to public shares, lines 527-532 check dkg_id but don't prevent caching future shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5a0cbe77-449b-4cb1-b92e-64ed2bc30fea?mode=deep",
+    "timestamp": "2026-02-06 21:34:11.249140",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_private_shares()] [No Validation - Critical] Private shares are stored without decryption or validation - can attacker provide invalid encrypted shares that will fail later during DKG end phase?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a2ecf391-c905-4e1d-a0e1-1af32f345403?mode=deep",
+    "timestamp": "2026-02-06 21:34:37.017495",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_private_shares()] [Duplicate Handling - Low] Lines 541-547 handle duplicates - same DoS risk as public shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_831de888-22c1-4777-b736-3aa0c63fb186?mode=deep",
+    "timestamp": "2026-02-06 21:35:02.528409",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_private_shares()] [State Transition Timing - Medium] Lines 561-563 auto-transition when empty - can timing attacks exploit the moment between last share and transition?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_794c80b4-bce7-4167-9fd3-79eed9e042dc?mode=deep",
+    "timestamp": "2026-02-06 21:35:27.255743",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Threshold Conversion - High] Line 604 converts threshold to usize with unwrap - can overflow or precision loss occur with large threshold values?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e72336ae-416b-4800-a6b2-62d8e799c757?mode=deep",
+    "timestamp": "2026-02-06 21:35:53.130125",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Malicious Signer Handling - Critical] Lines 613-651 validate BadPublicShares claims - but verification uses check_public_shares() without verifying Schnorr ID proofs, can attacker forge accusations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e7862dde-3f06-457d-b2be-97e14d976108?mode=deep",
+    "timestamp": "2026-02-06 21:36:19.322527",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [False Accusation - Critical] Lines 642-649 mark accuser as malicious if shares are valid - but what if the shares became invalid due to race conditions? Is this too harsh?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e14adc5f-1b85-4982-afbb-3af43fa81c93?mode=deep",
+    "timestamp": "2026-02-06 21:36:46.731545",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [BadPrivateShares Validation - Critical] Lines 652-763 validate private share claims with complex tuple proof verification and decryption - are there timing attacks or error handling issues that could be exploited?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_774eb11d-c891-494f-be79-38ac7f07ae97?mode=deep",
+    "timestamp": "2026-02-06 21:37:15.301444",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Tuple Proof Validation - High] Lines 681-685 verify tuple proof - if verification fails, is_bad is set to false at line 752, marking accuser as malicious - can proof verification be tricked?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e8a2e948-df21-4729-be94-275056843505?mode=deep",
+    "timestamp": "2026-02-06 21:37:45.092429",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Shared Secret Derivation - High] Line 688 derives shared_secret from shared_key - can weak keys or predictable secrets compromise private share confidentiality?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fad4ee55-75bb-4d42-89e4-a7c60bb997f3?mode=deep",
+    "timestamp": "2026-02-06 21:38:15.624560",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Decryption Failure Handling - Medium] Lines 713-746 handle decryption and parsing errors by marking shares as bad - can attacker cause false positives by corrupting shares in transit?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1fafc1f5-8a4c-43d7-bc29-899cf2711770?mode=deep",
+    "timestamp": "2026-02-06 21:38:49.639311",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Private Share Validation - Critical] Lines 728-733 check if private_eval * G == poly_eval - is this comparison constant-time? Can timing attacks leak information?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9bf487ce-54c5-44f5-b67a-d9c5b8a13835?mode=deep",
+    "timestamp": "2026-02-06 21:39:22.622417",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Polynomial Evaluation - High] Lines 716-726 evaluate polynomial at key_id - can malicious polynomial coefficients cause computation errors or overflow?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1be01ba2-a47e-4d1c-88be-5c57ba3c8541?mode=deep",
+    "timestamp": "2026-02-06 21:39:56.616151",
+    "report_generated": false
+  }
+]
