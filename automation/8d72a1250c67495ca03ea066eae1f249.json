@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [SavedState] [Signature Without Shares] Can signature be Some without corresponding signature_shares? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dfb2e360-3dcd-49b0-a0cb-420872e61cc0?mode=deep",
+    "timestamp": "2026-02-06 21:42:57.447472",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [SavedState] [Nonce Message Mismatch] Can message_nonces contain entries for messages != current message? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5cc4a67e-383b-4669-95ca-450c0e36f489?mode=deep",
+    "timestamp": "2026-02-06 21:43:10.073671",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [SavedState] [Wait Set Validation] Are dkg_wait_signer_ids and sign_wait_signer_ids validated against num_signers? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2f4304c0-2b5d-42e8-bb6d-6f29944722d0?mode=deep",
+    "timestamp": "2026-02-06 21:43:23.437864",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [SavedState] [Timing Attacks] Can serialized Instant values leak timing information about protocol progress? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_671fa9bc-dd22-4118-b298-ff4535b9b80b?mode=deep",
+    "timestamp": "2026-02-06 21:43:37.034203",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error] [Error Information Leak] Do error messages include sensitive information like private shares or keys? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8d89db05-ac78-4a85-a228-a56147e75b89?mode=deep",
+    "timestamp": "2026-02-06 21:43:51.178864",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error] [Error Type Confusion] Can MaliciousSigner error be confused with network errors, allowing attacker to evade detection? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8a257ada-0aab-49f4-b180-87534236623d?mode=deep",
+    "timestamp": "2026-02-06 21:44:06.731813",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error] [Point Error Conversion] Does From<PointError> conversion lose important context about why point validation failed? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6ecabd4c-8b62-451a-8973-fb02f9670446?mode=deep",
+    "timestamp": "2026-02-06 21:44:23.525966",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error] [TryFromInt] Can TryFromIntError occur during normal operation with valid inputs? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0f5f940a-4c0f-4370-b595-7d286a42ccc8?mode=deep",
+    "timestamp": "2026-02-06 21:44:41.622045",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::DkgFailure] [HashMap Construction] Can malicious_signers HashSet be manipulated to include honest signers? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_39405282-74b6-4f16-b666-7ef75414e114?mode=deep",
+    "timestamp": "2026-02-06 21:45:01.377776",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Clone Bound] Does Clone bound on Coordinator allow insecure state duplication? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0fe17745-c9e3-4437-8a29-03352f3df643?mode=deep",
+    "timestamp": "2026-02-06 21:45:20.931154",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Debug Bound] Does Debug implementation leak sensitive information in logs? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f09d760d-d303-4d1d-aee9-068688e5e6bf?mode=deep",
+    "timestamp": "2026-02-06 21:45:41.395496",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [PartialEq] Can PartialEq be used to test for secret equality, causing timing attacks? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fa2e988d-fbfc-41cd-b094-fb43e205da04?mode=deep",
+    "timestamp": "2026-02-06 21:46:04.661212",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [StateMachine Bound] Does StateMachine<State, Error> bound allow bypassing coordinator-specific checks? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4af11289-51c9-41ae-bc7a-97ce255ffd1b?mode=deep",
+    "timestamp": "2026-02-06 21:46:27.309496",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Process Return] Can process() return (None, None) in states where progress is required? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_78e6ebd6-0e9b-4df0-bbde-463065ff512c?mode=deep",
+    "timestamp": "2026-02-06 21:46:50.898759",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Get Methods] Are get_config/get_aggregate_public_key/get_message returning clones or references, affecting security? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_65db7b6e-9de0-450f-914e-54f5be018d95?mode=deep",
+    "timestamp": "2026-02-06 21:47:14.750198",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Predictable RNG] Does create_rng() use seeded RNG in tests, making outputs predictable? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_569a8732-f37f-4c13-a17a-44404c2c5678?mode=deep",
+    "timestamp": "2026-02-06 21:47:40.207224",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Disabled Verification] Do tests set verify_packet_sigs = false, missing verification bugs? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c9aaffa4-87d2-4ecc-abed-2afbcb5b024e?mode=deep",
+    "timestamp": "2026-02-06 21:48:07.652677",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Threshold Calculation] In setup(), threshold = (num_keys * 7) / 10 - can this round incorrectly for small values? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0f299137-6ffd-497c-becf-1b588af44f4c?mode=deep",
+    "timestamp": "2026-02-06 21:48:34.378766",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [DKG Threshold] In setup(), dkg_threshold = (num_keys * 9) / 10 - is this always >= threshold? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c9188f1a-c46b-49f2-9471-9ecc3a2f28f2?mode=deep",
+    "timestamp": "2026-02-06 21:49:01.096253",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Message Feedback] Does feedback_messages() process messages in deterministic order? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_39a76caa-0c27-4d1e-b446-7564dec99eae?mode=deep",
+    "timestamp": "2026-02-06 21:49:29.798196",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Error Propagation] Do test helpers properly propagate StateMachineError to detect coordinator issues? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ab7f007-b732-4731-9412-9942568669b8?mode=deep",
+    "timestamp": "2026-02-06 21:49:58.289187",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Save/Load Testing] Are coordinators tested with save/load between every state transition? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cf935898-7a67-4308-84b3-cdd51b8c7ece?mode=deep",
+    "timestamp": "2026-02-06 21:50:27.531532",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Signature Mutation] In check_signature_shares(), is mutation applied to all shares or just one? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_32ca2001-48e9-4e1d-ad9f-2f1499f6977e?mode=deep",
+    "timestamp": "2026-02-06 21:50:59.638183",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Expected Bad Parties] Does check_signature_shares() correctly map party IDs between v1 and v2? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9d33fb34-6d06-4f64-aee4-14f9ff567ff3?mode=deep",
+    "timestamp": "2026-02-06 21:51:31.183333",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test] [Nonce Reuse Detection] Does gen_nonces() test catch if signers reuse nonces for different messages? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b8310dd5-ca43-49cd-b2c7-0315bc4082da?mode=deep",
+    "timestamp": "2026-02-06 21:52:02.187333",
+    "report_generated": false
+  }
+]
