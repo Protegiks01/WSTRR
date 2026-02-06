@@ -1,0 +1,11 @@
+[
+  "[File: src/state_machine/coordinator/fire.rs] [Function: reset()] [Aggregate Key Preservation - Medium] aggregate_public_key and party_polynomials are not cleared - intentional or bug?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Clone Implementation - Medium] Coordinator derives Clone (line 31) - can cloning create aliased mutable state issues?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [PartialEq Implementation - Low] Coordinator derives PartialEq - does comparing Instant fields make sense, can this cause unexpected equality results?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: malicious_signer_ids - High] HashSet used for tracking (line 64) - is insertion/removal atomic? Can race conditions cause inconsistent malicious tracking?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: message_nonces - High] BTreeMap keyed by Vec<u8> (line 46) - can large messages cause performance issues or hash collision attacks?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: dkg_public_shares - Medium] BTreeMap with u32 keys (line 40) - is ordering important for security?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: current_dkg_id - High] u64 that wraps (lines 35) - after 2^64 rounds, can ID reuse cause security issues?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: signature - Medium] Option<Signature> (line 49) - can Some(signature) persist from previous round and be returned incorrectly?",
+  "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: schnorr_proof - Medium] Option<SchnorrProof> (line 50) - same persistence risk as signature?"
+]

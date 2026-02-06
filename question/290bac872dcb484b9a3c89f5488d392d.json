@@ -1,0 +1,13 @@
+[
+  "[File: src/state_machine/mod.rs] [Type: HashMap] [Send/Sync Safety - Medium] Are PublicKeys and error types Send+Sync safe for concurrent state machine implementations?",
+  "[File: src/state_machine/mod.rs] [Derive: Clone] [Clone Safety - Medium] Multiple types derive Clone - could cloning state machine types lead to split-brain scenarios with divergent states?",
+  "[File: src/state_machine/mod.rs] [Derive: Default] [Default Safety - Medium] Does Default for PublicKeys create a safe empty state, or could code forget to initialize it properly?",
+  "[File: src/state_machine/mod.rs] [Error: From Conversions] [Error Downgrade - Medium] Can converting SignerError or CoordinatorError to the generic Error enum downgrade security-critical errors to less severe ones?",
+  "[File: src/state_machine/mod.rs] [OperationResult: Success Variants] [Result Confusion - High] Can a coordinator or signer accidentally return the wrong success variant (e.g., Sign instead of SignSchnorr)?",
+  "[File: src/state_machine/mod.rs] [OperationResult: Error Variants] [Error Masking - Medium] Could wrapping DkgError or SignError in OperationResult hide critical security failures from calling code?",
+  "[File: src/state_machine/mod.rs] [PublicKeys: Struct Fields] [Field Access - Low] Are the public fields of PublicKeys intended to be directly mutable by external code, bypassing validate()?",
+  "[File: src/state_machine/mod.rs] [DkgError: Timeout Vectors] [Vector Size - Low] Could extremely large timeout Vec<u32> cause memory exhaustion or performance degradation?",
+  "[File: src/state_machine/mod.rs] [SignError: Malicious Vectors] [Vector Manipulation - Medium] Can duplicate entries in NonceTimeout or InsufficientSigners malicious signer vectors cause incorrect counting logic?",
+  "[File: src/state_machine/mod.rs] [PublicKeys: HashMap Ordering] [Determinism - Low] Does HashMap iteration order non-determinism cause any security-relevant behavior to be unpredictable?",
+  "[File: src/state_machine/mod.rs] [StateMachine: Trait Contract] [Implementation Safety - High] Could a buggy StateMachine implementation violate the expected contract between can_move_to and move_to?"
+]

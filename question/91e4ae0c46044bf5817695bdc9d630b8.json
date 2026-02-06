@@ -1,0 +1,9 @@
+[
+  "[File: src/util.rs] [Test Coverage] [High - Scalar Zero Test] The test suite at lines 124-186 doesn't test expand_to_scalar() or hash_to_scalar() producing zero scalars - should there be explicit tests that these functions never output zero?",
+  "[File: src/util.rs] [Test Coverage] [Medium - Invalid Point Tests] Lines 130-143 test valid DH exchange but don't test invalid public keys (point-at-infinity, low-order points) - are these cases covered in integration tests?",
+  "[File: src/util.rs] [Test Coverage] [High - Nonce Reuse Detection] The encrypt/decrypt test at lines 147-185 doesn't verify that sequential encrypt() calls produce different nonces - could test code accidentally use a deterministic RNG enabling nonce reuse?",
+  "[File: src/util.rs] [Test Coverage] [Critical - Authentication Failure] Line 179-184 tests malformed ciphertext but doesn't test a ciphertext with valid structure but wrong authentication tag - is tag verification being tested?",
+  "[File: src/util.rs] [Test Coverage] [Medium - Domain Separation Tests] Are there tests verifying that expand_to_scalar() with different dst values produces uncorrelated outputs, preventing cross-context collisions?",
+  "[File: src/util.rs] [Test Coverage] [Low - Error Path Coverage] The tests explicitly verify MissingNonce (line 166) and MissingData (line 173) errors, but are all error paths in encrypt() also tested?",
+  "[File: src/util.rs] [Test Coverage] [High - Concurrent Encryption] Are there tests running multiple encrypt()/decrypt() operations concurrently to verify thread-safety and independence of RNG state?"
+]
