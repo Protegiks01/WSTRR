@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError] [No Serialize/Deserialize - Medium] Unlike DkgError and AggregatorError, EncryptionError does NOT implement Serialize/Deserialize, which prevents encrypted share failures from being transmitted over the network - but does this force local error handling that could result in inconsistent state between coordinator and signers regarding which shares failed to decrypt?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e372633f-78e2-4f93-a271-d33dd271d4d7?mode=deep",
+    "timestamp": "2026-02-06 19:26:41.445195",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::MissingNonce] [Nonce Size Validation - Medium] Does the MissingNonce error only trigger when nonce is completely absent, or also when nonce has wrong size (not 12 bytes for AES-GCM), and if size validation is separate, can an attacker provide wrong-sized nonces that bypass MissingNonce check but fail later with less informative errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e5c6e542-a3f6-47ec-9da5-54fe06f7b8c3?mode=deep",
+    "timestamp": "2026-02-06 19:26:53.943597",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::MissingData] [Empty Buffer Attack - Low] If MissingData is returned for completely empty encrypted buffers, does the error handling distinguish this from buffers that contain only a nonce but no ciphertext, and could this distinction leak information about buffer processing order?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f700dd53-4cbd-4bbd-ad28-7a6934871e2d?mode=deep",
+    "timestamp": "2026-02-06 19:27:07.862129",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError] [Clone Implementation - Low] Since EncryptionError implements Clone, are the wrapped AesGcmError and EllipticCurveError types safely cloneable, or could cloning error instances containing sensitive error context inadvertently duplicate cryptographic state or error details that should be consumed once?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d5a12524-d68e-4e10-9142-0e29c48fb4e4?mode=deep",
+    "timestamp": "2026-02-06 19:27:20.968889",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::AesGcm] [Key Derivation Failure - High] If AES-GCM encryption fails during the key derivation step (before actual encryption), is this properly reported as an AesGcm error, or could failures in the Diffie-Hellman shared secret to AES key conversion be misclassified or silently ignored?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_efa44a5d-7bbd-458a-8f83-f3b91cbd1e5d?mode=deep",
+    "timestamp": "2026-02-06 19:27:34.782708",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError] [PartialEq Implementation - Low] Does the PartialEq implementation for EncryptionError correctly handle comparison of wrapped AesGcmError and EllipticCurveError types, which are opaque external types that may not provide meaningful equality semantics?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c7ffa3e4-22a7-47a5-a52b-80d9eec56b6b?mode=deep",
+    "timestamp": "2026-02-06 19:27:48.520065",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::EllipticCurveError] [Small Subgroup Attack - Critical] When elliptic curve operations fail during DH key exchange for private share encryption, does the error prevent continuation with a potentially weak shared secret (e.g., from a point in a small subgroup), or could error handling allow the protocol to proceed with predictable encryption keys?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d7893e0b-58a8-4d81-99b4-1bc68230124c?mode=deep",
+    "timestamp": "2026-02-06 19:28:03.696353",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError] [Missing Variants - High] Does EncryptionError lack variants for important failure modes such as key size mismatch, nonce reuse detection, plaintext length validation, or tag verification failures, forcing these security-critical conditions to map to generic wrapped errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_33378c53-4093-48b1-8212-5159c635d0a3?mode=deep",
+    "timestamp": "2026-02-06 19:28:19.179726",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Enum: EncryptionError::MissingNonce] [Decryption Oracle - Medium] If MissingNonce errors are returned with different timing or error messages than MissingData errors, can an attacker use the system as a decryption oracle by submitting various malformed encrypted buffers and observing error responses to learn about buffer structure?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_df956d97-9d8a-4eb4-888b-062be00a506f?mode=deep",
+    "timestamp": "2026-02-06 19:28:35.107755",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Error Type Confusion - High] Since DkgError, AggregatorError, and EncryptionError are distinct types with no shared trait hierarchy beyond Error, can code that needs to handle multiple error types during combined DKG+signing operations incorrectly convert between error types or lose context when propagating errors across protocol phases?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ea1af590-473a-4d28-8104-e29647c2619f?mode=deep",
+    "timestamp": "2026-02-06 19:28:52.349591",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Deserialization Attack - High] For the serializable error types (DkgError, AggregatorError), can a malicious party send crafted serialized errors with extreme values (e.g., Vec with u32::MAX elements, Scalar with invalid byte representation) to cause deserialization to panic, consume excessive memory, or bypass validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6278cb05-a258-424a-a879-294514a9ffd2?mode=deep",
+    "timestamp": "2026-02-06 19:29:11.304453",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Error Message Injection - Medium] Do the Display implementations for error enums properly escape or sanitize party IDs and other numeric values included in error strings, or could an attacker cause log injection or format string vulnerabilities by manipulating error variant contents?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4cc7009c-4027-428b-ad9a-c7a4f4aa3001?mode=deep",
+    "timestamp": "2026-02-06 19:29:31.502450",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Panic on Clone - Medium] For error variants that contain Vec or other heap-allocated data, can cloning errors in low-memory conditions cause allocation failures that panic, potentially converting a recoverable error into a service crash?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d0ca3000-a708-416c-b739-643afafbc2b4?mode=deep",
+    "timestamp": "2026-02-06 19:29:52.471620",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [TryFromInt Conversions] [Silent Error Suppression - High] Both DkgError and AggregatorError have TryFromInt variants, but the From implementations ignore the original error details - can this hide systematic patterns of integer overflow attacks where an attacker deliberately provides values that cause conversion failures at specific protocol steps?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f75a0e8d-a083-4194-91d8-9a7c475bb628?mode=deep",
+    "timestamp": "2026-02-06 19:30:15.627096",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Error Comparison Timing - Low] Since all error enums implement PartialEq, does comparing errors that contain variable-length Vec data structures create timing side-channels that could leak information about the number of failing parties or the size of error data?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4e7161e4-4ff9-416c-928c-9d132f70afed?mode=deep",
+    "timestamp": "2026-02-06 19:30:39.343602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Missing Error Types] [Protocol Invariant Violations - Critical] Are there critical protocol invariants (duplicate key IDs, threshold violations, round ID mismatches, message signature failures) that lack dedicated error types in this file, forcing them to be reported through inappropriate error variants or silently ignored?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0bb83906-c796-4ef5-840c-533d6a674125?mode=deep",
+    "timestamp": "2026-02-06 19:31:04.187474",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Error Recovery Logic - High] Does the error type design allow distinguishing between recoverable errors (temporary network issues, missing messages that may arrive later) versus permanent errors (cryptographic validation failures), or do all errors result in irreversible protocol abortion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_aa084d40-2013-4cdd-b996-94a9df582d3b?mode=deep",
+    "timestamp": "2026-02-06 19:31:29.103127",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Serialization] [Version Compatibility - Medium] If the serialized error format changes between versions (e.g., adding new enum variants), can parties running different versions deserialize each other's errors, or could version mismatches cause protocol failures that are indistinguishable from actual cryptographic errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8546b9cc-db07-4bf3-a2b8-e7dc3ef82e33?mode=deep",
+    "timestamp": "2026-02-06 19:31:54.819412",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Debug Trait Exposure - Low] Since all error enums implement Debug, does the Debug output include sensitive information (party IDs, scalar values, failure reasons) that could leak through logs, error reports, or debugging interfaces to unauthorized parties?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a3b9e0dc-9f38-4a5d-8696-3628ea1b7a11?mode=deep",
+    "timestamp": "2026-02-06 19:32:21.674043",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Error Aggregation - Medium] When multiple parties report errors simultaneously (e.g., multiple BadPublicShares errors from different parties), does the error type design support aggregating and deduplicating error information efficiently, or does each error need to be processed separately, creating performance issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_89ae6aa5-cbdf-408a-b44a-6e9ddedd0ad2?mode=deep",
+    "timestamp": "2026-02-06 19:32:47.658436",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [DkgError and AggregatorError] [Vec Memory Bounds - Medium] For error variants that contain Vec<u32> or Vec<(u32, u32)>, are there any bounds checks when these vectors are created or deserialized to prevent memory exhaustion attacks where an attacker claims hundreds of thousands of parties failed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_02cc29b1-1c0d-4f77-ab5d-1f0bc7685092?mode=deep",
+    "timestamp": "2026-02-06 19:33:14.784647",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [EncryptionError] [Error Context Requirements - High] Since EncryptionError is not serializable but DkgError is, when encrypted private share failures occur on signers, how are these errors communicated to the coordinator - are they converted to DkgError::BadPrivateShares, and if so, is the root cause (decryption vs validation) preserved?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0a4a234c-57bc-4186-9976-f2bd4549099f?mode=deep",
+    "timestamp": "2026-02-06 19:33:43.335199",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All From Implementations] [Error Chain Breaking - Medium] Do the From trait implementations preserve any error chain or backtrace information, or does each conversion create a new error instance that breaks the causal chain, making it impossible to determine the original source of cascading failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5aa9dced-f13b-4a4a-9e66-05eeadf863db?mode=deep",
+    "timestamp": "2026-02-06 19:34:11.479534",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [Missing Error Documentation] [Attack Scenario Mapping - High] Does the file provide sufficient documentation or examples of which error variants correspond to which attack scenarios (malicious shares vs corrupted shares vs missing shares), or could developers misinterpret errors and implement incorrect response logic?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a5b2e8e2-dfd6-4958-8bde-c50a66d755c6?mode=deep",
+    "timestamp": "2026-02-06 19:34:40.860596",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/errors.rs] [All Enums] [Error Rate Limiting - Medium] Are there any mechanisms to limit the rate at which errors can be generated and propagated through the protocol, or could an attacker cause DoS by triggering high-frequency error generation that consumes CPU, memory, or network bandwidth?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0db7c710-2216-4f6d-be45-12077b7a0b5c?mode=deep",
+    "timestamp": "2026-02-06 19:35:11.499683",
+    "report_generated": false
+  }
+]
