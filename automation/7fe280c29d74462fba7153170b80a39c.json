@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/common.rs] [Function: PolyCommitment::verify()] [Critical - DKG Poisoning] Can an attacker submit a PolyCommitment with a valid Schnorr proof but an empty poly vector, bypassing polynomial degree checks and allowing threshold manipulation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e466ff32-3787-411e-a9d2-60e20f2081d6?mode=deep",
+    "timestamp": "2026-02-06 21:37:16.817850",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PolyCommitment::verify()] [Critical - Context Binding Bypass] Does the verify() function properly enforce that the context parameter is non-empty and consistent across all DKG participants, or can an attacker use an empty/different context to forge polynomial commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_46a32c20-1f3f-4194-ba65-9650dcbcab71?mode=deep",
+    "timestamp": "2026-02-06 21:37:29.313224",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: PolyCommitment] [High - Threshold Bypass] Can an attacker submit a PolyCommitment where poly.len() is less than the expected threshold, and if check_public_shares() is not called, will downstream code accept an under-degree polynomial?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5280b00e-6373-4045-984b-205e037d4c9e?mode=deep",
+    "timestamp": "2026-02-06 21:37:42.302549",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PolyCommitment::verify()] [High - Point Validation] Does the verify() function check that poly[0] is not the identity point before verifying the Schnorr proof, preventing acceptance of invalid group keys?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d5454839-9695-4621-9afd-908569265d4f?mode=deep",
+    "timestamp": "2026-02-06 21:37:55.833393",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: PolyCommitment] [Medium - DoS] Can an attacker submit a PolyCommitment with an extremely large poly vector (e.g., millions of points) causing memory exhaustion or verification timeout?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cdec8698-9099-4aca-896e-df3c65b9c7e2?mode=deep",
+    "timestamp": "2026-02-06 21:38:09.843534",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PolyCommitment::verify()] [High - Malleability] If poly[0] is replaced with its negation, does the Schnorr ID proof still verify, allowing signature malleability attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1a804ae3-2029-4140-b476-1e0d533f7e20?mode=deep",
+    "timestamp": "2026-02-06 21:38:25.934106",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: PolyCommitment] [Critical - Rogue Key Attack] Can an attacker set poly[0] to a point that appears valid but is actually derived from a combination of honest parties' commitments plus a malicious offset, enabling rogue key attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3c9b0abf-c0a2-4b41-b077-61520a1e9f2f?mode=deep",
+    "timestamp": "2026-02-06 21:38:41.951594",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PolyCommitment::verify()] [Medium - ID Reuse] Does the system check that the same party ID cannot submit multiple different PolyCommitments in a single DKG round, or can an attacker flood with conflicting commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d287cc2c-8d15-4821-b03a-70cee2c9cdc6?mode=deep",
+    "timestamp": "2026-02-06 21:39:00.366418",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: PolyCommitment] [High - Polynomial Coefficient Validation] Are all points in the poly vector validated to be on the curve and non-identity, or can invalid points be included in coefficients beyond poly[0]?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5032813d-4628-4183-bcb9-a8f5b5ec123f?mode=deep",
+    "timestamp": "2026-02-06 21:39:19.050130",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PolyCommitment::verify()] [Critical - Cross-Protocol Replay] Can a valid PolyCommitment from one DKG session be replayed in a different session if the context is reused or not properly domain-separated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_949372a4-86fd-4654-a405-46ebea44b423?mode=deep",
+    "timestamp": "2026-02-06 21:39:39.218182",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::random()] [Critical - Nonce Reuse] Does the RFC 9591 nonce generation ensure that even with the same secret_key and RNG state, sequential calls never produce the same nonce, preventing catastrophic key recovery attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5178479c-4cf0-481a-95c4-a101e217e12d?mode=deep",
+    "timestamp": "2026-02-06 21:40:00.150364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::gen()] [Critical - Entropy Source] If the RNG passed to Nonce::gen() is compromised or predictable, can an attacker derive the secret_key from observed nonces and signatures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7f26eedf-8202-410b-ada1-eb5bd6c2a67a?mode=deep",
+    "timestamp": "2026-02-06 21:40:22.897378",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::random()] [High - Secret Key Leakage] Does hashing the secret_key directly in gen() leak any information about the key through timing or side-channels, especially if called multiple times?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3a7d303a-e98b-4e87-9044-f53782a0a82d?mode=deep",
+    "timestamp": "2026-02-06 21:40:46.355257",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::is_valid()] [Critical - Zero Nonce Attack] The validation checks !is_zero() && !is_one(), but can an attacker force a nonce where d=0 but e!=0 (or vice versa), partially bypassing validation and enabling partial key recovery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_21e33378-3240-475f-9fe9-8b49c79c6f70?mode=deep",
+    "timestamp": "2026-02-06 21:41:09.661211",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::gen()] [High - Hash Collision] If hash_to_scalar produces a zero or one scalar, does gen() retry or return the invalid value, potentially creating a zero nonce?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b3da3fee-2ef9-4d5c-a244-2d6a466d48b4?mode=deep",
+    "timestamp": "2026-02-06 21:41:35.013232",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::random()] [Medium - Deterministic RNG] If the RNG is seeded deterministically (e.g., in tests), can nonces be predicted across different signing sessions, breaking forward secrecy?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cd67cfd8-8bd2-4763-ba4e-8b00b0195bc5?mode=deep",
+    "timestamp": "2026-02-06 21:42:01.378977",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: Add for Nonce] [High - Nonce Combination Attack] Can an attacker who observes two signing rounds with nonces n1 and n2 compute n1+n2 to create a third valid nonce, enabling signature forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_44174b11-a804-4c4a-ba4d-490fc2af97d0?mode=deep",
+    "timestamp": "2026-02-06 21:42:28.363749",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: Mul for Nonce] [High - Nonce Scaling Attack] Can multiplying two nonces together create a predictable relationship that allows signature forgery if both original nonces are known?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e44c2460-ef15-4ed5-a107-f16f35c042a0?mode=deep",
+    "timestamp": "2026-02-06 21:42:55.660630",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: Zero for Nonce] [Critical - Zero Nonce Creation] Can the Zero trait be used to intentionally create a zero nonce that bypasses is_valid() checks if the check is not called consistently?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6acac2af-c3bd-4299-9c8c-faa5f3096761?mode=deep",
+    "timestamp": "2026-02-06 21:43:23.378844",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: One for Nonce] [Critical - One Nonce Attack] Can the One trait be used to create a (1,1) nonce that passes some validation paths but leads to trivial signature forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_12b710a8-ce55-4a8d-9415-b41806127e81?mode=deep",
+    "timestamp": "2026-02-06 21:43:51.083215",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::gen()] [Medium - Buffer Overflow] Does fill_bytes() on the 32-byte buffer have any risk of writing beyond bounds if RNG is malformed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c7c278bb-e145-4e68-886e-a9469d4d0f26?mode=deep",
+    "timestamp": "2026-02-06 21:44:19.523728",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::is_valid()] [High - Validation Timing] Is the is_valid() check constant-time, or can timing attacks reveal information about whether d or e is zero/one?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_42a57b70-a7e0-493f-9442-81127c56e313?mode=deep",
+    "timestamp": "2026-02-06 21:44:50.441404",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: Nonce] [Medium - Serialization] Can deserialized Nonces bypass is_valid() checks if the deserializer doesn't call validation, allowing zero/one nonces to be imported?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_89a5f026-38dc-429b-af0e-af5b15fda6ca?mode=deep",
+    "timestamp": "2026-02-06 21:45:21.514530",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::gen()] [High - Secret Key Encoding] Is the secret_key.to_bytes() encoding canonical, or can different representations of the same key produce different nonces, breaking determinism?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9e3ccb12-213c-4246-a5e8-6eb8b2650808?mode=deep",
+    "timestamp": "2026-02-06 21:45:54.380185",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Nonce::random()] [Critical - Nonce State] Does the Nonce struct properly clear sensitive data (d, e scalars) on drop, or can nonce material leak through memory after use?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7e1679c5-4d0c-4810-b3d2-50e367cfd563?mode=deep",
+    "timestamp": "2026-02-06 21:46:27.936850",
+    "report_generated": false
+  }
+]
