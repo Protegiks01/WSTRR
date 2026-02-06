@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed()] [Aggregate Nonce Parameter] The aggregate_nonce is passed as parameter instead of computed - if this doesn't match compute::intermediate(), will the signature be invalid? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c26da2ad-1222-494b-b025-e6f9fd2b2ce1?mode=deep",
+    "timestamp": "2026-02-06 21:51:07.425669",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed()] [Delegation] This function calls sign_precomputed_with_tweak() with None tweak - is there any validation that the parameters are consistent? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2ac02e4c-b8db-4833-ae8a-fe5199e46112?mode=deep",
+    "timestamp": "2026-02-06 21:51:19.815484",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Tweak Options] The function handles None, Some(0), and Some(t) tweaks differently - are all three cases tested for correctness? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c7513042-72e5-4d53-97e3-e5f7daea9268?mode=deep",
+    "timestamp": "2026-02-06 21:51:32.731323",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [R Negation] If tweak.is_some() && !aggregate_nonce.has_even_y(), r is negated - is this BIP-340 parity adjustment correct for all tweak values? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c8bc455c-bf04-4e72-badb-075952a3998c?mode=deep",
+    "timestamp": "2026-02-06 21:51:46.225802",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Cx Sign Computation] cx_sign starts as Scalar::one() and may be negated based on parity - if both group_key and tweaked_key are odd, is XOR logic correct? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5841b079-0a68-4509-8d19-67defec9c328?mode=deep",
+    "timestamp": "2026-02-06 21:52:00.298751",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Tweaked Key Derivation] compute::tweaked_public_key_from_tweak() is called - if this returns an invalid point, will it be detected? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e28144b2-c4a0-4be6-a744-36a742784ddb?mode=deep",
+    "timestamp": "2026-02-06 21:52:16.455027",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Zero Tweak] When tweak is Some(Scalar::zero()), only parity adjustment is done - is this the correct BIP-340 32-byte key adjustment? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fce87d73-4df2-40db-af05-bb3e70aafb0c?mode=deep",
+    "timestamp": "2026-02-06 21:52:33.309551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Non-Zero Tweak] When tweak is Some(t) with t!=0, both parity and key tweaking occur - does XOR correctly handle the double-negation case? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2f758273-e3bb-440f-98a0-8bb7484ac262?mode=deep",
+    "timestamp": "2026-02-06 21:52:51.158731",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Challenge with Tweak] The challenge is computed with tweaked_public_key when tweak is Some - could using wrong key here allow forgery? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a3a0065f-2944-4c95-af57-45de49199ce2?mode=deep",
+    "timestamp": "2026-02-06 21:53:09.372732",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Lambda Application] lambda is computed with self.id and signers - if self.id is not in signers, will lambda be zero or undefined? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e802eae1-9434-4c42-a2ca-64428d37d0a8?mode=deep",
+    "timestamp": "2026-02-06 21:53:29.582163",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Z Final Computation] z = r + cx where cx = cx_sign * challenge * private_key * lambda - if cx_sign is wrong, will aggregation fail or produce invalid signature? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ef5810c4-924f-4e44-b9b9-792daa89c051?mode=deep",
+    "timestamp": "2026-02-06 21:53:50.009431",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Binding in R] r includes binding factor computation - is this binding computation identical to what aggregator expects? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0d26b699-86d2-4386-8e8e-f062e36b34bd?mode=deep",
+    "timestamp": "2026-02-06 21:54:11.772814",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Nonce.d and Nonce.e] The function uses self.nonce.d and self.nonce.e separately - could these be from different nonce generations if gen_nonce() was called multiple times? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6bfb3ec0-5c62-4291-aeaf-0ad3fe0c6be6?mode=deep",
+    "timestamp": "2026-02-06 21:54:34.808940",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign()] [Return Type] SignatureShare includes id and key_ids - could mismatched id and key_ids cause aggregation errors? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ad76ad1-0790-4c77-ad1b-4125cf5912d9?mode=deep",
+    "timestamp": "2026-02-06 21:54:58.760041",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Parity Check Order] Parity checks for R and public keys happen in specific order - could reordering these checks introduce vulnerabilities? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e31d71ba-2069-4e9f-83fb-1c60cde5f086?mode=deep",
+    "timestamp": "2026-02-06 21:55:24.287593",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign()] [Multiple Signatures] If sign() is called multiple times without calling gen_nonce() between calls, will the same nonce be reused catastrophically? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bdcc585b-dc63-41fe-a63d-cc9d7e683d24?mode=deep",
+    "timestamp": "2026-02-06 21:55:49.236094",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed()] [Precomputed Validation] There's no validation that aggregate_nonce matches the actual computation from nonces - could wrong aggregate_nonce be injected? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7884a43d-5df3-4535-a265-0427c10d9087?mode=deep",
+    "timestamp": "2026-02-06 21:56:14.998373",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Tweak Scalar] The tweak is Option<Scalar> - if the scalar is invalid (e.g., >= group order), will tweaked_public_key computation fail gracefully? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e0812479-8a87-491d-aad1-b8430fc21ea5?mode=deep",
+    "timestamp": "2026-02-06 21:56:41.788586",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Group Key Access] The function reads self.group_key - if DKG never completed, group_key could be Point::zero(). Should this be validated? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c6445a13-6ef0-4dde-98d1-ff5dff52be81?mode=deep",
+    "timestamp": "2026-02-06 21:57:10.122950",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign()] [Intermediate Return] compute::intermediate() returns tuple (_Rs, aggregate_nonce) - the _Rs value is discarded. Is it needed for validation? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_22f564d5-f065-4cef-8787-d2219ce87ea7?mode=deep",
+    "timestamp": "2026-02-06 21:57:39.640051",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Private Key Zero] If self.private_key is Scalar::zero(), the signature share will be mostly nonce-based - should zero private keys be rejected? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_48a30d53-a1ac-400c-8cec-a5fd99c1dbe2?mode=deep",
+    "timestamp": "2026-02-06 21:58:10.572790",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign()] [Scalar Arithmetic] All scalar operations (additions, multiplications) - do they correctly handle modular reduction and edge cases? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_62e68265-904f-4849-8ee1-37df27390724?mode=deep",
+    "timestamp": "2026-02-06 21:58:42.479135",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Even Y Check] has_even_y() is called on points - if this function has bugs or edge cases, could it compromise BIP-340 compliance? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1a89f29b-e6b4-4ac3-8a1b-a90fce48d32d?mode=deep",
+    "timestamp": "2026-02-06 21:59:14.965042",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign_precomputed_with_tweak()] [Negation Operations] Both r and cx_sign can be negated - are these negations in the correct scalar field? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_700f9b1c-7f8d-4e3f-91c0-6305e2841e87?mode=deep",
+    "timestamp": "2026-02-06 21:59:49.129816",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::sign()] [Empty Signers] If signers slice is empty, what happens to lambda computation? Will it panic or return invalid value? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_35dd8eeb-ee8c-4d8a-9171-398d70137b2e?mode=deep",
+    "timestamp": "2026-02-06 22:00:24.721116",
+    "report_generated": false
+  }
+]
