@@ -1,6 +1,0 @@
-[
-  "[File: src/common.rs] [Function: Signature::verify()] [High - Cofactor Handling] Does the verification properly handle the cofactor of the curve, preventing small-subgroup attacks?",
-  "[File: src/common.rs] [All Point Operations] [High - Point Compression] Are all point compression/decompression operations canonical, preventing malleability through different point representations?",
-  "[File: src/common.rs] [All Scalar Operations] [High - Scalar Reduction] Are all scalar operations properly reduced modulo the curve order, preventing wraparound attacks?",
-  "[File: src/common.rs] [Function: Nonce::random()] [Medium - Side Channel] Does Nonce generation have constant-time operations to prevent timing side-channels leaking secret_key?"
-]
