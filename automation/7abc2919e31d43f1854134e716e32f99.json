@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: clear_polys()] [Critical: Secret Cleanup] Does clear_polys() securely zero out polynomial coefficients and private keys, or can sensitive data remain in memory?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_230ebd96-1dba-4e06-a05d-3480be15a55c?mode=deep",
+    "timestamp": "2026-02-06 21:34:53.322646",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: clear_polys()] [High: State Consistency] After clear_polys(), can the signer still generate signature shares, or will this cause panics or produce invalid signatures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_21913c30-ac63-4203-b8ba-8c8e69ec451d?mode=deep",
+    "timestamp": "2026-02-06 21:35:05.796487",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: clear_polys()] [Medium: Nonce Handling] Does clear_polys() also clear nonces, or can nonces persist and be reused after polynomial clearing?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_94cf4135-a8c5-4cd5-9f22-5e7c353271ef?mode=deep",
+    "timestamp": "2026-02-06 21:35:19.547677",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: get_shares()] [Critical: Share Distribution] Does get_shares() return private shares for ALL other signers including self, or can missing shares cause threshold bypass?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f5914fde-87e4-4c76-8133-685071184196?mode=deep",
+    "timestamp": "2026-02-06 21:35:33.806711",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: get_shares()] [Critical: Share Validation] Can get_shares() return invalid shares (zero scalars, wrong key IDs) that will be accepted by compute_secrets(), enabling DKG poisoning?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b7336dc3-35f1-4abf-aa0d-82b8231c43c7?mode=deep",
+    "timestamp": "2026-02-06 21:35:47.721072",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: get_shares()] [High: Share Uniqueness] Does get_shares() ensure each (signer_id, key_id) pair has a unique share value, or can duplicate shares cause aggregation errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4a10ca9f-5278-4b19-81eb-6d14c51c9ebb?mode=deep",
+    "timestamp": "2026-02-06 21:36:03.821813",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: get_shares()] [Medium: Empty Shares] Can get_shares() return an empty HashMap when polynomials are not initialized, and will this be properly detected as an error?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6a32f299-f656-47d2-bfef-d1d5adad88d7?mode=deep",
+    "timestamp": "2026-02-06 21:36:20.631568",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Critical: Share Verification] Does compute_secrets() verify each received share against the corresponding polynomial commitment before using it?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7191cdf3-dc3b-44cd-9d38-eeb1b7cc22ea?mode=deep",
+    "timestamp": "2026-02-06 21:36:38.636580",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Critical: Schnorr Proof Verification] Does compute_secrets() verify the Schnorr ID proofs in polys using the provided ctx, or can invalid proofs be accepted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_17b0a24e-0b0f-4a61-b911-4b4efb296909?mode=deep",
+    "timestamp": "2026-02-06 21:36:57.949213",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Critical: Context Binding] Does compute_secrets() verify that all polynomial commitments use the same ctx value, preventing cross-context attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_61b3169a-f7fb-4214-a8ef-21e7268f5d2a?mode=deep",
+    "timestamp": "2026-02-06 21:37:17.890533",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Critical: Missing Share Detection] Does compute_secrets() return MissingPrivateShares error when required shares are absent, or can threshold be achieved with fewer shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7d4cdb10-85ed-4c68-87db-275812596278?mode=deep",
+    "timestamp": "2026-02-06 21:37:38.908384",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Critical: Polynomial Degree] Does compute_secrets() verify that all PolyCommitment entries have degree matching threshold-1, preventing malicious polynomial construction?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d2c8e9c0-c251-426a-ae32-9e4f750c769e?mode=deep",
+    "timestamp": "2026-02-06 21:38:01.577466",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [High: Share Aggregation] Does compute_secrets() correctly aggregate shares by summing values for each owned key_id across all parties?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_48e88d34-f76b-4dcb-843a-2ea89d383d11?mode=deep",
+    "timestamp": "2026-02-06 21:38:24.778451",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [High: Error Accumulation] Does compute_secrets() collect errors from ALL parties before returning, or can early errors hide additional malicious behavior?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f2ddc190-2fc4-4b68-a492-d06e254f4cef?mode=deep",
+    "timestamp": "2026-02-06 21:38:47.953390",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [High: Double Share Handling] Does compute_secrets() detect if shares HashMap contains duplicate entries for the same (signer_id, key_id), preventing double-counting?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9f5d3946-ead1-4b1e-beb7-7aee5043222e?mode=deep",
+    "timestamp": "2026-02-06 21:39:11.902661",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Medium: Zero Share Detection] Does compute_secrets() reject zero-value shares that would compromise the secret, or are they silently accepted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d65454a3-6b63-4e02-b7e0-ab8c222a4cb9?mode=deep",
+    "timestamp": "2026-02-06 21:39:36.638415",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_secrets()] [Medium: Party ID Validation] Does compute_secrets() validate that share signer_ids correspond to valid parties in the polys HashMap?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d9711b1f-25a7-4197-bcfb-1ae6e03812ec?mode=deep",
+    "timestamp": "2026-02-06 21:40:02.094451",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [Critical: Nonce Uniqueness] Does gen_nonces() generate cryptographically unique nonces for each key_id controlled by this signer using fresh randomness?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e8c69929-9507-43d5-9ecb-ef484764e0e7?mode=deep",
+    "timestamp": "2026-02-06 21:40:28.414652",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [Critical: Secret Key Binding] Does gen_nonces() use the provided secret_key parameter in nonce generation, and can attackers control this input to predict nonces?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a06c9048-ba48-4cc9-8d4f-f9c800010bcb?mode=deep",
+    "timestamp": "2026-02-06 21:40:55.183343",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [Critical: Zero Nonce] Does gen_nonces() reject zero nonce values, or can zero nonces be generated and used in signing, enabling trivial key extraction?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_67dee911-2215-4dc2-9d9b-3d066219c5b8?mode=deep",
+    "timestamp": "2026-02-06 21:41:22.756519",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [Critical: Nonce Reuse] Does gen_nonces() check if previous nonces have been used before generating new ones, preventing accidental reuse across signing rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dd07976e-424a-4f8b-8acd-ebb3960cb87f?mode=deep",
+    "timestamp": "2026-02-06 21:41:50.705469",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [High: RNG Quality] Does gen_nonces() rely solely on the provided RNG for randomness, and can a weak RNG produce predictable nonces?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_78ae7690-075f-4697-ac24-998918670ac8?mode=deep",
+    "timestamp": "2026-02-06 21:42:18.585504",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [High: Nonce Count] Does gen_nonces() return exactly one PublicNonce per key_id owned by the signer, or can mismatched counts break aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4ee62101-db46-4856-988a-bbfa5f08520e?mode=deep",
+    "timestamp": "2026-02-06 21:42:47.408659",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: gen_nonces()] [Medium: Nonce Format] Does gen_nonces() return PublicNonce with both D and E components non-zero, or can malformed nonces cause signature failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f659901f-64d5-48e5-ad46-74fd7131818a?mode=deep",
+    "timestamp": "2026-02-06 21:43:17.547293",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/traits.rs] [Trait: Signer] [Function: compute_intermediate()] [Critical: Binding Value Computation] Does compute_intermediate() correctly compute binding values that depend on ALL nonces and the exact message, preventing nonce cancellation attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9a669b08-e31a-4eb2-b3b5-fb0ba8eb1d19?mode=deep",
+    "timestamp": "2026-02-06 21:43:48.902549",
+    "report_generated": false
+  }
+]
