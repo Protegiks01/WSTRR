@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [State enum] [State Machine Bypass] Can an attacker force state transitions by sending packets in unexpected order, bypassing DKG validation steps? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_84569269-2993-4f33-adda-77f7924abfc0?mode=deep",
+    "timestamp": "2026-02-06 21:40:31.998889",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [State enum] [Race Condition] Does the SignatureType parameter in NonceRequest/NonceGather/SigShareRequest/SigShareGather states prevent mixing of Frost/Schnorr/Taproot signatures in the same round? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f5bcf6f8-e269-4cc7-8cc3-8a16306cea65?mode=deep",
+    "timestamp": "2026-02-06 21:40:44.512970",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [State enum] [State Confusion] Can different coordinators disagree on state after processing the same packets if SignatureType values differ? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_19bf9a14-5173-44ce-bfdd-8b28e40a91f5?mode=deep",
+    "timestamp": "2026-02-06 21:40:57.534438",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [State::Idle] [Initialization] Is there validation that required config fields are set before transitioning from Idle to DkgPublicDistribute? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_26079626-362d-4988-9ad5-0669c1c911af?mode=deep",
+    "timestamp": "2026-02-06 21:41:11.122160",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::BadDkgId] [ID Validation] Does error handling for BadDkgId prevent integer overflow attacks where attacker sends dkg_id near u64::MAX? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a299816e-5106-457b-9e36-6c1f3f609807?mode=deep",
+    "timestamp": "2026-02-06 21:41:25.604849",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::BadSignId] [Replay Protection] Can an attacker replay old signing rounds if coordinator doesn't track maximum seen sign_id values? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_10897961-918f-4f4c-b6a3-6110a30a7ff0?mode=deep",
+    "timestamp": "2026-02-06 21:41:42.078577",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::BadSignIterId] [Iteration Bypass] Can sign_iter_id be manipulated to skip malicious signer tracking between iterations? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3950b258-bf75-4ca0-851e-0ef5140142d5?mode=deep",
+    "timestamp": "2026-02-06 21:41:58.044576",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::MaliciousSigner] [Incomplete Ban] Does marking a signer as malicious prevent them from participating in all future rounds of both DKG and signing? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_00412ec2-0827-4969-920a-4e54d779d682?mode=deep",
+    "timestamp": "2026-02-06 21:42:15.856405",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::Aggregator] [Error Propagation] Can AggregatorError details leak private key information or internal state in error messages? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_511078e5-e411-405e-aa47-98db1314b06c?mode=deep",
+    "timestamp": "2026-02-06 21:42:34.043047",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::SchnorrProofFailed] [Attack Surface] Does this error distinguish between malicious proofs vs. implementation bugs, potentially aiding attackers? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e34a19ac-2caf-462b-9fb1-1e5e2d5a669f?mode=deep",
+    "timestamp": "2026-02-06 21:42:52.724192",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::MissingAggregatePublicKey] [State Integrity] Can coordinator reach signing state without aggregate_public_key being set? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bddebe48-de6b-4cc8-ac42-301403437cdc?mode=deep",
+    "timestamp": "2026-02-06 21:43:12.843813",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::DkgFailure] [Malicious Reporting] Can a malicious signer falsely report other honest signers as failing, causing DoS? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e8d3e0b2-4762-451d-9a8b-280a5b76aad0?mode=deep",
+    "timestamp": "2026-02-06 21:43:34.468243",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::AggregateKeyPolynomialMismatch] [Validation] Is this check performed before or after caching polynomials, preventing poisoning? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7558a311-8d13-44e6-ae8b-5422020f5747?mode=deep",
+    "timestamp": "2026-02-06 21:43:57.217497",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::DuplicatePartyId] [ID Uniqueness] Does this error catch duplicates during both DKG setup and after loading saved state? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_963a70b5-86c3-40e7-976b-8bbe2a58eec0?mode=deep",
+    "timestamp": "2026-02-06 21:44:20.752537",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Error::InvalidPacketSignature] [Bypass] Can packet signature verification be disabled at runtime after initial setup? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1fa483ce-6146-4bb5-9cca-fb84d7888be3?mode=deep",
+    "timestamp": "2026-02-06 21:44:44.763271",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::new()] [Threshold Validation] Does Config::new() validate that threshold <= num_keys to prevent impossible threshold requirements? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_234c4710-f664-4ee8-af01-79a3597d68a7?mode=deep",
+    "timestamp": "2026-02-06 21:45:07.844330",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::new()] [DKG Threshold] In Config::new(), dkg_threshold is set to num_keys by default - can this cause DKG to fail if any signer is unavailable? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6e32d3e3-8d40-4731-bc78-6bf423650bdb?mode=deep",
+    "timestamp": "2026-02-06 21:45:30.189920",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::new()] [Zero Values] Does Config::new() reject num_signers=0, num_keys=0, or threshold=0 which would break protocol invariants? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7514c83d-9180-4bfc-852c-7f6b8aae8ec2?mode=deep",
+    "timestamp": "2026-02-06 21:45:53.056412",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::with_timeouts()] [Threshold Invariant] Does with_timeouts() validate dkg_threshold >= threshold as required for security? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5d9ec27e-1801-4031-b669-3eb7a4a81431?mode=deep",
+    "timestamp": "2026-02-06 21:46:18.367437",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::message_private_key] [Key Security] Can message_private_key be zero or identity, weakening packet authentication? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c1598a79-a321-4947-ab75-9c342b8e8d37?mode=deep",
+    "timestamp": "2026-02-06 21:46:41.215108",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::public_keys] [Validation] Are public_keys validated for consistency (signer_key_ids matching key_ids) during construction? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fc0a0aac-e49b-401c-80bb-44b9646824c0?mode=deep",
+    "timestamp": "2026-02-06 21:47:04.929441",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::verify_packet_sigs] [Default Insecure] Does verify_packet_sigs default to false in some paths, allowing unauthenticated packets? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a056cbed-6b25-49c7-9b34-ad670c35a353?mode=deep",
+    "timestamp": "2026-02-06 21:47:28.713733",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config timeouts] [None Handling] If all timeout fields are None, can coordinator hang indefinitely waiting for malicious signers? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8a3e8ff4-e7ed-42ea-95e2-c108cf74ff9e?mode=deep",
+    "timestamp": "2026-02-06 21:47:54.057904",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config::dkg_threshold] [Threshold Math] Can dkg_threshold > num_keys cause DKG to never complete? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6d0b04d9-5cf2-4171-84a7-bdbc887698b3?mode=deep",
+    "timestamp": "2026-02-06 21:48:21.590507",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config] [Integer Overflow] Can num_keys * num_signers overflow u32 in downstream calculations? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2fc48b14-713e-4dda-bf95-0e092b876f07?mode=deep",
+    "timestamp": "2026-02-06 21:48:49.258140",
+    "report_generated": false
+  }
+]
