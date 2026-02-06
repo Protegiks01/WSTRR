@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Loop Early Break - Medium] Lines 731-747 break on first invalid share - does this leak information about which specific key_id failed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dbce7893-5ced-4b95-b044-bee07b0d2756?mode=deep",
+    "timestamp": "2026-02-06 19:27:03.767540",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Malicious Signer Persistence - High] Lines 775-777 mark malicious signers in persistent set - can this set grow unbounded? Is there cleanup logic?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_50b7029c-fc35-4cb3-a58c-9edf98440743?mode=deep",
+    "timestamp": "2026-02-06 19:27:16.256530",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [Threshold Sufficiency - Critical] Lines 779-788 check if reported_failures is empty but don't verify if remaining non-malicious signers meet threshold - can DKG succeed with insufficient participants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f55a6f65-2da6-40a0-a926-bf53e868e935?mode=deep",
+    "timestamp": "2026-02-06 19:27:29.353272",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_dkg_end()] [DkgFailure Unhandled Cases - Medium] Lines 617-619, 765-770 have TODO comments about marking signers malicious for Threshold and MissingShares failures - are these exploitable attack vectors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6653c1ac-eb5c-4f43-ac52-a96f1885fe17?mode=deep",
+    "timestamp": "2026-02-06 19:27:43.453107",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: dkg_end_gathered()] [Party Polynomial Caching - Critical] Lines 796-800 cache polynomials from public shares - but no validation is done here, can malicious polynomials be cached?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5963239b-0b4c-4ed3-96da-8f11622c5531?mode=deep",
+    "timestamp": "2026-02-06 19:27:57.110564",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: dkg_end_gathered()] [Aggregate Key Computation - Critical] Lines 803-807 compute aggregate key by summing poly[0] values - can this be manipulated if malicious polynomials were accepted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_52a1a1d5-737d-4dc8-a1e6-98ff60f8429e?mode=deep",
+    "timestamp": "2026-02-06 19:28:10.801375",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: dkg_end_gathered()] [Flat Map Security - High] Line 806 uses flat_map on dkg_public_shares.comms - can duplicate party_ids cause the same commitment to be summed multiple times?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_357a13f9-d200-4119-9550-0e9cc2341e13?mode=deep",
+    "timestamp": "2026-02-06 19:28:25.539941",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: dkg_end_gathered()] [Point Addition Order - Low] The fold at lines 806-807 sums points - is point addition commutative and associative? Can ordering affect the result?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fec5faa3-ae26-4fad-8dcc-3f5a13e90be6?mode=deep",
+    "timestamp": "2026-02-06 19:28:41.554380",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: dkg_end_gathered()] [Missing Validation - Critical] No check that aggregate_public_key is non-identity point - can DKG produce unusable zero key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_14e9e3ef-d74f-46ea-8ad9-eea62c79ac79?mode=deep",
+    "timestamp": "2026-02-06 19:29:00.830391",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_nonces()] [Message Nonce Clearing - High] Line 815 clears message_nonces - can this erase valid nonce data if called incorrectly or at wrong time?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a1ad36f7-ac88-4487-abdb-9628514911de?mode=deep",
+    "timestamp": "2026-02-06 19:29:19.654292",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_nonces()] [Iteration ID Wraparound - Medium] Line 816 uses wrapping_add for sign_iter_id - can wraparound after many iterations cause ID collision with old signing rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_56917453-142b-434a-81f1-dc8bb243a3fb?mode=deep",
+    "timestamp": "2026-02-06 19:29:39.571025",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_nonces()] [Message Cloning - Low] Line 826 clones message - unnecessary allocation, but could this enable side channel attacks if message contains sensitive data?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9e94b761-424f-43c2-89ec-9e8b846cea20?mode=deep",
+    "timestamp": "2026-02-06 19:30:01.310588",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_nonces()] [Message Signing Panic - High] Line 831 expects NonceRequest signing to succeed - can controlled failure panic the coordinator?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b2ce7baf-b1ff-439f-b060-9c85558347bf?mode=deep",
+    "timestamp": "2026-02-06 19:30:23.405053",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: request_nonces()] [Nonce Request Broadcast - Medium] No restriction on message size at line 826 - can attacker trigger nonce request with huge message causing network DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c9ff1721-028d-495b-b4f8-a0bebfd1d7b9?mode=deep",
+    "timestamp": "2026-02-06 19:30:46.463010",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [ID Validation - High] Lines 847-860 validate dkg_id, sign_id, sign_iter_id - but are these checks sufficient to prevent replay attacks across different rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ae1eeb84-294c-4cab-9b07-b97727d89bd1?mode=deep",
+    "timestamp": "2026-02-06 19:31:09.359838",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Key ID Set Validation - Critical] Lines 871-889 check that nonce_response key_ids match config - but uses HashSet comparison, can ordering or duplicates within key_ids bypass this check?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_15c2aea8-6cd8-43b5-bc4a-ae8d7bcc9aee?mode=deep",
+    "timestamp": "2026-02-06 19:31:33.396959",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Nonce Validation - Critical] Lines 891-901 validate nonces with is_valid() - what does this check? Can invalid nonces be detected before they corrupt the protocol?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a1ba101d-163b-42d6-856e-a2448a73e3cf?mode=deep",
+    "timestamp": "2026-02-06 19:31:56.884318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Malicious Signer Bypass - Medium] Lines 903-915 check malicious_signer_ids and return Ok(()) - but nonce is not recorded, can this cause inconsistent state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0be7cc9f-9347-4fe3-821c-4d98d41cea4c?mode=deep",
+    "timestamp": "2026-02-06 19:32:23.089288",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Message Entry Creation - High] Lines 917-920 use entry().or_default() - can attacker create entries for arbitrary messages, exhausting memory?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cbeafd82-5d3c-4772-a324-d0b49cdb3c3e?mode=deep",
+    "timestamp": "2026-02-06 19:32:49.033932",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Duplicate Nonce Handling - Low] Lines 922-929 detect duplicate nonces - but should this be an error rather than just logged?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4fc1f289-0a10-4895-a738-f790b88e50af?mode=deep",
+    "timestamp": "2026-02-06 19:33:16.885755",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Key ID Recording - Critical] Lines 936-938 record key_ids from signer_key_ids (config), not from nonce_response.key_ids - can mismatch cause incorrect threshold calculation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_604e8f2d-dbc1-4385-880a-0ffc5261985c?mode=deep",
+    "timestamp": "2026-02-06 19:33:46.452832",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Threshold Check - Critical] Line 952 checks if nonce_recv_key_ids.len() >= threshold - but this counts key IDs not signer IDs, correct for weighted threshold?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_758131bb-da34-432b-a668-220d08ebfa8e?mode=deep",
+    "timestamp": "2026-02-06 19:34:17.189917",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Message Overwrite - High] Line 954 overwrites self.message with nonce_response.message - can attacker with threshold control force signing of malicious message?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_296d9bb1-0f9e-44b3-816e-ae90cd2d7a10?mode=deep",
+    "timestamp": "2026-02-06 19:34:48.359540",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [Aggregate Nonce Computation - High] Line 955 computes aggregate nonce without validation - can invalid nonces corrupt the aggregate?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a16c44c4-69bd-48a1-950b-23b1d1b57c06?mode=deep",
+    "timestamp": "2026-02-06 19:35:19.605350",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: gather_nonces()] [State Transition Threshold - Critical] Lines 952-959 transition to SigShareRequest when threshold met - but doesn't verify all required nonces are present, can this cause partial signature?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dd492f8b-e544-4509-ae87-2cd45a4cef68?mode=deep",
+    "timestamp": "2026-02-06 19:35:52.123117",
+    "report_generated": false
+  }
+]
