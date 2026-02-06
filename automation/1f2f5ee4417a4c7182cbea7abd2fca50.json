@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Low - RNG Blocking] If the RNG blocks or is slow, could ID::new() cause DoS by blocking critical protocol paths?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2a31499e-3b78-4e4f-bfdc-0446513c8610?mode=deep",
+    "timestamp": "2026-02-06 19:11:37.896352",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Low - Memory Usage] Could an attacker cause memory exhaustion by creating or sending large numbers of ID structs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ce141a50-56db-4fd5-bfe9-e81f4104be47?mode=deep",
+    "timestamp": "2026-02-06 19:11:50.460319",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Reference Lifetimes] Are the reference parameters (&Scalar, &[u8]) correctly bounded, and could lifetime issues cause use-after-free?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_842376e8-d1c6-4194-a56b-c8bb82b704c1?mode=deep",
+    "timestamp": "2026-02-06 19:12:03.436299",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Borrow Checking] Do the borrow checker rules prevent simultaneous mutation and verification of ID fields, or could TOCTOU bugs exist?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b9f5038b-34b1-4bfa-8d19-aa53906a46a2?mode=deep",
+    "timestamp": "2026-02-06 19:12:17.882187",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - PartialEq Implementation] Does the derived PartialEq compare all fields correctly, and could semantic equality differ from structural equality?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5636b55d-ea01-4206-bb64-3d97f56a360d?mode=deep",
+    "timestamp": "2026-02-06 19:12:32.434412",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Low - Clone Safety] Is the derived Clone implementation safe for cryptographic material, or could clone operations leave secrets in memory?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_94cbd394-9f01-4b19-94eb-9d60408d4cbf?mode=deep",
+    "timestamp": "2026-02-06 19:12:48.661330",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Low - Debug Output] Does the Debug implementation leak sensitive information (kca values) that should not be logged?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b8e41a41-77cf-4628-a98f-63bcee418ada?mode=deep",
+    "timestamp": "2026-02-06 19:13:05.263574",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Critical - Proof Construction] Is the Schnorr proof construction kca = k + c*a mathematically sound, and does it correctly prove knowledge of a?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e8f1375f-da57-4eb7-aad1-7fca3425788b?mode=deep",
+    "timestamp": "2026-02-06 19:13:23.007318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Critical - Verification Soundness] Does the verification equation kca*G = kG + c*A correctly verify the proof, and are there any edge cases where it accepts invalid proofs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7b936ece-bcc3-48d6-8a65-e2e16ffd3061?mode=deep",
+    "timestamp": "2026-02-06 19:13:42.013385",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::challenge()] [High - Challenge Binding] Does binding id, K, A, and ctx in the challenge prevent any known Schnorr signature vulnerabilities (parallel attack, related key attacks)?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7aac8622-5a40-42c4-bb64-1162f07119fb?mode=deep",
+    "timestamp": "2026-02-06 19:14:02.355318",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Medium - Commitment Binding] Does the proof bind both the ID and the polynomial constant A, preventing an attacker from reusing proofs for different IDs or constants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_aaab5d80-0db4-4977-8b48-8aac73d22f41?mode=deep",
+    "timestamp": "2026-02-06 19:14:22.633464",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Group Order] Are all operations performed modulo the group order, and could wraparound or reduction issues cause verification failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3cd0bb70-9b52-412c-a6db-eadcd13fc867?mode=deep",
+    "timestamp": "2026-02-06 19:14:44.204597",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::challenge()] [High - Domain Tag Collision] Could the domain separation tag 'WSTS/polynomial-constant' collide with other WSTS protocol tags or external protocol tags?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6dcd28e3-26ca-42e5-8568-7956da00f5fb?mode=deep",
+    "timestamp": "2026-02-06 19:15:06.991818",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Cross-Context Attacks] If multiple WSTS instances run in parallel with different ctx values, can an attacker replay proofs between instances?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_beac6652-d0ca-4a81-8a0b-9b8868bdd128?mode=deep",
+    "timestamp": "2026-02-06 19:15:30.682343",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Interoperability] If different implementations of WSTS generate ID proofs, are they compatible, or could implementation differences cause verification failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2fd666fb-787b-43b3-95e1-74a0b3d84f3e?mode=deep",
+    "timestamp": "2026-02-06 19:15:55.665337",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::challenge()] [Medium - Hash Input Ordering] Does the specific ordering of hash inputs (tag, id, K, A, ctx) prevent any known hash collision or length extension attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f30bb3e2-81b8-43f7-882c-49764a2d7b9e?mode=deep",
+    "timestamp": "2026-02-06 19:16:19.951907",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [High - Immutability] After verification succeeds, can any ID fields be modified to invalidate the proof while keeping the struct valid?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_48b7d7a6-2130-45c6-92f0-cc065a46fd87?mode=deep",
+    "timestamp": "2026-02-06 19:16:44.764364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Multiple Verification] Can verify() be called multiple times on the same ID, and does this introduce any timing or caching vulnerabilities?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3c72368e-a01c-4f55-9f94-56ddf7b78abd?mode=deep",
+    "timestamp": "2026-02-06 19:17:10.454745",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - Copy Semantics] Should ID implement Copy trait, or does non-Copy prevent certain classes of bugs with cryptographic material?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2f97182a-bde6-45d8-ba35-732f083d57a5?mode=deep",
+    "timestamp": "2026-02-06 19:17:37.690161",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Low - RNG State] Does creating multiple IDs with the same RNG mutate its state correctly, preventing nonce reuse across proofs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8b8aeacf-ef2a-4893-9e22-e2d270dda933?mode=deep",
+    "timestamp": "2026-02-06 19:18:06.594613",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - ID Comparison] When comparing two ID structs for equality, should only the id field matter, or do kG and kca need to match for protocol security?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d884f395-79f9-469a-8fbc-d93c0fcc4c90?mode=deep",
+    "timestamp": "2026-02-06 19:18:35.775361",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - Proof Malleability] Can different (kG, kca) pairs satisfy verification for the same (id, A) combination, creating proof malleability issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e811f26e-4f9c-4ae4-80db-05d60c46bc0b?mode=deep",
+    "timestamp": "2026-02-06 19:19:05.319076",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Low - Constant-Time Comparison] Is the final verification equation comparison done in constant time to prevent timing attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ab4cb171-5dac-4f2b-b0ef-40a58907e0a1?mode=deep",
+    "timestamp": "2026-02-06 19:19:36.067905",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - ID Range Validation] Are there constraints on valid id scalar values, and could specific id values (0, 1, curve_order-1) cause issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_16d5f829-2039-4277-a59a-a54104a4596e?mode=deep",
+    "timestamp": "2026-02-06 19:20:07.894422",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Secret Validation] Should the secret polynomial constant a be validated (non-zero, in range) before creating a proof?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_57021cf6-860d-4b48-9901-61280b62f781?mode=deep",
+    "timestamp": "2026-02-06 19:20:40.959624",
+    "report_generated": false
+  }
+]
