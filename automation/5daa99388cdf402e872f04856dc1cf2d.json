@@ -1,0 +1,56 @@
+[
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: Signer] [High] Can the Signer struct at line 197 be cloned with PartialEq, allowing comparison of sensitive fields like network_private_key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_57255a00-3ba2-443b-b9f9-89bd3e1ac975?mode=deep",
+    "timestamp": "2026-02-06 21:24:52.101181",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: Signer] [Medium] Does the Debug implementation at lines 254-275 exclude sensitive fields like kex_private_key and network_private_key from output?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ed3aed36-6736-473e-a49d-af3872f3a99a?mode=deep",
+    "timestamp": "2026-02-06 21:25:04.724602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: Signer] [High] Can commitments at line 220 be modified after validation, allowing insertion of invalid polynomial commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2acfe752-2084-4b00-a32d-3d8e288c8c1f?mode=deep",
+    "timestamp": "2026-02-06 21:25:18.023722",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: Signer] [High] Does public_nonces at line 231 store nonces that could be reused if the signer is reset and re-initialized with the same state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3693115f-88b5-4c8f-ad16-0902fe840aac?mode=deep",
+    "timestamp": "2026-02-06 21:25:31.391411",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Struct: Signer] [Critical] Can verify_packet_sigs at line 245 be toggled to false at runtime, disabling all packet signature checks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7ccdd7b6-f230-41fe-9d02-8d768d3ce9cb?mode=deep",
+    "timestamp": "2026-02-06 21:25:45.392341",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_ended()] [High] Can the TryFromIntError conversion at line 517 for threshold cause panics on 32-bit systems if threshold is stored as u64?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e513a7c3-7750-4fe4-bd6c-d0af8fe356ba?mode=deep",
+    "timestamp": "2026-02-06 21:26:00.701764",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: dkg_ended()] [Medium] Does the try_into() at line 538 for key_ids.len() handle the case where len > u32::MAX, preventing overflow?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1a189ce0-55e6-461b-b920-32d4d4ac9ac9?mode=deep",
+    "timestamp": "2026-02-06 21:26:17.143674",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: public_shares_done()] [High] Can get_num_parties() at line 681 return a value that causes integer overflow when compared with commitments.len()?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0fbe2198-0730-42d6-837d-0c2a27489767?mode=deep",
+    "timestamp": "2026-02-06 21:26:35.431638",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Medium] Does the validation at line 292 prevent the case where total_signers == 0, which would make all signer_id values invalid?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_562d24d5-9537-441b-9ed4-3d4dda8bdfec?mode=deep",
+    "timestamp": "2026-02-06 21:26:55.135090",
+    "report_generated": false
+  }
+]
