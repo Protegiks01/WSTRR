@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Round ID Wrapping] When dkg_id or sign_id wraps from u64::MAX to 0, does this break protocol? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d0e39b12-1d3f-4e9b-a0d9-b23a6585dc89?mode=deep",
+    "timestamp": "2026-02-06 21:39:54.046027",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Concurrent Coordinators] Can multiple coordinators with same config interfere with each other? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_71de33c2-96e5-4914-99be-e47b231c90e3?mode=deep",
+    "timestamp": "2026-02-06 21:40:06.662223",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Message Ordering] Does coordinator assume any ordering of messages within a round? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3d92a9a5-eede-474a-bf7a-47edd6f4b41b?mode=deep",
+    "timestamp": "2026-02-06 21:40:19.728333",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Partial Results] Can process() return partial OperationResult that should be rejected? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d2323ae3-8f9f-4d0c-a5f1-f804f4052bab?mode=deep",
+    "timestamp": "2026-02-06 21:40:34.283101",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config] [Default Constructor] Should Config have a default() implementation, and is current Default safe? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4772a1c3-ac57-4ae2-afb8-8b1324552793?mode=deep",
+    "timestamp": "2026-02-06 21:40:48.378626",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Config] [Mutable Config] Can config be modified after coordinator construction, breaking invariants? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_41c4f6f5-c659-4555-a789-7b3cd9853bde?mode=deep",
+    "timestamp": "2026-02-06 21:41:03.749413",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [SavedState] [Snapshot Consistency] When saving state mid-round, can restoration lead to protocol failure? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e723473b-b3ad-4017-92f5-32dba17a18bd?mode=deep",
+    "timestamp": "2026-02-06 21:41:20.247312",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [SavedState] [Version Compatibility] Is SavedState forward/backward compatible with different code versions? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d8567b2b-cf5f-434b-9bf0-c2c7fda3ea70?mode=deep",
+    "timestamp": "2026-02-06 21:41:38.571323",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [DKG Begin ID] In start_public_shares(), is DkgBegin packet signed correctly to prevent tampering? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3c58a845-f069-406f-90f9-d47dd179e330?mode=deep",
+    "timestamp": "2026-02-06 21:41:58.817306",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Private Begin Keys] In start_private_shares(), are key_ids and signer_ids correctly populated for fire coordinator? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b091937d-560f-4a19-8e05-1e5f876c19db?mode=deep",
+    "timestamp": "2026-02-06 21:42:19.671659",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [DKG End Keys] In start_dkg_end(), do key_ids need to be in specific range [0, num_keys) or [1, num_keys]? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7112a0d4-da12-4e6d-a426-46a7dc088c27?mode=deep",
+    "timestamp": "2026-02-06 21:42:41.684290",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Public Share Gathering] Does gather_public_shares() validate polynomial commitment lengths? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5ef15014-430f-4166-a04a-0edde620604e?mode=deep",
+    "timestamp": "2026-02-06 21:43:03.719686",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Private Share Gathering] Does gather_private_shares() handle empty shares vector correctly? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a091482d-043c-49d1-a9f9-cb5a7b1f6f44?mode=deep",
+    "timestamp": "2026-02-06 21:43:26.974828",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [DKG End Status] Does gather_dkg_end() process both Success and Failure statuses correctly? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d6605f55-ef2d-4c40-9c9f-87298d92b31b?mode=deep",
+    "timestamp": "2026-02-06 21:43:50.767835",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Polynomial Aggregation] When computing aggregate key from polynomials, is Point::default() correct identity? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6e9ddeb6-a919-4318-98ad-f3020b101976?mode=deep",
+    "timestamp": "2026-02-06 21:44:16.845600",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Nonce Request] Does request_nonces() include all necessary context in NonceRequest message? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d141a1ad-d34b-4272-856a-f6ea38378b5b?mode=deep",
+    "timestamp": "2026-02-06 21:44:43.169957",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Nonce Gathering] Does gather_nonces() validate nonce count matches key_ids count? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0ac57437-e0e1-423a-bc43-c36b3c63d289?mode=deep",
+    "timestamp": "2026-02-06 21:45:10.411209",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Nonce Key Matching] Are nonce key_ids validated to match configured signer_key_ids exactly? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1d230152-0376-461d-9a7e-bd4806dbd16f?mode=deep",
+    "timestamp": "2026-02-06 21:45:38.289087",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Sig Share Request] Does request_sig_shares() correctly collect all nonce_responses? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_505626e7-2ecc-4871-8e65-d8c56f36294a?mode=deep",
+    "timestamp": "2026-02-06 21:46:05.736373",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Sig Share Gathering] Does gather_sig_shares() validate signature_shares count matches key_ids? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ba5ee7b1-9cf6-4517-9793-7cc2bf800193?mode=deep",
+    "timestamp": "2026-02-06 21:46:34.134369",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Signature Aggregation] Is aggregator.sign() called with correct nonces, shares, and key_ids ordering? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_eb98a4c1-d4f5-4001-8481-fa9d118c75fd?mode=deep",
+    "timestamp": "2026-02-06 21:47:04.043369",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Taproot Signing] For Taproot signatures, is merkle_root passed correctly to aggregator? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_166522c3-8ae6-4272-a42c-b6297ba3a556?mode=deep",
+    "timestamp": "2026-02-06 21:47:33.859211",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Schnorr Signing] For Schnorr signatures, is different from Frost signing in critical ways? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2557ce68-901a-4452-8079-ebac77be5b01?mode=deep",
+    "timestamp": "2026-02-06 21:48:04.876378",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Aggregate Nonce] Does compute_aggregate_nonce() use correct binding computation? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7d683faa-37b8-4844-9036-627426ebb660?mode=deep",
+    "timestamp": "2026-02-06 21:48:37.490345",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Public Timeout] Does DkgPublicGather timeout continue if dkg_threshold met but not all signers responded? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a8b210a4-ab3d-44a2-a178-1df501fcfc26?mode=deep",
+    "timestamp": "2026-02-06 21:49:10.683548",
+    "report_generated": false
+  }
+]
