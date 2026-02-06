@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: SignError::InsufficientSigners] [Malicious ID Validation - Medium] Does the Vec<u32> of malicious signer IDs get validated for duplicates, and could duplicate IDs cause incorrect threshold calculations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_332d5851-74ca-438e-adc7-8903cc512109?mode=deep",
+    "timestamp": "2026-02-06 21:44:46.371624",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: SignError::Aggregator] [Error Wrapping - High] When AggregatorError is wrapped, does critical information about which specific signature shares failed validation get preserved for security auditing?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_228c9955-bb35-470a-a62f-c0bb602489d8?mode=deep",
+    "timestamp": "2026-02-06 21:44:59.187231",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: SignError::Coordinator] [Error Context Loss - Medium] Does wrapping CoordinatorError in SignError lose important state machine context that could help diagnose attack patterns?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4cf3d990-8a56-4f10-a235-41a035784f44?mode=deep",
+    "timestamp": "2026-02-06 21:45:12.403467",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::Dkg] [Point Validation - Critical] When DKG succeeds with a Point, is the point validated to be on the curve and not the identity element before being used as the group public key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0cddb07e-3789-4fe1-b149-767f2151446b?mode=deep",
+    "timestamp": "2026-02-06 21:45:26.516815",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::Dkg] [Clone Semantics - Medium] Since OperationResult derives Clone, can cloning a DKG result with a Point leak sensitive key material if the Point contains secret data?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b7ad150d-1f7e-43c6-85c0-2b26e6c952ae?mode=deep",
+    "timestamp": "2026-02-06 21:45:40.850549",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::Sign] [Signature Validation - Critical] Is the Signature validated immediately after construction, or could a malformed signature from aggregation be returned as success?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_14d7551a-c1b0-48d7-a35b-9c1a6ba4045e?mode=deep",
+    "timestamp": "2026-02-06 21:45:56.039384",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::SignSchnorr] [Schnorr Proof Verification - Critical] Before returning SignSchnorr success, is the SchnorrProof verified against the expected message and public key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_429e2b66-93cb-4649-a9b3-3104aaf3ed6f?mode=deep",
+    "timestamp": "2026-02-06 21:46:12.856751",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::SignSchnorr] [BIP-340 Compliance - High] Does the SchnorrProof in SignSchnorr result enforce BIP-340 even-Y parity rules, or could invalid proofs pass through?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b1029ab3-f725-43ff-8615-8088f5e0b6fa?mode=deep",
+    "timestamp": "2026-02-06 21:46:30.901822",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::SignTaproot] [Taproot Tweak Validation - Critical] For SignTaproot results, is the SchnorrProof validated against the tweaked public key, not the untweaked group key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f583fe76-f618-47f3-94c6-3ef46c2bb3aa?mode=deep",
+    "timestamp": "2026-02-06 21:46:50.014702",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::SignTaproot] [BIP-341 Compliance - High] Does SignTaproot enforce BIP-341 tweak computation and merkle root binding, or could an attacker use an incorrect tweak?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ee080ee4-b2ab-443d-a482-215ef6415b8a?mode=deep",
+    "timestamp": "2026-02-06 21:47:10.190560",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::DkgError] [Error Disclosure - Medium] When DkgError is returned in OperationResult, could the error details reveal sensitive information about participant identities or DKG secrets?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c15be753-14db-4448-bbb1-7dd3746da677?mode=deep",
+    "timestamp": "2026-02-06 21:47:31.801544",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult::SignError] [Timing Attack - Low] Could measuring the time difference between SignError variants reveal information about which signers are offline vs malicious?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_77d26a44-3cf7-479e-a885-41826825db45?mode=deep",
+    "timestamp": "2026-02-06 21:47:53.826413",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Enum: OperationResult] [Result Type Confusion - Medium] Can an implementation mistakenly interpret a DkgError as success, or vice versa, due to the flat enum structure without Result wrapper?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a8d617fd-b46e-4c25-afbf-6650509d1c23?mode=deep",
+    "timestamp": "2026-02-06 21:48:16.894602",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys::signers] [HashMap Collision - Medium] Does the HashMap<u32, ecdsa::PublicKey> use a cryptographically secure hasher, or could an attacker craft signer IDs to cause hash collisions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f64a6213-676f-4752-9a29-73f1a24d1436?mode=deep",
+    "timestamp": "2026-02-06 21:48:40.486353",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys::key_ids] [Key ID Collision - High] Can duplicate key_ids in the HashMap cause a single malicious key to be used in place of multiple expected keys, bypassing threshold?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4aa425f0-3d51-43ac-9664-77d2be67eb09?mode=deep",
+    "timestamp": "2026-02-06 21:49:06.066417",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys::signer_key_ids] [Mapping Integrity - Critical] Can the signer_key_ids mapping be manipulated so a signer claims to control key_ids they don't actually have private shares for?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_92e7c385-b1c9-4db0-b7f0-c8c185ca7b79?mode=deep",
+    "timestamp": "2026-02-06 21:49:31.265486",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys::signer_key_ids] [HashSet Uniqueness - High] Does the HashSet<u32> for each signer properly enforce uniqueness, or could duplicate key_ids cause incorrect Lagrange coefficient calculations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e8e5bb32-2a1d-428b-9b41-37caec3a6d68?mode=deep",
+    "timestamp": "2026-02-06 21:49:57.436649",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys] [Default Trait - Medium] The Default trait creates empty HashMaps - can code paths using Default accidentally skip PublicKeys initialization, leading to missing key validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f1162820-6ed2-4e3f-9b47-97f57dde40f6?mode=deep",
+    "timestamp": "2026-02-06 21:50:25.173420",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys] [PartialEq Implementation - Low] Is PartialEq comparison of ecdsa::PublicKey secure against timing attacks that could leak key relationships?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9ae89212-85b5-4e79-bcb3-1b98e2166ec9?mode=deep",
+    "timestamp": "2026-02-06 21:50:54.082606",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Struct: PublicKeys] [Clone Semantics - Medium] Cloning PublicKeys copies all HashMaps - could this lead to stale key data if original is updated but clone is not?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_10d05f77-7227-4fd2-9a97-18f9428fb7d7?mode=deep",
+    "timestamp": "2026-02-06 21:51:22.928721",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Function: PublicKeys::validate()] [Signer ID Validation - High] Does validate_signer_id properly check that signer IDs are in range [0, num_signers), or could off-by-one errors allow invalid IDs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5e445fe3-c78c-4156-b989-6df744b02c54?mode=deep",
+    "timestamp": "2026-02-06 21:51:54.376183",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Function: PublicKeys::validate()] [Key ID Validation - High] Does validate_key_id ensure key IDs are in range [0, num_keys), and are there edge cases where num_keys=0 causes issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9aae5188-0699-4530-96a5-1643fe4ba938?mode=deep",
+    "timestamp": "2026-02-06 21:52:24.715180",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Function: PublicKeys::validate()] [Early Return - Medium] If signer validation fails early, does the function return before checking key_ids and signer_key_ids, potentially missing other validation errors?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_57c0aba9-4ca8-4d35-9063-f58af6fa5d5d?mode=deep",
+    "timestamp": "2026-02-06 21:52:56.825079",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Function: PublicKeys::validate()] [Completeness Check - Critical] Does validate() ensure that every key_id has a corresponding public key, and every signer controls at least one key_id?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_22bafe52-9420-4cf3-ab2f-f00c38aca2ae?mode=deep",
+    "timestamp": "2026-02-06 21:53:28.660400",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/mod.rs] [Function: PublicKeys::validate()] [Cross-Reference Validation - Critical] Does validate() check that key_ids referenced in signer_key_ids actually exist in the key_ids HashMap?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6f878aa0-d247-4d84-8060-883d223156f9?mode=deep",
+    "timestamp": "2026-02-06 21:54:04.540778",
+    "report_generated": false
+  }
+]
