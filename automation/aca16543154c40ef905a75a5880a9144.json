@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Critical] Can an attacker provide total_signers == total_keys == u32::MAX to cause integer overflow in subsequent key ID or signer ID validations, bypassing threshold checks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fd08b304-a6a0-4a1a-8084-c150e74481b5?mode=deep",
+    "timestamp": "2026-02-06 21:56:44.513974",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [High] Does the validation at line 292-294 prevent an edge case where total_signers is 1 and total_keys is u32::MAX, potentially causing arithmetic overflows in DKG operations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f0a0b730-8f35-4b3e-99c8-0e4fb6de5507?mode=deep",
+    "timestamp": "2026-02-06 21:56:57.305967",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Critical] Can the threshold validation (lines 296-298) be bypassed if threshold == total_keys == 1, allowing a single party to control the entire group key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bcff499c-f843-41df-9684-e497cb98e01c?mode=deep",
+    "timestamp": "2026-02-06 21:57:10.355628",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [High] Does the dkg_threshold check at lines 300-302 prevent the case where dkg_threshold == threshold == 1, potentially allowing premature DKG completion with insufficient participants?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f86ebc56-138e-4a08-9ac6-3012062dbdd0?mode=deep",
+    "timestamp": "2026-02-06 21:57:23.687168",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Medium] Can duplicate key_ids in the key_ids vector bypass the validation loop at lines 308-312, allowing a signer to claim multiple shares of the same key ID?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3359ccae-e9d6-4f22-a5dc-18d4549db41d?mode=deep",
+    "timestamp": "2026-02-06 21:57:37.648244",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [High] Does public_keys.validate() at line 314 properly verify that the sum of all key_ids across all signers equals total_keys, or could a malicious coordinator provide inconsistent mappings?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f102a8b6-388f-49c9-8fcd-80a050fff1ff?mode=deep",
+    "timestamp": "2026-02-06 21:57:53.552410",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Critical] Can an attacker exploit the SignerType::new() call at lines 316-323 by providing key_ids that don't match the public_keys configuration, causing inconsistent party state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0a88eeef-e7fa-4316-928f-7765b932705f?mode=deep",
+    "timestamp": "2026-02-06 21:58:10.024785",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Medium] Is the kex_private_key generated at line 349 using a cryptographically secure RNG, or could weak randomness lead to predictable Diffie-Hellman shared secrets?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_af2d97a9-7a97-41be-958c-06b832c45bd2?mode=deep",
+    "timestamp": "2026-02-06 21:58:28.665460",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [Low] Does the initialization of sign_id to 1 and sign_iter_id to 1 at lines 327-328 prevent replay attacks when combined with dkg_id starting at 0?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1886501d-a8aa-4845-b69c-a0a9de14ebe2?mode=deep",
+    "timestamp": "2026-02-06 21:58:47.032955",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: new()] [High] Can verify_packet_sigs being set to true by default (line 347) be bypassed through some state manipulation, disabling packet signature verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_397282dc-65da-4d64-a1b8-5ad162eb5ba7?mode=deep",
+    "timestamp": "2026-02-06 21:59:07.063521",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: load()] [Critical] Does the load() function at lines 355-383 validate that the loaded state's dkg_id, sign_id, and sign_iter_id are not from a replayed or stale state?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_29db2e34-1b19-4a04-bc16-36135b89d333?mode=deep",
+    "timestamp": "2026-02-06 21:59:28.335124",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: load()] [High] Can an attacker craft a SavedState with inconsistent commitments and decrypted_shares maps to cause compute_secrets() to accept invalid shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0d3cf588-4d0d-42d5-b17b-fc500e381076?mode=deep",
+    "timestamp": "2026-02-06 21:59:50.281790",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: load()] [Medium] Does loading a state with public_nonces from a previous signing round allow nonce reuse across different messages?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_14f42f85-e2c5-40cb-af0e-ebf2826d926e?mode=deep",
+    "timestamp": "2026-02-06 22:00:13.149250",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: load()] [High] Can the kex_private_key and kex_public_keys loaded from SavedState be manipulated to break Diffie-Hellman security in subsequent DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_59325149-a7c1-4d30-95ea-251aae3ac2bc?mode=deep",
+    "timestamp": "2026-02-06 22:00:37.282245",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: save()] [Medium] Does the save() function at lines 386-414 ensure that sensitive fields like network_private_key and kex_private_key are properly protected in the SavedState?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fb5719db-aaf0-4004-a575-bc0842d3bccc?mode=deep",
+    "timestamp": "2026-02-06 22:01:02.828987",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: reset()] [Critical] Does reset() at line 417 properly clear all cached nonces, preventing nonce reuse if a signer is reset mid-signing-round and then asked to sign the same message?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b48be3f1-7eba-4e5d-b8af-02a40b2d033d?mode=deep",
+    "timestamp": "2026-02-06 22:01:28.538238",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: reset()] [High] Can an attacker trigger reset() with the same dkg_id to cause state confusion, accepting shares from both the old and new DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_624d7cf7-884d-4381-9ce0-9b04f3df5cdc?mode=deep",
+    "timestamp": "2026-02-06 22:01:55.293286",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: reset()] [High] Does reset() at lines 419-431 clear invalid_private_shares, allowing previously detected malicious signers to participate in the next DKG round?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9c39acdf-0c53-4bfd-be19-a7d00334d732?mode=deep",
+    "timestamp": "2026-02-06 22:02:22.582598",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: reset()] [Medium] Is the new kex_private_key generated at line 429 using sufficient entropy, or could repeated resets with weak RNG lead to predictable keys?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c41e3bd5-0985-44c7-bdb8-56d1fafca3fe?mode=deep",
+    "timestamp": "2026-02-06 22:02:50.856309",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: reset()] [Medium] Does clearing commitments and decryption_keys at lines 419-421 without validation allow acceptance of new shares that don't match the new polynomial commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4ed7690e-0114-4c71-b8bc-38a9316f974d?mode=deep",
+    "timestamp": "2026-02-06 22:03:20.229322",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: process()] [Critical] Can the packet signature verification at lines 463-469 be bypassed if coordinator_public_key is None and verify_packet_sigs is true, causing a missing check error?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9f5ff52c-3a9f-4303-b56c-4273c944c735?mode=deep",
+    "timestamp": "2026-02-06 22:03:50.441788",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: process()] [High] Does process() validate that incoming messages have matching dkg_id before processing, or can an attacker send messages from different DKG rounds to cause state confusion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5fc4371f-2172-4109-b23a-b2a448bb6d72?mode=deep",
+    "timestamp": "2026-02-06 22:04:21.687249",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: process()] [Critical] Can the match statement at lines 471-488 allow processing of DkgEnd, NonceResponse, or SignatureShareResponse messages that should only be sent by signers, not received by them?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dbe3bbad-8fba-4e09-8403-70f71f1fe205?mode=deep",
+    "timestamp": "2026-02-06 22:04:55.028914",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: process()] [High] Does the can_dkg_end() check at line 492 prevent race conditions where multiple threads call dkg_ended() simultaneously, producing duplicate DkgEnd messages?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6a0a9d75-acdd-4cc0-8b27-456a2f865cc0?mode=deep",
+    "timestamp": "2026-02-06 22:05:28.740435",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/signer/mod.rs] [Function: process()] [Medium] Can an attacker send a flood of valid but unnecessary messages to trigger expensive verification operations in process(), causing DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6addcac9-a59a-4d0f-9739-abd22beac78c?mode=deep",
+    "timestamp": "2026-02-06 22:06:02.286335",
+    "report_generated": false
+  }
+]
