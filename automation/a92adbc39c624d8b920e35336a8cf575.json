@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_poly_commitment()] [Commitment Length] The poly vector length should equal threshold - if it doesn't match, could this cause aggregation to fail or produce wrong group key? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a39f5c94-8882-4e64-ae46-c7a078d20a2c?mode=deep",
+    "timestamp": "2026-02-06 21:55:17.977338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_poly_commitment()] [Constant Term] The constant term poly.data()[0] is used for ID proof - if this is zero, does it create any security issues? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0622085b-5ea3-4097-bb73-3010b81dcb4a?mode=deep",
+    "timestamp": "2026-02-06 21:55:30.588252",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_poly_commitment()] [ID Uniqueness] Multiple parties with the same ID but different polynomials would produce different ID proofs - is this checked during DKG? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c88536c5-afa4-400a-b7da-15db11f9debd?mode=deep",
+    "timestamp": "2026-02-06 21:55:43.706638",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::reset_poly()] [Nonce Invalidation] When the polynomial is reset, should the nonce also be cleared since it was tied to the old polynomial? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f05cdf9d-25f3-4cd0-85f0-b3a8bd5c05c0?mode=deep",
+    "timestamp": "2026-02-06 21:55:57.999589",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_shares()] [Polynomial Evaluation] Does poly.eval() handle the scalar input correctly for all key IDs, or could specific IDs cause evaluation errors? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b1ce5801-f329-4284-a00a-117b975200f1?mode=deep",
+    "timestamp": "2026-02-06 21:56:12.166991",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_poly_commitment()] [RNG in Commitment] The Schnorr ID proof generation uses rng - if this RNG is not cryptographically secure, can the proof be forged or replayed? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b2ac4fa0-f5a2-42a1-9818-8ea510e2e616?mode=deep",
+    "timestamp": "2026-02-06 21:56:28.768634",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_shares()] [Share Overwrite] If get_shares() is called multiple times, are fresh shares computed each time, or could cached shares be reused inappropriately? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_814b9b4b-c394-49f9-b304-e0ff3318cec7?mode=deep",
+    "timestamp": "2026-02-06 21:56:45.781530",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_poly_commitment()] [Map Collection] The commitment is created by mapping over poly coefficients - if map() produces duplicates or wrong ordering, will this be detected? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e44f13ab-3b70-4956-9869-9fb88a7829b4?mode=deep",
+    "timestamp": "2026-02-06 21:57:04.759876",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::clear_poly()] [Partial State] After clear_poly(), the party retains private_key and group_key but has no polynomial - is this a valid state for any operations? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b5d62a97-1579-494b-9728-226556282e9e?mode=deep",
+    "timestamp": "2026-02-06 21:57:25.762596",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::get_shares()] [Scalar Zero] If a computed share evaluates to Scalar::zero(), is this a security issue or just an extremely unlikely event that should be rejected? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9d5e2c74-a9df-46b0-b430-c1e90cf7030f?mode=deep",
+    "timestamp": "2026-02-06 21:57:46.132663",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Share Validation Order] Public shares are checked before private shares - could an attacker exploit this ordering to cause honest parties to accept bad private shares from good public commitments? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3deed1ca-19e8-46ea-a955-c77a12ad5f15?mode=deep",
+    "timestamp": "2026-02-06 21:58:07.934829",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Bad Public Shares] If check_public_shares() fails, the party is added to bad_ids but group_key doesn't include that party's poly[0] - could partial group key computation lead to inconsistent keys? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_089c7bc7-fab6-479f-9403-414c15c220e6?mode=deep",
+    "timestamp": "2026-02-06 21:58:31.178679",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Threshold Conversion] threshold is converted to usize with try_into() - what happens if threshold > usize::MAX on 32-bit systems? (Low)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b72c7d42-ace9-4c5b-ae8f-dc536cb824ac?mode=deep",
+    "timestamp": "2026-02-06 21:58:55.875823",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Missing Shares Error] If private shares are missing, the error lists (self.id, missing_party_id) - but does this check happen before or after bad public shares are detected? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_394d5b18-b7a6-458c-a879-654b50acf901?mode=deep",
+    "timestamp": "2026-02-06 21:59:20.881325",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Share Verification Bypass] The comment mentions batch verification bypass attacks requiring random scalars - is the current per-share verification secure, or is it vulnerable? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b1bc7b8d-e7c7-4acc-b371-80b677e4c969?mode=deep",
+    "timestamp": "2026-02-06 21:59:46.342142",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Private Share Check] Each private share s is checked against poly with s*G == compute::poly() - if compute::poly() has a bug, could bad shares be accepted? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5da366ba-c743-4fae-a7c7-7dfe11744157?mode=deep",
+    "timestamp": "2026-02-06 22:00:13.111024",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Bad Share Handling] If a private share fails verification, it's added to bad_shares but processing continues - could this allow partial secret computation with some bad shares? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_da6f7980-424d-462d-9d91-1f4086077d33?mode=deep",
+    "timestamp": "2026-02-06 22:00:41.302976",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Group Key Aggregation] group_key is computed as sum of all valid poly[0] values - if a single party is excluded due to bad shares, will all parties compute the same group key? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d2ac6964-da19-4859-8287-6a24fa06f55b?mode=deep",
+    "timestamp": "2026-02-06 22:01:09.172249",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Private Key Summation] private_key is the sum of all private share values - if any share is from a malicious party with a malformed polynomial, can this compromise the key? (Critical)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_37973a1a-204c-4d79-a623-e65eb2fc8f11?mode=deep",
+    "timestamp": "2026-02-06 22:01:38.284113",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Public Key Computation] public_key is computed as private_key * G after summation - is there any verification that this matches the expected value from commitments? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a7db9830-dc89-4e7b-91d0-8f0395300ebb?mode=deep",
+    "timestamp": "2026-02-06 22:02:06.765657",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Zero Reset] The function starts by setting private_key and group_key to zero - could calling compute_secret() multiple times overwrite valid keys with invalid ones? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_20739d23-889c-4ead-ba40-0fdb98daa05a?mode=deep",
+    "timestamp": "2026-02-06 22:02:37.841939",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Context Validation] The ctx parameter is passed to check_public_shares() - if different parties use different contexts, will they detect inconsistency? (High)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_477d1526-9842-4a3e-aba4-789ae0cb326c?mode=deep",
+    "timestamp": "2026-02-06 22:03:10.062902",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Error Early Return] If bad public shares are found, the function returns early - but group_key has already been partially computed. Could this leave inconsistent state? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ab276b6-38af-473c-8d36-964a1fbe3dd3?mode=deep",
+    "timestamp": "2026-02-06 22:03:43.384031",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Share Correspondence] The function checks that each public_shares key has a corresponding private_shares entry - but what if private_shares contains extra entries not in public_shares? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3899fec1-296c-4eb9-b031-b63fc9449be9?mode=deep",
+    "timestamp": "2026-02-06 22:04:17.499888",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/v1.rs] [Function: Party::compute_secret()] [Warn on Missing Share] Line 197 has a warn!() if a share can't be checked - but this should have been caught earlier. Could this indicate a race condition or logic bug? (Medium)",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1a089b0c-1187-4af3-9bb4-43cd265f15b6?mode=deep",
+    "timestamp": "2026-02-06 22:04:52.729575",
+    "report_generated": false
+  }
+]
