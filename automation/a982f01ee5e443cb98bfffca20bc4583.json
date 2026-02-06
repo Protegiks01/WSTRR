@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/common.rs] [Function: PublicNonce::is_valid()] [Critical - Identity Point Attack] The validation checks D != identity and E != identity, but are there subgroup or low-order point attacks where D or E have small order but are not the identity?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c52c3e41-c656-46ae-b478-0c40cda14b14?mode=deep",
+    "timestamp": "2026-02-06 21:56:26.309096",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PublicNonce::is_valid()] [Critical - Generator Point Attack] The validation rejects D == G and E == G, but can an attacker use scalar multiples of G (like 2*G, -G) that pass validation but enable nonce prediction?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5138c7c8-26dc-4f72-be12-2966bafaf86b?mode=deep",
+    "timestamp": "2026-02-06 21:56:38.873021",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: From<Nonce> for PublicNonce] [High - Point Validation] Does the conversion from Nonce to PublicNonce validate that the resulting points D and E are on the curve and in the correct subgroup?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_11476326-f6ea-4936-82a0-febc2478073d?mode=deep",
+    "timestamp": "2026-02-06 21:56:51.768792",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PublicNonce::is_valid()] [High - Weak Nonce Detection] Can an attacker submit a PublicNonce where D or E are derived from predictable or low-entropy private nonces, and would is_valid() detect this?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2d662d32-5534-4242-9708-f735b74fa579?mode=deep",
+    "timestamp": "2026-02-06 21:57:05.660008",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: Add for PublicNonce] [Critical - Addition Bug] The Add implementation adds 'D + other.E' and 'E + other.E' - is this a typo that should be 'D + other.D' and 'E + other.E', creating a critical signature aggregation vulnerability?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4a00d3f5-6252-4f68-bb3c-f6b63a8ba880?mode=deep",
+    "timestamp": "2026-02-06 21:57:19.772551",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: Add for PublicNonce] [Critical - Nonce Aggregation Attack] Due to the Add implementation bug, can an attacker exploit the incorrect addition to forge aggregate nonces that verify against manipulated signatures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_25441de4-07da-4971-a6aa-d33a97d56fa8?mode=deep",
+    "timestamp": "2026-02-06 21:57:35.657702",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PublicNonce::is_valid()] [Medium - Validation Completeness] Does is_valid() check for all possible invalid points (infinity, low-order points, off-curve points), or can some invalid PublicNonces pass validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_06674fbe-452c-45dc-81e5-a2ddd4e25ca2?mode=deep",
+    "timestamp": "2026-02-06 21:57:52.147395",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Trait: Zero for PublicNonce] [High - Zero Nonce Bypass] Can calling PublicNonce::zero() create an invalid nonce that passes some code paths if is_valid() is not consistently called?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_50215e7d-12cd-4161-9749-23ac1cc616cd?mode=deep",
+    "timestamp": "2026-02-06 21:58:10.484803",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: PublicNonce] [Medium - Serialization] Can a malicious PublicNonce be deserialized with invalid D or E points if the deserializer doesn't validate curve membership?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8928056f-8132-4059-858e-876d92a7ef23?mode=deep",
+    "timestamp": "2026-02-06 21:58:30.643667",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: PublicNonce::is_valid()] [High - Nonce Reuse Detection] Does the system track previously seen PublicNonces to prevent nonce reuse across signing rounds, or is this only checked at a higher layer?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_86264d53-015d-4265-970e-13a928dc06f1?mode=deep",
+    "timestamp": "2026-02-06 21:58:50.372910",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [High - ID Validation] Is the SignatureShare.id validated to be within the valid signer ID range before processing, or can out-of-range IDs cause array access violations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5073cd2c-2c03-46f5-9980-b4c7c61cff02?mode=deep",
+    "timestamp": "2026-02-06 21:59:11.456783",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [Critical - Key ID Validation] Are all key_ids in the SignatureShare validated to be in range (1 to num_keys) and non-duplicate before use in Lagrange interpolation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f6a3eb68-db53-44b4-b416-771b289cd73f?mode=deep",
+    "timestamp": "2026-02-06 21:59:33.815674",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [Critical - Signature Scalar Validation] Is the z_i scalar validated to be non-zero and in the correct range, or can zero/invalid signatures be aggregated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_edb9ad5e-74fe-4dfe-a5d5-d1b185311ccf?mode=deep",
+    "timestamp": "2026-02-06 21:59:56.572099",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [High - Empty Key IDs] Can a SignatureShare have an empty key_ids vector, and if so, would this cause panics or incorrect aggregation logic?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e99fb8b4-ebaf-40b5-8bd7-9fa8195fe886?mode=deep",
+    "timestamp": "2026-02-06 22:00:21.753979",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [Critical - Key ID Duplication] If key_ids contains duplicate values, will Lagrange interpolation produce incorrect results, enabling signature forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_621a9846-4ae9-4145-8c4c-21b7f23d9759?mode=deep",
+    "timestamp": "2026-02-06 22:00:46.454480",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [High - Key ID Ordering] Does the system assume key_ids are sorted, and if a malicious party provides unsorted IDs, could this break interpolation or validation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0cbebd2a-a08c-4508-94f4-65d12ce0786d?mode=deep",
+    "timestamp": "2026-02-06 22:01:12.570920",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [Medium - DoS via Large Key IDs] Can an attacker submit a SignatureShare with thousands of key_ids, causing memory exhaustion or extremely slow aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4af56077-538f-492c-9d83-9732ff04e176?mode=deep",
+    "timestamp": "2026-02-06 22:01:39.485110",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [High - Signer ID Mismatch] Can an attacker submit a SignatureShare with id that doesn't match the party that generated the key_ids, impersonating another signer?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6be383b4-7569-4e19-b731-bc1eb754ca0f?mode=deep",
+    "timestamp": "2026-02-06 22:02:07.280409",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [Critical - Zero Signature] If z_i is zero or the identity element, can this be used to cancel out honest signatures during aggregation, causing threshold bypass?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6ca1987b-5db0-401d-a533-a99ef2487164?mode=deep",
+    "timestamp": "2026-02-06 22:02:35.304401",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: SignatureShare] [Medium - Deserialization] Can deserialized SignatureShares bypass validation if the deserializer doesn't check scalar validity or key_ids ranges?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_85efb4ab-2879-402a-95e1-8b7b2e0caf51?mode=deep",
+    "timestamp": "2026-02-06 22:03:05.246784",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Critical - Challenge Computation] Does the challenge() function properly domain-separate the hash input to prevent cross-protocol attacks where signatures from different contexts verify?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dfbcfe21-6a40-4639-9433-83b7652c75b5?mode=deep",
+    "timestamp": "2026-02-06 22:03:35.174339",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Critical - Point Validation] Is the R point validated to be on the curve and in the prime-order subgroup before verification, preventing invalid curve attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ea94bb95-5247-42f9-8809-b9fbff34cc9b?mode=deep",
+    "timestamp": "2026-02-06 22:04:06.051985",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Critical - Scalar Validation] Is the z scalar validated to be in the correct range [0, q) where q is the curve order, or can out-of-range scalars create malleability?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4b38a5d3-e928-4c17-84b8-6b26d64e96c1?mode=deep",
+    "timestamp": "2026-02-06 22:04:37.177496",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [High - Public Key Validation] Is the public_key parameter validated before use, or can an invalid/low-order public key be passed to enable rogue key attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ffd2b1c9-95fa-402b-a10b-9664bfd00044?mode=deep",
+    "timestamp": "2026-02-06 22:05:10.467743",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Critical - Message Binding] If msg is empty or contains special values, could this enable signature malleability or collision attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_902d1b18-234f-43ae-b7e4-3b35326da00f?mode=deep",
+    "timestamp": "2026-02-06 22:05:44.804200",
+    "report_generated": false
+  }
+]
