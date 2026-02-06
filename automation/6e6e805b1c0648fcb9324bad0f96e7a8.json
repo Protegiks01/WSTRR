@@ -1,0 +1,56 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Function: reset()] [Aggregate Key Preservation - Medium] aggregate_public_key and party_polynomials are not cleared - intentional or bug?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2aed6a25-9a8a-4771-8484-93914e3dfd9e?mode=deep",
+    "timestamp": "2026-02-06 21:31:27.312853",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Clone Implementation - Medium] Coordinator derives Clone (line 31) - can cloning create aliased mutable state issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4f8acb40-636d-4aa6-9177-eb0302a759de?mode=deep",
+    "timestamp": "2026-02-06 21:31:39.887014",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [PartialEq Implementation - Low] Coordinator derives PartialEq - does comparing Instant fields make sense, can this cause unexpected equality results?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_eff702e6-9215-4536-b0c8-eb291a91a6fc?mode=deep",
+    "timestamp": "2026-02-06 21:31:52.908762",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: malicious_signer_ids - High] HashSet used for tracking (line 64) - is insertion/removal atomic? Can race conditions cause inconsistent malicious tracking?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e76a2a7b-d20a-463d-ab2f-2abf9bd8a818?mode=deep",
+    "timestamp": "2026-02-06 21:32:06.585533",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: message_nonces - High] BTreeMap keyed by Vec<u8> (line 46) - can large messages cause performance issues or hash collision attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_60c13fc7-5641-46c2-acc0-81e25fede8da?mode=deep",
+    "timestamp": "2026-02-06 21:32:20.766260",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: dkg_public_shares - Medium] BTreeMap with u32 keys (line 40) - is ordering important for security?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_48e4354c-ccb5-4f0f-b022-6662c869c846?mode=deep",
+    "timestamp": "2026-02-06 21:32:36.049256",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: current_dkg_id - High] u64 that wraps (lines 35) - after 2^64 rounds, can ID reuse cause security issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_97056bc4-1420-4460-9685-c17b3e8ed93f?mode=deep",
+    "timestamp": "2026-02-06 21:32:52.285816",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: signature - Medium] Option<Signature> (line 49) - can Some(signature) persist from previous round and be returned incorrectly?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d5f1a0f9-6a35-498e-a643-80e96064b79e?mode=deep",
+    "timestamp": "2026-02-06 21:33:10.047353",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/fire.rs] [Struct: Coordinator] [Field: schnorr_proof - Medium] Option<SchnorrProof> (line 50) - same persistence risk as signature?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0c753224-bd08-4e80-9e3c-69e4a86800ab?mode=deep",
+    "timestamp": "2026-02-06 21:33:28.760859",
+    "report_generated": false
+  }
+]
