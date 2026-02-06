@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::setup()] [Key Generation] Does setup() use cryptographically secure RNG (OsRng) for test key generation, or predictable RNG? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_948766c1-5f70-4bff-96c5-064aef0aaedf?mode=deep",
+    "timestamp": "2026-02-06 22:02:39.588211",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::setup_with_timeouts()] [Timeout Configuration] Can test timeouts be configured to zero Duration, breaking timeout logic? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_733163b2-8f96-4515-a12e-aa8931804ce7?mode=deep",
+    "timestamp": "2026-02-06 22:02:52.407797",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::feedback_messages()] [Message Mutation] Does feedback_messages allow arbitrary message mutation without detection? Low severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9b31818f-f85d-4c16-ada9-4da346c50635?mode=deep",
+    "timestamp": "2026-02-06 22:03:05.604959",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::run_dkg()] [DKG Validation] Does run_dkg() verify that aggregate_public_key matches sum of polynomial commitments? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_146e8cf0-9487-437f-8e7d-f965c91b38b0?mode=deep",
+    "timestamp": "2026-02-06 22:03:19.114343",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::run_sign()] [Signature Verification] Does run_sign() verify signatures against correct public key for all signature types? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_545affbc-c5d7-4133-ac6c-77591509786c?mode=deep",
+    "timestamp": "2026-02-06 22:03:33.548572",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::verify_packet_sigs] [Auth Testing] Does verify_packet_sigs test cover coordinator key removal during active rounds? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_25a130db-0649-4aba-975a-bb3158f65677?mode=deep",
+    "timestamp": "2026-02-06 22:03:49.863740",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::check_signature_shares()] [Bad Share Detection] Does check_signature_shares test verify that all bad parties are correctly identified? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e5110a39-a6b2-4e44-93b3-20539b55d1b3?mode=deep",
+    "timestamp": "2026-02-06 22:04:05.607154",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::gen_nonces()] [Nonce Uniqueness] Does gen_nonces test verify nonces are different even when signing same message multiple times? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7d872b93-ec76-4d56-a589-6cc5b37b65ae?mode=deep",
+    "timestamp": "2026-02-06 22:04:22.153539",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::bad_signature_share_request()] [Edge Cases] Does bad_signature_share_request test empty nonces, duplicate nonces, and out-of-range signer_ids? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8521c7b5-c8d3-4221-97e9-fa98acc7f64e?mode=deep",
+    "timestamp": "2026-02-06 22:04:40.898071",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::invalid_nonce()] [Nonce Validation] Does invalid_nonce test cover both zero points and generator point G? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5cdcac48-6235-466c-9229-2619c7dc9a27?mode=deep",
+    "timestamp": "2026-02-06 22:05:00.226827",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::empty_public_shares()] [DKG Failure] Does empty_public_shares test verify correct failure detection and malicious signer identification? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b4e6d254-7c8c-4f7a-8936-34b83b6743e0?mode=deep",
+    "timestamp": "2026-02-06 22:05:20.412386",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [test::empty_private_shares()] [Missing Shares] Does empty_private_shares test handle case where some signers send empty shares while others don't? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_766e0440-4e80-4461-a18c-c1bc9d5660c0?mode=deep",
+    "timestamp": "2026-02-06 22:05:42.220783",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [mod frost] [Implementation Divergence] Can frost and fire coordinators have different security properties for same Config? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d3382f33-20c8-4c27-a0d1-3a77d0c5e9ca?mode=deep",
+    "timestamp": "2026-02-06 22:06:05.080364",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [mod fire] [Timeout Handling] Does fire coordinator timeout logic correctly mark signers as malicious without false positives? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dbd8d3f5-4607-4922-8098-b08f33bb8dff?mode=deep",
+    "timestamp": "2026-02-06 22:06:28.326356",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [submodules] [State Machine Consistency] Do frost and fire coordinators implement state machine transitions identically? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1e348911-d174-4ea9-8dbf-898416d200d2?mode=deep",
+    "timestamp": "2026-02-06 22:06:52.702810",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [submodules] [Error Handling] Can errors from frost/fire coordinators bypass trait-level error handling? Medium severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a7049490-8993-48cb-972e-2b0a50253ccc?mode=deep",
+    "timestamp": "2026-02-06 22:07:18.468032",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [ID Validation] Do implementations validate that dkg_id/sign_id in received messages match current round IDs? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c9696402-604e-4be1-9b24-a8d7eb6662d5?mode=deep",
+    "timestamp": "2026-02-06 22:07:44.778305",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Duplicate Detection] Do implementations properly reject duplicate messages from same signer_id? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0eec8ff9-9e50-4917-94dc-804ed8bab125?mode=deep",
+    "timestamp": "2026-02-06 22:08:13.073275",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Key ID Validation] Do implementations verify received key_ids match configured signer_key_ids? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f3b5b5e2-6979-4545-85d5-674e48e6a015?mode=deep",
+    "timestamp": "2026-02-06 22:08:42.573513",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Public Key Presence] Do implementations check signer_id exists in public_keys.signers before processing? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6249f210-7de5-4f7d-a142-3a236771fd33?mode=deep",
+    "timestamp": "2026-02-06 22:09:12.724400",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Nonce Validation] Do implementations validate nonces are non-zero and not equal to generator G? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_71a49609-0ee8-4c9b-b9f5-a785130a1723?mode=deep",
+    "timestamp": "2026-02-06 22:09:44.518838",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Packet Signature] When verify_packet_sigs is true, do implementations always verify before any other processing? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_41f7637f-cbfc-4e9a-b46f-0adbfe5d7789?mode=deep",
+    "timestamp": "2026-02-06 22:10:17.487537",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Coordinator Key] Is coordinator_public_key required to be set when verify_packet_sigs is enabled? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4ba0c8c7-8ccb-426e-b3ba-f75dd97f2005?mode=deep",
+    "timestamp": "2026-02-06 22:10:49.502906",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Aggregator Init] Do implementations call aggregator.init() with validated party_polynomials before signing? Critical severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0c284500-621d-4971-9d2b-ae28899d8487?mode=deep",
+    "timestamp": "2026-02-06 22:11:22.450480",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/state_machine/coordinator/mod.rs] [Coordinator trait] [Polynomial Caching] Are party_polynomials cleared between DKG rounds to prevent stale data? High severity.",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_afa313f1-ea3b-4f6e-9dac-7ed07a1de471?mode=deep",
+    "timestamp": "2026-02-06 22:11:53.155816",
+    "report_generated": false
+  }
+]
