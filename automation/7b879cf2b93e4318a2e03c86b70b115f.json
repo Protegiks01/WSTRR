@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Signature Type Mismatch - High] Can signature_type differ from what was in the original NonceRequest, causing signature verification failures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3008ac45-df13-4c7d-b8ee-90e1ac1ce482?mode=deep",
+    "timestamp": "2026-02-06 21:35:45.308152",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareRequest::hash()] [Nonce Order - High] Does hashing iterate nonce_responses in a deterministic order (line 417-419), or can reordering cause hash changes?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_548c0823-d41b-4027-9632-2f7fcab2d1f2?mode=deep",
+    "timestamp": "2026-02-06 21:35:58.117675",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Empty Nonces - Critical] Can nonce_responses be an empty vector, causing binding value computation to fail or use wrong values?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5873797a-afca-428a-b9bb-f75a6cd08ee3?mode=deep",
+    "timestamp": "2026-02-06 21:36:11.280173",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Taproot Merkle Consistency - High] For Taproot signatures, does merkle_root match what was in NonceRequest, or can it be changed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fd7a5c93-d864-4e1e-ba08-1a254088b09e?mode=deep",
+    "timestamp": "2026-02-06 21:36:25.928330",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareRequest::hash()] [Domain Separation - Medium] Does hashing signature_type last (lines 422-431) ensure proper domain separation from Frost/Schnorr/Taproot?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_35fb5783-a269-4e44-a43b-b2424849c1d0?mode=deep",
+    "timestamp": "2026-02-06 21:36:40.644633",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Share Count - Critical] Is signature_shares.len() validated against the signer's key_ids count, or can mismatched counts occur?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_54b35553-f23b-4456-9715-19e95706ddca?mode=deep",
+    "timestamp": "2026-02-06 21:36:56.601606",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Duplicate Shares - Critical] Can signature_shares contain duplicate IDs, allowing double-counting during aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b59fe8fb-80d0-46e6-81da-c304429a259a?mode=deep",
+    "timestamp": "2026-02-06 21:37:13.434715",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Zero Share - Critical] Are signature shares validated to be non-zero scalars (z_i), or can zero shares enable forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1423f960-2b42-44ba-8478-faed94f8f712?mode=deep",
+    "timestamp": "2026-02-06 21:37:32.465444",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareResponse::hash()] [Missing Iter ID - High] Why is sign_iter_id not hashed (line 451-463), allowing potential replay across iterations?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9683b28f-6d2d-48f4-8f3e-fe2c27f87991?mode=deep",
+    "timestamp": "2026-02-06 21:37:52.618643",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Key ID Validation - Critical] Are the key_ids in signature_shares validated to match the signer's NonceResponse.key_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8118b614-1272-4ee2-a729-9006ac4f597d?mode=deep",
+    "timestamp": "2026-02-06 21:38:13.554941",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Empty Response - High] Can signature_shares be empty, allowing a signer to participate without contributing shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c0f0fe6e-d0bd-418f-b9c8-22c4cd84e5af?mode=deep",
+    "timestamp": "2026-02-06 21:38:34.944253",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Sign IDs Mismatch - High] Are dkg_id/sign_id validated to match the SignatureShareRequest exactly?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5209666c-659a-49e0-93d3-1896feeaea3b?mode=deep",
+    "timestamp": "2026-02-06 21:38:58.788951",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareResponse::hash()] [Hash Determinism - Medium] Is iteration over signature_shares deterministic (line 457-463), or can reordering cause hash changes?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4c70071a-6052-47eb-9c8b-db7a18cc9274?mode=deep",
+    "timestamp": "2026-02-06 21:39:22.066037",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareResponse::hash()] [Key IDs Hash - Medium] Are key_ids within each signature_share hashed in a deterministic order (lines 460-462)?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a4b4ab2a-eff7-4700-a226-ae17dcd83a84?mode=deep",
+    "timestamp": "2026-02-06 21:39:46.924359",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Signature Reuse - Critical] Can the same signature be reused across different message types by replaying packets with modified msg but same sig?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_30d2bbc6-3790-4830-91de-283a74272c13?mode=deep",
+    "timestamp": "2026-02-06 21:40:13.881415",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Unknown Signer Bypass - High] For messages requiring signer validation, does returning false on unknown signer_id (lines 519-523, 533-537, etc.) prevent all attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_905d61f2-d83d-4f6b-bf1c-98046d75a381?mode=deep",
+    "timestamp": "2026-02-06 21:40:40.662069",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Coordinator Impersonation - Critical] Can a malicious signer sign a coordinator message (DkgBegin, NonceRequest, etc.) and have it accepted if signer key equals coordinator key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ef291c9a-e088-4ef1-a834-39e2cd9f1165?mode=deep",
+    "timestamp": "2026-02-06 21:41:07.711543",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Early Return - High] Does the function's multiple early returns ensure all validation paths are covered, or can some messages slip through unverified?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0e7aa8f7-d58d-4b05-a141-694702268ca5?mode=deep",
+    "timestamp": "2026-02-06 21:41:36.901331",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Warn Only - Medium] Do the warn!() calls (lines 496, 502, etc.) indicate that verification failures might not be properly propagated to callers?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_cabac9de-3400-44da-afb5-01b8d69c8bea?mode=deep",
+    "timestamp": "2026-02-06 21:42:06.288673",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Comment Accuracy - High] Does the TODO comment about Frost V5 (lines 541-543) indicate a known security issue with off-by-one ID handling?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c7a17627-e5af-4865-b670-fa3f569b4e98?mode=deep",
+    "timestamp": "2026-02-06 21:42:35.434045",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Missing Message Types - Critical] Does the match statement (lines 493-599) cover all Message enum variants, or can new variants bypass verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6eac203f-0453-4afe-b1ac-bbc91d730054?mode=deep",
+    "timestamp": "2026-02-06 21:43:05.826638",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Public Key Availability - High] What happens if signers_public_keys.signers is empty or doesn't contain expected IDs - can packets be accepted without verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bca18fc5-1406-43b7-adaa-05edb59f773b?mode=deep",
+    "timestamp": "2026-02-06 21:43:36.896327",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [Verification Order - Medium] Are cheaper checks (ID validation) performed before expensive checks (signature verification) to prevent DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_70dd402f-480d-4b0e-ae7e-3fd566af8c71?mode=deep",
+    "timestamp": "2026-02-06 21:44:08.840725",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: Packet::verify()] [True Return - High] Does returning true at the end (line 600) mean successful verification, or could it be reached incorrectly?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_611b7504-8dae-4bc9-b3e7-8de493586e35?mode=deep",
+    "timestamp": "2026-02-06 21:44:38.316098",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Enum: Message] [Type Confusion - High] Can deserialization produce one Message variant but serialization claims it's another, bypassing type-based verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_84949c02-39fb-4506-b246-8a7b5e4e8c5d?mode=deep",
+    "timestamp": "2026-02-06 21:45:02.423386",
+    "report_generated": false
+  }
+]
