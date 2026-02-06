@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/net.rs] [NonceRequest vs SignatureShareRequest] [Type Match - Critical] Must SignatureShareRequest.signature_type match the original NonceRequest.signature_type?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_00eef90b-bef4-4cac-9624-b8c9e5f6bd2c?mode=deep",
+    "timestamp": "2026-02-06 22:14:33.445891",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [SignatureShareRequest vs NonceResponse] [All IDs Match - Critical] Do all NonceResponses in SignatureShareRequest have identical dkg_id, sign_id, sign_iter_id, and message?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fe27c928-13a3-4fb9-b56b-f149f0751663?mode=deep",
+    "timestamp": "2026-02-06 22:14:45.788953",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateBegin] [Malicious Exclusion - High] Can coordinator exclude honest signers from DKG by not including them in signer_ids?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d3e88e4c-4721-4239-b608-fcf00b0f7be7?mode=deep",
+    "timestamp": "2026-02-06 22:14:59.351232",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEndBegin] [Premature Finalization - High] Can coordinator force premature DKG completion by sending DkgEndBegin before all shares distributed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f52f2ca2-4128-4077-9094-663193a73fb9?mode=deep",
+    "timestamp": "2026-02-06 22:15:12.552120",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [Nonce Grinding - Critical] Can coordinator request multiple NonceRequests for same message with different sign_iter_id to grind for favorable nonces?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ee0f3a72-7375-4c70-b703-c78cd9504982?mode=deep",
+    "timestamp": "2026-02-06 22:15:26.684136",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Cherry-Picking - Critical] Can coordinator selectively include/exclude nonce_responses to manipulate which signers participate in threshold?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8b52dd20-8222-4c5e-824c-96405942dcf3?mode=deep",
+    "timestamp": "2026-02-06 22:15:42.004742",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareRequest] [Response Reordering - High] Can coordinator reorder nonce_responses to change binding value computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_89975523-f153-4297-bf5d-e4085fb87c6d?mode=deep",
+    "timestamp": "2026-02-06 22:15:57.801450",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [Invalid Commitments - Critical] Can malicious signer send invalid polynomial commitments that pass validation but result in wrong group key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7810df80-4b30-4258-950c-35b485a49fac?mode=deep",
+    "timestamp": "2026-02-06 22:16:16.020261",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPrivateShares] [Wrong Shares - Critical] Can malicious signer send incorrectly encrypted shares that decrypt to wrong values, poisoning DKG?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fda1af74-45c6-4f29-8fca-ca47338a2686?mode=deep",
+    "timestamp": "2026-02-06 22:16:35.111494",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgEnd] [False Success - High] Can malicious signer report DkgStatus::Success even after receiving bad shares, hiding attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f85bc2e2-b99b-4e90-b8bf-c42d708e5622?mode=deep",
+    "timestamp": "2026-02-06 22:16:54.675949",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceResponse] [Nonce Reuse - Critical] Can malicious signer reuse nonces across different messages by sending same NonceResponse to multiple NonceRequests?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_7e671780-c63c-482a-878e-d1310f394731?mode=deep",
+    "timestamp": "2026-02-06 22:17:15.090577",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: SignatureShareResponse] [Invalid Shares - Critical] Can malicious signer send invalid signature shares that appear valid but break final signature aggregation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4adf6509-f42e-4a4f-858c-78c31ea20971?mode=deep",
+    "timestamp": "2026-02-06 22:17:36.857798",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [All Messages] [Message Ordering - High] Can messages arrive out of order causing state machine confusion (e.g., DkgPrivateShares before DkgPublicShares)?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d2014181-7746-47a9-8d21-cf12dd0eae1a?mode=deep",
+    "timestamp": "2026-02-06 22:17:59.609564",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [All Messages] [Duplicate Messages - Medium] Can receiving duplicate messages (same dkg_id/sign_id) cause double-processing or state confusion?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8619b88d-4928-4145-92ae-bcdc1ab2f974?mode=deep",
+    "timestamp": "2026-02-06 22:18:23.554547",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [All Messages] [Delayed Messages - Medium] Can delayed messages from old rounds be replayed causing state machine regression?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1ce5720a-9672-42dc-84da-f46bc524200f?mode=deep",
+    "timestamp": "2026-02-06 22:18:48.094599",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: Packet] [Packet Size - Medium] Is there a maximum packet size limit to prevent DoS via giant packets?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b192e12f-8234-4178-bca8-c49bf81d37f8?mode=deep",
+    "timestamp": "2026-02-06 22:19:13.668905",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: Packet] [Signature Length - Medium] Is sig vector bounded in length, or can arbitrarily long signatures cause DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_87d12da6-7832-4c9c-b11a-3ca111caeb2a?mode=deep",
+    "timestamp": "2026-02-06 22:19:40.597327",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [All Messages] [Serialization Size - Medium] Are serialized message sizes bounded to prevent network DoS?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5a082500-de91-406b-a8e1-a41cae072054?mode=deep",
+    "timestamp": "2026-02-06 22:20:09.355488",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: NonceRequest::hash()] [Message Binding - Critical] Is the message bytes securely bound to all round IDs (dkg_id, sign_id, sign_iter_id) in the hash?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5f08cf20-bd0d-4227-a6e7-f4eb77e40dcd?mode=deep",
+    "timestamp": "2026-02-06 22:20:38.793848",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: SignatureShareRequest::hash()] [Nonce Binding - Critical] Are all nonce_responses cryptographically bound to prevent substitution attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_90bff58d-d385-43c9-a751-d6546c9edfaf?mode=deep",
+    "timestamp": "2026-02-06 22:21:09.085211",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Function: DkgPublicShares::hash()] [Commitment Binding - Critical] Are polynomial commitments securely bound to prevent swapping between signers?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_273591b5-5f1e-4111-ba49-6304eca0eda7?mode=deep",
+    "timestamp": "2026-02-06 22:21:38.352096",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [All DKG Messages] [DKG ID Monotonicity - High] Must dkg_id be strictly increasing to prevent replay of old DKG rounds?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_45b9044e-e9e8-479a-a6fb-96fb85d696d6?mode=deep",
+    "timestamp": "2026-02-06 22:22:10.071706",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [All Signing Messages] [Sign ID Uniqueness - High] Must sign_id be unique per DKG round, or can it be reused after DKG rotation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9f481b62-047b-4ec5-b28d-c93bda922f55?mode=deep",
+    "timestamp": "2026-02-06 22:22:42.359546",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: NonceRequest] [Iter ID Purpose - Medium] What is the security purpose of sign_iter_id - does it prevent some specific attack?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_38f12bda-1b01-4502-ab6e-51fff8bfb3d2?mode=deep",
+    "timestamp": "2026-02-06 22:23:14.689838",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/net.rs] [Struct: DkgPublicShares] [Comms Invariant - High] Must comms vector have exactly one entry per party, or can parties contribute multiple commitments?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_dbd4e8bc-b4c2-484e-83e6-3ccd90d5b854?mode=deep",
+    "timestamp": "2026-02-06 22:23:45.890669",
+    "report_generated": false
+  }
+]
