@@ -1,0 +1,152 @@
+[
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [High - Identity R Attack] If R is the identity point, does the verification equation still hold for some signature values, enabling trivial forgery?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e4287f5b-fc4a-434b-a66c-b0ecbfb5b83d?mode=deep",
+    "timestamp": "2026-02-06 19:10:12.976592",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Medium - Large Message DoS] Can an extremely large msg buffer (gigabytes) cause memory exhaustion or timeout during challenge computation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e58117b1-ad2b-471a-8a41-8361283ed8b5?mode=deep",
+    "timestamp": "2026-02-06 19:10:25.623031",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Critical - Equation Bypass] The verification checks 'z*G + (-c)*public_key == R', but can scalar overflow or point addition edge cases cause this to pass for invalid signatures?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_fc6935bc-83dc-41eb-8d80-d122d79a35fd?mode=deep",
+    "timestamp": "2026-02-06 19:10:39.435232",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [High - Constant Time] Is the verification equation computed in constant time, or can timing attacks leak information about the private key or signature?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_49a1b336-93fd-4383-8910-6b4292122688?mode=deep",
+    "timestamp": "2026-02-06 19:10:54.024183",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: Signature] [Critical - Malleability] Can an attacker flip the sign of z or negate R to create an alternative valid signature for the same message and public key?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9f2df271-a03c-4acb-976e-ac2fd100ec14?mode=deep",
+    "timestamp": "2026-02-06 19:11:08.213738",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [High - Generator Verification] Does the implementation verify against the correct generator G, or could a substituted generator bypass verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1d2a3ed3-8bab-44cd-ab51-774f96ae2dc0?mode=deep",
+    "timestamp": "2026-02-06 19:11:24.724506",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: Signature::verify()] [Medium - Panic on Invalid Input] Does verify() panic on any invalid input (e.g., malformed points), or does it gracefully return false?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ddcde7b1-d524-4ee4-86f3-61f88c976c52?mode=deep",
+    "timestamp": "2026-02-06 19:11:42.117338",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::new()] [Critical - Random Scalar Generation] If the random scalar r is zero or predictable, can an attacker break the proof's zero-knowledge property and extract the secret a?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e37df7a0-7111-41b7-bd1a-55a9d1de14e8?mode=deep",
+    "timestamp": "2026-02-06 19:12:00.625165",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::verify()] [Critical - Challenge Computation] Does the challenge() function properly include all tuple elements (G, A, B, K, R) in the hash, preventing proof forgery via element substitution?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f784777a-154e-4f41-8853-e5f8833e3a97?mode=deep",
+    "timestamp": "2026-02-06 19:12:20.514235",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::verify()] [Critical - Equation Verification] The verify checks 'z*G == R + s*A' and 'z*B == rB + s*K', but can overflow or point arithmetic edge cases cause acceptance of invalid proofs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b3e60d27-5a81-4739-aeeb-227d9141ee2a?mode=deep",
+    "timestamp": "2026-02-06 19:12:40.958737",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::challenge()] [High - Domain Separation] Is the 'TUPLE_PROOF/' prefix sufficient for domain separation, or can this hash collide with other protocol hash functions?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_3e12e684-661f-4786-a23e-5f557b7f5509?mode=deep",
+    "timestamp": "2026-02-06 19:13:02.341209",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::new()] [High - Point Validation] Are the input points A, B, K validated to be on the curve and in the correct subgroup before proof generation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c3090203-8b15-4329-8576-0bce386ba1a6?mode=deep",
+    "timestamp": "2026-02-06 19:13:23.524749",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::verify()] [High - Point Validation] Are A, B, K validated before verification, or can invalid points bypass the proof checks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_adc140ef-1189-4b2d-a411-0b37fdcfdaf3?mode=deep",
+    "timestamp": "2026-02-06 19:13:49.708674",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::challenge()] [High - Point Compression] Does compress() produce a canonical encoding, or can different representations of the same point produce different challenges?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_0d3035f6-f979-4856-9d0d-e9e077d7b624?mode=deep",
+    "timestamp": "2026-02-06 19:14:14.258681",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::verify()] [Critical - Malleability] Can an attacker flip the signs of R, rB, or z to create an alternative valid proof for the same tuple?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e554628d-04a0-4a55-b0f5-9fc1f5ccba89?mode=deep",
+    "timestamp": "2026-02-06 19:14:39.993097",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::new()] [Medium - RNG Failure] If the RNG fails or produces biased output, does new() handle this gracefully or create weak proofs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_61136f8b-e60f-4a32-a08a-5d893dd447e1?mode=deep",
+    "timestamp": "2026-02-06 19:15:05.312277",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::verify()] [High - Zero Knowledge] Does the verify() function leak any information about the secret a beyond what the tuple (A, K) already reveals?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8c0d3326-045b-4742-af32-2e9980022cc4?mode=deep",
+    "timestamp": "2026-02-06 19:15:32.213281",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::challenge()] [Medium - Hash Collision] Could a hash collision in Sha256 allow creating two different tuples with the same challenge, breaking proof soundness?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_5d11e3b0-696d-41bd-a324-e5afb4fb10e9?mode=deep",
+    "timestamp": "2026-02-06 19:16:00.510676",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Struct: TupleProof] [High - Serialization] Can a malicious TupleProof be deserialized with invalid R, rB, or z values that bypass verification?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_25b55c75-127e-4721-b5c7-f113c333ecfb?mode=deep",
+    "timestamp": "2026-02-06 19:16:29.508172",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::verify()] [Medium - DoS] Can extremely large point coordinates or scalars cause verification to take excessive time?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e7d869c2-bc44-4940-a0b2-f5ea7bc9cfda?mode=deep",
+    "timestamp": "2026-02-06 19:16:59.531241",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::new()] [Critical - Secret Leakage] Does the proof construction leak any bits of the secret a through the randomness r or the proof values?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_9a782778-3766-4267-9c77-6c8c0ea6a761?mode=deep",
+    "timestamp": "2026-02-06 19:17:32.016875",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: TupleProof::challenge()] [High - Prefix Collision] Can the 'TUPLE_PROOF/' prefix be manipulated or removed to create hash collisions with other protocol elements?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_118a192e-6137-4ddf-b4a6-014eaa3d9220?mode=deep",
+    "timestamp": "2026-02-06 19:18:05.472109",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: validate_signer_id()] [High - Off-by-One] The check 'signer_id < num_signers' means valid IDs are [0, num_signers-1], but does the rest of the codebase assume [1, num_signers], causing ID mismatches?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_12ef6d72-4935-48d8-bf20-928fab0e8544?mode=deep",
+    "timestamp": "2026-02-06 19:18:39.099223",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: validate_key_id()] [High - Zero Key ID] The check 'key_id > 0' rejects zero, but does this align with all key ID usage, or do some code paths expect zero-indexed IDs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_47d6f84d-264d-4475-bf23-f60df9f14bbf?mode=deep",
+    "timestamp": "2026-02-06 19:19:14.341449",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/common.rs] [Function: validate_key_id()] [High - Inclusive Upper Bound] The check 'key_id <= num_keys' allows key_id == num_keys, but if keys are zero-indexed elsewhere, this could cause array out-of-bounds access?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ad37ae1e-2d44-475a-a2de-2a15769d6ea7?mode=deep",
+    "timestamp": "2026-02-06 19:19:49.750121",
+    "report_generated": false
+  }
+]
