@@ -148,5 +148,155 @@
     "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_56639bc8-f588-473f-a205-cdfe53cc0ce3?mode=deep",
     "timestamp": "2026-02-06 19:38:49.245063",
     "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Context Validation] Does the caller validate that the same ctx is used for both proof generation and verification, or could mismatched contexts cause legitimate proofs to fail?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_b4a4306e-b3b9-48e0-a622-0d7e56a7d3f9?mode=deep",
+    "timestamp": "2026-02-06 21:23:29.456496",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Zero ID] If id is zero scalar, does this create any special cases in the challenge computation or proof verification that could be exploited?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4490044d-a721-4e39-9d1a-99023a9adfb7?mode=deep",
+    "timestamp": "2026-02-06 21:23:42.143585",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Zero Secret] If the polynomial constant a is zero, does the proof still provide meaningful security guarantees, or does this leak information?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_c816e9e0-5156-46ee-8cc9-04f5bed969f5?mode=deep",
+    "timestamp": "2026-02-06 21:23:55.196885",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Medium - Scalar Overflow] Are scalar addition operations (k + c*a) performed with proper modular arithmetic to prevent overflow or wraparound?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_46062e46-f4e3-47fb-9c0e-b27ca0067a7a?mode=deep",
+    "timestamp": "2026-02-06 21:24:09.197448",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Challenge Overflow] If the challenge c computation results in a value that overflows scalar representation, is this handled securely?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_4acca228-ddd0-4eac-a6d2-1174ccbc9166?mode=deep",
+    "timestamp": "2026-02-06 21:24:23.546084",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - ID Uniqueness] Does the protocol enforce that id values are unique across parties, and could duplicate ids enable any attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_6d4a63b1-9136-445b-ad7a-091f92af51d3?mode=deep",
+    "timestamp": "2026-02-06 21:24:38.795784",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [High - Malformed Deserialization] When deserializing ID from network messages, are all fields validated (id as valid scalar, kG as valid point, kca as valid scalar)?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_89f6d87a-de6a-467a-8f34-407d44bb9b43?mode=deep",
+    "timestamp": "2026-02-06 21:24:55.431884",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [High - Point Encoding] Does the Point type used for kG validate point encoding during deserialization, preventing invalid curve points from being accepted?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_1cf9ef04-c6eb-4f12-82c6-57674491731a?mode=deep",
+    "timestamp": "2026-02-06 21:25:13.885136",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - Scalar Range] Are deserialized scalar values (id, kca) validated to be in the correct range [0, curve_order), or could out-of-range values cause issues?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_2481175d-a12c-4309-9fc8-734fa97d2b68?mode=deep",
+    "timestamp": "2026-02-06 21:25:33.574295",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Medium - Size Validation] Is there a maximum size constraint on serialized ID structs to prevent memory exhaustion attacks?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a861d6dd-684f-45a3-bfcc-26fb8828e519?mode=deep",
+    "timestamp": "2026-02-06 21:25:54.107774",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [Low - Serialization Determinism] Is ID serialization deterministic, ensuring the same logical ID always produces the same byte representation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8323f3e9-4776-4555-adac-03aa246be43f?mode=deep",
+    "timestamp": "2026-02-06 21:26:16.422804",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Critical - DKG Integration] When ID proofs are used in DKG to bind party IDs to polynomial constants, does the caller verify all ID proofs before accepting any DKG shares?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_eb94734f-19c1-44fc-ad2f-dfe56a7d4255?mode=deep",
+    "timestamp": "2026-02-06 21:26:41.017853",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Critical - Verification Timing] Is verify() called before accepting and using the claimed polynomial constant A, or could an attacker contribute to DKG without valid proofs?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8f468ffe-ff69-4d62-b382-58fec7bcd4bb?mode=deep",
+    "timestamp": "2026-02-06 21:27:04.938358",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Multiple Proofs] If a party creates multiple ID proofs with different id values but the same secret a, does this leak information about a through correlation?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_d91e0793-abf3-43e0-8635-2df0419ba5b4?mode=deep",
+    "timestamp": "2026-02-06 21:27:29.325874",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [High - Batch Verification] When verifying multiple ID proofs, is each verified independently, or could batch verification introduce vulnerabilities?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_ddf53a00-c0be-41b5-9984-9bfaae83ea63?mode=deep",
+    "timestamp": "2026-02-06 21:27:54.149917",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Struct: ID] [High - ID Mutation] After creation, can the ID struct fields be mutated, and would this invalidate the proof while maintaining structural validity?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8357320a-8c45-4eb9-aad3-c50d103c238a?mode=deep",
+    "timestamp": "2026-02-06 21:28:19.982987",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Medium - Proof Freshness] Is there any mechanism to ensure ID proofs are fresh and not replayed from old sessions, or is ctx the only defense?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_97a2cfad-6b21-4df6-8f18-3c2a3fddde53?mode=deep",
+    "timestamp": "2026-02-06 21:28:48.071592",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Concurrent Verification] Is the verify function safe to call concurrently on the same ID instance from multiple threads?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_baafdf58-355e-41ed-a28c-be28be53c7d4?mode=deep",
+    "timestamp": "2026-02-06 21:29:16.572985",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::challenge()] [High - Hash Function Security] Does the protocol rely on collision resistance, preimage resistance, or second preimage resistance of SHA-256, and are all properties needed?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_8683b1d4-1115-4b6f-bacf-7a724a497be5?mode=deep",
+    "timestamp": "2026-02-06 21:29:45.641884",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [High - Discrete Log Assumption] Does the security proof rely on the discrete logarithm assumption over the curve group, and are there any weaknesses if ECDLP is partially broken?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_e0270e5b-33a8-4286-8019-fd93c33a1f9b?mode=deep",
+    "timestamp": "2026-02-06 21:30:17.456921",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Zero Knowledge] Is the proof truly zero-knowledge, or does verification leak any information about the secret a beyond what's revealed by A?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_f719937a-7518-401b-b4d1-be9f17f23e53?mode=deep",
+    "timestamp": "2026-02-06 21:30:48.948712",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::challenge()] [Medium - Random Oracle Model] Does the security analysis assume hash_to_scalar behaves as a random oracle, and what breaks if this assumption fails?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bd78df3b-5ce8-4d24-9f69-4c0af4e305f4?mode=deep",
+    "timestamp": "2026-02-06 21:31:21.406943",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::new()] [Medium - Curve Choice] Is the proof secure for all elliptic curve groups, or are there specific curve properties (order, cofactor) that must be validated?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_bf869f45-20c4-4b45-8b9a-a4ccb91895aa?mode=deep",
+    "timestamp": "2026-02-06 21:31:55.078067",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::verify()] [Medium - Computational DoS] Does verify perform expensive point operations, and could an attacker flood the system with invalid ID proofs to exhaust CPU?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_469b569f-5888-414d-aaaa-4516d9109fc3?mode=deep",
+    "timestamp": "2026-02-06 21:32:29.749951",
+    "report_generated": false
+  },
+  {
+    "question": "[File: src/schnorr.rs] [Function: ID::challenge()] [Medium - Hash DoS] Can an attacker provide extremely long id scalars or ctx values to cause excessive hash computation time?",
+    "url": "https://deepwiki.com/search/-wsts-security-audit-prompt-se_a7e8bd36-4ac4-4386-b507-3389e34c74a1?mode=deep",
+    "timestamp": "2026-02-06 21:33:04.641906",
+    "report_generated": false
   }
 ]
